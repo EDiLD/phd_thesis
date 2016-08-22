@@ -1,0 +1,21 @@
+# Latex
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
+*.lot
+*.lof
+*.toc
+*.bcf
+*.out
+*.run.xml
+
+# Sublime
+*.sublime-project
+*.sublime-workspace
+
+ 
+.directory

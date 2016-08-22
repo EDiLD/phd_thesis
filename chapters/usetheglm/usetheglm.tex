@@ -1,0 +1,64 @@
+\chapter[Ecotoxicology is not normal]{Ecotoxicology is not normal - A comparison of statistical approaches for analysis of count and proportion data in ecotoxicology}
+\label{sec:usetheglm} 
+ 
+Eduard Szöcs\textsuperscript{a} \& Ralf B. Schäfer\textsuperscript{a} \\
+
+\medskip
+\small
+\textsuperscript{a}Institute for Environmental Sciences, University Koblenz-Landau, 76829 Landau, Germany \\
+
+\medskip 
+\normalsize
+Adapted from the article published 2015 in \textbf{Environmental Science and Pollution Research}, 22(18), 13990-13999
+
+\newpage
+
+\section{Abstract}
+\label{sec:usetheglm:abstract} 
+Ecotoxicologists often encounter count and proportion data that are rarely normally distributed.
+To meet the assumptions of the linear model such data are usually transformed or non-parametric methods are used if the transformed data still violate the assumptions.
+Generalised Linear Models (GLM) allow to directly model such data, without the need for transformation.
+Here, we compare the performance of  two parametric methods, i.e.,  (1) the linear model (assuming normality of transformed data), (2) GLMs (assuming a Poisson, negative binomial, or binomially distibuted response), and (3) non-parametric methods.
+
+We simulated typical data mimicking low replicated ecotoxicological experiments of two common data types (counts and proportions from counts). 
+We compared the performance of the different methods in terms of statistical power and Type I error for detecting a general treatment effect and determining the lowest observed effect concentration (LOEC).
+In addition, we outlined differences on a real world mesocosm data set.
+
+For count data, we found that the quasi-Poisson model yielded the highest power. The negative binomial GLM resulted in increased Type I errors, which could be fixed using the parametric bootstrap. 
+For proportions, binomial GLMs performed better than the linear model, except to determine LOEC at extremely low sample sizes.
+The compared non-parametric methods had generally lower power.
+
+We recommend that counts in one-factorial experiments should be analysed using quasi-Poisson models and proportions from counts by binomial GLMs.
+These methods should become standard in ecotoxicology.
+
+
+\section{Introduction}
+\label{sec:usetheglm:Introduction}
+Ecotoxicologists perform various kinds of experiments yielding different types of data.
+Examples are animal counts in mesocosm experiments (non-negative, integer-valued data) or proportions of surviving animals (data bounded between 0 and 1, discrete).
+These data are typically not normally distributed. 
+Nevertheless, such data are often analysed using methods that assume a normal distribution and variance homogeneity \citep{wang_making_2011}. 
+To meet these assumptions data are usually transformed.
+For example, ecotoxicological textbooks \citep{newman_quantitative_2012} and guidelines \citep{epa_methods_2002,oecd_current_2006} advise that survival data should be transformed using an arcsine square root transformation. 
+For count data from mesocosm experiments a log(Ay + C) transformation is usually applied, where the constants A and C are either chosen arbitrarily or following general recommendations. 
+For example, \citet{van_den_brink_impact_2000} suggest to set the term Ay to be 2 for the lowest abundance value (y) greater than zero and C to 1. 
+Other transformations, like the square root or fourth root transformation, are also commonly applied in community ecology \cite{anderson_navigating_2011}.
+Note that there has been little evaluation and advice for practitioners which transformations to use.
+If the transformed data still do not meet the assumptions of the linear model, non-parametric tests are usually applied \cite{wang_making_2011}.
+
+Generalised linear models (GLM) provide a method to analyse counts or proportions from counts in a statistically sound way \cite{nelder_generalized_1972}.
+GLMs can handle various types of data distributions, e.g., Poisson or negative binomial (for count data) or binomial (for proportions); the normal distribution being a special case of GLMs.
+Despite GLMs being available for more than 40~years, ecotoxicologists do not regularly make use of them.
+Recent studies concluded that the linear model should not be applied on transformed data and GLMs be used as they have better statistical properties (\citealt{ohara_not_2010,warton_many_2005} (counts), \citealt{warton_arcsine_2011} (proportions from counts)). 
+
+Ecotoxicological experiments often involve small sample sizes due to practical constraints. 
+For example, extremely low samples sizes ($n$~\textless~5) are common in many mesocosm studies \cite{sanderson_pesticide_2002,szocs_analysing_2015}.
+Small sample sizes lead to low power in statistical hypothesis testing, on which many ecotoxiological approaches (e.g. risk assessment for pesticides) rely. 
+Such an endpoint are L/NOEC values (Lowest / No observed effect concentration).
+Although their use has been heavily criticized in the past \cite{laskowski_good_1995}, they are the predominant endpoint in mesocosm experiments \cite{brock_minimum_2015, efsa_ppr_guidance_2013}. 
+
+We explore how GLMs may enhance, when appropriately used, inference in ecotoxicological studies and compared three types of statistical methods (linear model on transformed data, GLM, non-parametric tests).
+We first illustrate differences between statistical methods using a data set from a mesocosm study.
+Then we further elaborate differences in detecting a general treatment effect and determining the LOEC using simulations of two common data types in ecotoxicology: counts and proportions from counts. 
+
+ \printbibliography

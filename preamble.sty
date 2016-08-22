@@ -1,0 +1,147 @@
+% document options
+\newcommand{\myTitle}{Title1 Title2}
+\newcommand{\myTitleOnTitlePageLineOne}{Title1}
+\newcommand{\myTitleOnTitlePageLineTwo}{Title2}
+\newcommand{\myName}{Eduard Sz\"{o}cs}
+\newcommand{\myUni}{\protect{Universität Koblenz-Landau}}
+\newcommand{\myLocation}{Z\v{a}rnesti / Romania}
+\newcommand{\myTime}{\today}
+
+% character encoding and languages
+\usepackage[american]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+
+% math packages
+\usepackage{amsmath}
+
+
+% thesis style
+\usepackage[%
+%    drafting,
+%    minionpro,
+%    minionprospacing,
+    dottedtoc,
+    floatperchapter,
+    parts
+]{classicthesis}
+%\usepackage{MnSymbol}
+
+
+% % define page size and margins for the final print
+% \usepackage{geometry}
+% \geometry{paperwidth=18.91cm,
+% 	paperheight=24.589cm,
+% 	bindingoffset=0.89cm, % gutter
+% 	inner=2cm, % inside margin
+% 	outer=4cm, % outside margin
+% 	vmargin=2.5cm, % top and bottom margins
+% 	marginparsep=0.6cm,
+% 	marginparwidth=3cm,
+% }
+
+% tables
+\usepackage{tabularx}
+% \usepackage{slashbox}
+% \usepackage{rotating}
+% \usepackage{multirow}
+
+% fixes for marginpar and latex
+\usepackage{mparhack}
+\usepackage{fixltx2e} 
+
+% % indexing
+% \usepackage{makeidx}
+% \makeindex
+
+% graphics, figures, captions
+\usepackage{graphicx}
+% \usepackage{tikz}
+% \usepackage{pgfplots}
+% \pgfplotsset{compat=newest}
+% \usetikzlibrary{external}
+% \usetikzlibrary{calc}
+% \usepackage{tkz-gm} % graphical models
+% \usepackage{caption}
+% \usepackage{subcaption}
+% \tikzexternalize
+% \tikzsetexternalprefix{externalized/}
+
+% insert pdfs
+\usepackage{pdfpages}
+
+% hyperref
+\usepackage{hyperref}
+\hypersetup{%
+    %draft,	% = no hyperlinking at all (useful in b/w printouts)
+    colorlinks=true, 
+    linktocpage=true, 
+    pdfstartpage=1, 
+    pdfstartview=FitV,%
+    % uncomment the following line if you want to have black links (e.g., for printing)
+    %colorlinks=false, linktocpage=false, pdfborder={0 0 0}, pdfstartpage=1, pdfstartview=FitV,% 
+    breaklinks=true, 
+    pdfpagemode=UseNone, 
+    pageanchor=true, 
+    pdfpagemode=UseOutlines,%
+    plainpages=false, 
+    bookmarksnumbered, 
+    bookmarksopen=true, 
+    bookmarksopenlevel=1,%
+    hypertexnames=true, 
+    pdfhighlight=/O,%hyperfootnotes=true,%nesting=true,%frenchlinks,%
+    urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webgreen, %pagecolor=RoyalBlue,%
+    %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
+    pdftitle={\myTitle},%
+    pdfauthor={\myName, \myUni},%
+    pdfsubject={},%
+    pdfkeywords={},%
+}   
+\renewcommand{\subsectionautorefname}{Subsection}
+\renewcommand{\sectionautorefname}{Section}
+\renewcommand{\chapterautorefname}{Chapter}
+
+
+
+% bibliography
+\usepackage{csquotes}
+\usepackage[%
+    backend=biber, 
+    refsection=chapter,
+    natbib=true,
+    style=authoryear,%
+    dashed=false,%
+    doi=false,%
+    isbn=false,%
+    hyperref=auto,%
+    % backref,%
+    % backrefstyle=three,%
+    % maxbibnames=99,%
+    % maxcitenames=3,
+]{biblatex}
+% add bib files
+\addbibresource[label=usetheglm]{chapters/usetheglm/refs_usetheglm.bib}
+
+
+
+% dummy counter for correct TOC etc
+\newcounter{dummy}
+
+
+% signature function
+\newcommand{\signature}[1]{%
+  \vspace{4em}
+  \parbox{\textwidth}{
+    Neustadt a.d. Weinstraße, \\
+    \today 
+
+    \hfill 
+    \parbox{5cm}{
+      \centering
+      \rule{4cm}{1pt}\\
+       #1 
+    }
+  }
+}
+
