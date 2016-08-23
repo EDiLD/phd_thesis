@@ -1,5 +1,5 @@
 \documentclass[
-	11pt,
+	12pt,
     a4paper,
     footinclude=true,
     headinclude=true
@@ -21,24 +21,24 @@
 % \input{frontbackmatter/titlepage_accepted.tex}
 
 
-%----------------------------------------------------------------------------
-% Acknowledgements
-\cleardoublepage
-\def\dir{frontbackmatter}
-\input{\dir/acknowledgements.tex}
+% %----------------------------------------------------------------------------
+% % Acknowledgements
+% \cleardoublepage
+% \def\dir{frontbackmatter}
+% \input{\dir/acknowledgements.tex}
 
-%----------------------------------------------------------------------------
-% Abstract
-\cleardoublepage
-\def\dir{frontbackmatter}
-\input{\dir/abstract.tex}
+% %----------------------------------------------------------------------------
+% % Abstract
+% \cleardoublepage
+% \def\dir{frontbackmatter}
+% \input{\dir/abstract.tex}
 
 
-%----------------------------------------------------------------------------
-% Publications
-\cleardoublepage
-\def\dir{frontbackmatter}
-\input{\dir/publications.tex}
+% %----------------------------------------------------------------------------
+% % Publications
+% \cleardoublepage
+% \def\dir{frontbackmatter}
+% \input{\dir/publications.tex}
 
 
 
@@ -52,10 +52,10 @@
 \mainmatter
 
 
-%----------------------------------------------------------------------------
-% Introduction
-\def\dir{chapters/introduction}
-\input{\dir/introduction.tex}
+% %----------------------------------------------------------------------------
+% % Introduction
+% \def\dir{chapters/introduction}
+% \input{\dir/introduction.tex}
 
 %----------------------------------------------------------------------------
 % Ecotoxicology is not normal
@@ -63,46 +63,56 @@
 \input{\dir/usetheglm.tex}
 
 
-%----------------------------------------------------------------------------
-% Discussion
-\def\dir{chapters/discussion}
-\input{\dir/discussion.tex}
-
-
-
-\backmatter
+% %----------------------------------------------------------------------------
+% % taxize: taxonomic search and retrieval in R
+% \def\dir{chapters/taxize}
+% \input{\dir/taxize.tex}
 
 
 % %----------------------------------------------------------------------------
-% % Bibliography
-% \def\dir{frontbackmatter}
-% \input{\dir/bibliography.tex}
+% % Discussion
+% \def\dir{chapters/discussion}
+% \input{\dir/discussion.tex}
 
 
+
+%----------------------------------------------------------------------------
+% appendices
+\appendix
+\cleardoublepage
+
+%----------------------------------------------------------------------------
+% usetheglm
+\def\dir{appendix/usetheglm}
+\input{\dir/ap_usetheglm.tex}
+
+
+%----------------------------------------------------------------------------
+%% backmatter
+% \backmatter
 % %----------------------------------------------------------------------------
 % % Index
 % \cleardoublepage
 % \def\dir{frontbackmatter}
 % \input{\dir/index.tex}
 
-%----------------------------------------------------------------------------
-% Authors contributions
-\def\dir{frontbackmatter}
-\input{\dir/contributions.tex}
+% %----------------------------------------------------------------------------
+% % Authors contributions
+% \def\dir{frontbackmatter}
+% \input{\dir/contributions.tex}
 
 
-%----------------------------------------------------------------------------
-% Declaration
-\def\dir{frontbackmatter}
-\input{\dir/declaration.tex}
+% %----------------------------------------------------------------------------
+% % Declaration
+% \def\dir{frontbackmatter}
+% \input{\dir/declaration.tex}
 
 
-%----------------------------------------------------------------------------
-% CV
-\def\dir{frontbackmatter/cv}
-\input{\dir/cv.tex}
+% %----------------------------------------------------------------------------
+% % CV
+% \def\dir{frontbackmatter/cv}
+% \input{\dir/cv.tex}
 
-\appendix
 
 
 \end{document}
