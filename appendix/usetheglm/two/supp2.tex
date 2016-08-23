@@ -197,7 +197,8 @@ Moreover, we adjust for multiple testing using Holm's method (\texttt{test = adj
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{require}\hlstd{(multcomp)}
-\hlkwd{summary}\hlstd{(}\hlkwd{glht}\hlstd{(modlm,} \hlkwc{linfct} \hlstd{=} \hlkwd{mcp}\hlstd{(}\hlkwc{treatment} \hlstd{=} \hlstr{'Dunnett'}\hlstd{),}  \hlkwc{alternative} \hlstd{=} \hlstr{'less'}\hlstd{),}
+\hlkwd{summary}\hlstd{(}\hlkwd{glht}\hlstd{(modlm,} \hlkwc{linfct} \hlstd{=} \hlkwd{mcp}\hlstd{(}\hlkwc{treatment} \hlstd{=} \hlstr{'Dunnett'}\hlstd{),}  
+\hlkwc{alternative} \hlstd{=} \hlstr{'less'}\hlstd{),}
         \hlkwc{test} \hlstd{=} \hlkwd{adjusted}\hlstd{(}\hlstr{'holm'}\hlstd{))}
 \end{alltt}
 \begin{verbatim}
@@ -333,7 +334,8 @@ GLMs can be fitted using the \texttt{glm()} function and here we fit the model f
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{modpois} \hlkwb{<-} \hlkwd{glm}\hlstd{(abu} \hlopt{~} \hlstd{treatment,} \hlkwc{data} \hlstd{= dfm,} \hlkwc{family} \hlstd{=} \hlkwd{poisson}\hlstd{(}\hlkwc{link} \hlstd{=} \hlstr{'log'}\hlstd{))}
+\hlstd{modpois} \hlkwb{<-} \hlkwd{glm}\hlstd{(abu} \hlopt{~} \hlstd{treatment,} \hlkwc{data} \hlstd{= dfm,} 
+\hlkwc{family} \hlstd{=} \hlkwd{poisson}\hlstd{(}\hlkwc{link} \hlstd{=} \hlstr{'log'}\hlstd{))}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -405,7 +407,8 @@ A simple diagnostic would be to plot group variances vs. group means:
 \begin{alltt}
 \hlcom{# plot mean vs var}
 \hlkwd{plot}\hlstd{(var} \hlopt{~} \hlstd{mu,} \hlkwc{data} \hlstd{= musd,}
-     \hlkwc{xlab} \hlstd{=} \hlstr{'mean'}\hlstd{,} \hlkwc{ylab} \hlstd{=} \hlstr{'variance'}\hlstd{,} \hlkwc{main} \hlstd{=} \hlstr{'Mean-variance relationships'}\hlstd{)}
+     \hlkwc{xlab} \hlstd{=} \hlstr{'mean'}\hlstd{,} \hlkwc{ylab} \hlstd{=} \hlstr{'variance'}\hlstd{,} 
+     \hlkwc{main} \hlstd{=} \hlstr{'Mean-variance relationships'}\hlstd{)}
 \hlcom{# poisson}
 \hlkwd{abline}\hlstd{(}\hlkwc{a} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{b} \hlstd{=} \hlnum{1}\hlstd{,} \hlkwc{col} \hlstd{=} \hlstr{'darkblue'}\hlstd{,} \hlkwc{lwd} \hlstd{=} \hlnum{2}\hlstd{)}
 \hlcom{# quasi-Poisson}
@@ -469,7 +472,8 @@ The summary gives the estimated coefficients:
 \begin{verbatim}
 ## 
 ## Call:
-## glm(formula = abu ~ treatment, family = "quasipoisson", data = dfm)
+## glm(formula = abu ~ treatment, family = "quasipoisson", 
+##      data = dfm)
 ## 
 ## Deviance Residuals: 
 ##     Min       1Q   Median       3Q      Max  
@@ -538,7 +542,8 @@ The LOEC can be determined with \texttt{multcomp}:
 ## Multiple Comparisons of Means: Dunnett Contrasts
 ## 
 ## 
-## Fit: glm(formula = abu ~ treatment, family = "quasipoisson", data = dfm)
+## Fit: glm(formula = abu ~ treatment, family = "quasipoisson", 
+##          data = dfm)
 ## 
 ## Linear Hypotheses:
 ##                     Estimate Std. Error z value Pr(<z)  
@@ -577,7 +582,8 @@ The estimated coefficients:
 \begin{verbatim}
 ## 
 ## Call:
-## glm.nb(formula = abu ~ treatment, data = dfm, init.theta = 3.905898474, 
+## glm.nb(formula = abu ~ treatment, data = dfm, 
+##     init.theta = 3.905898474, 
 ##     link = log)
 ## 
 ## Deviance Residuals: 
@@ -595,7 +601,8 @@ The estimated coefficients:
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## (Dispersion parameter for Negative Binomial(3.9059) family taken to be 1)
+## (Dispersion parameter for Negative Binomial(3.9059) 
+##    family taken to be 1)
 ## 
 ##     Null deviance: 39.057  on 17  degrees of freedom
 ## Residual deviance: 18.611  on 12  degrees of freedom
@@ -635,9 +642,9 @@ Then we can compare these two models with a LR-Test:
 ## Likelihood ratio tests of Negative Binomial Models
 ## 
 ## Response: abu
-##       Model    theta Resid. df    2 x log-lik.   Test    df LR stat.
+##       Model    theta Resid. df    2 x log-lik.   Test df LR stat.
 ## 1         1 1.861577        17       -181.2281                      
-## 2 treatment 3.905898        12       -167.2383 1 vs 2     5 13.98985
+## 2 treatment 3.905898        12       -167.2383 1 vs 2  5 13.98985
 ##    Pr(Chi)
 ## 1         
 ## 2 0.015674
@@ -738,7 +745,8 @@ This is similar to the other parametric models:
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{summary}\hlstd{(}\hlkwd{glht}\hlstd{(modnb,} \hlkwc{linfct} \hlstd{=} \hlkwd{mcp}\hlstd{(}\hlkwc{treatment} \hlstd{=} \hlstr{'Dunnett'}\hlstd{),}  \hlkwc{alternative} \hlstd{=} \hlstr{'less'}\hlstd{),}
+\hlkwd{summary}\hlstd{(}\hlkwd{glht}\hlstd{(modnb,} \hlkwc{linfct} \hlstd{=} \hlkwd{mcp}\hlstd{(}\hlkwc{treatment} \hlstd{=} \hlstr{'Dunnett'}\hlstd{),}  
+        \hlkwc{alternative} \hlstd{=} \hlstr{'less'}\hlstd{),}
         \hlkwc{test} \hlstd{=} \hlkwd{adjusted}\hlstd{(}\hlstr{'holm'}\hlstd{))}
 \end{alltt}
 \begin{verbatim}
@@ -748,7 +756,8 @@ This is similar to the other parametric models:
 ## Multiple Comparisons of Means: Dunnett Contrasts
 ## 
 ## 
-## Fit: glm.nb(formula = abu ~ treatment, data = dfm, init.theta = 3.905898474, 
+## Fit: glm.nb(formula = abu ~ treatment, data = dfm, 
+##     init.theta = 3.905898474, 
 ##     link = log)
 ## 
 ## Linear Hypotheses:
