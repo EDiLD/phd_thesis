@@ -1,14 +1,16 @@
 \chapter{taxize: taxonomic search and retrieval in R}
 \label{sec:taxize} 
  
+\begin{sloppypar}
+
 \bigskip
-Scott A. Chamberlain\textsuperscript{a} \& Eduard Szöcs\textsuperscript{b}
+Scott A. Chamberlain\textsuperscript{a} \& \underline{Eduard Szöcs\textsuperscript{b}}
 
 \bigskip
 \small
 \noindent 
 \textsuperscript{a}Biology Department, Simon Fraser University, Burnaby, BC, Canada,\\
-\textsuperscript{b}Institute for Environmental Sciences, University Koblenz-Landau, Landau, Germany \\
+\textsuperscript{b}Institute for Environmental Sciences, University Koblenz-Landau, Landau, Germany 
 
 \bigskip 
 \normalsize
@@ -18,9 +20,10 @@ Adapted from the article published in 2013 in \emph{F1000Research}, 2.191.
 \bigskip
 \noindent
 This chapter reflects the software state in 2013.
-In the meantime there have been many changes to taxize, so that not all parts presented here work anymore. 
+In the meantime there have been many changes to taxize, so that not all parts presented here and thre respective supplementary materials work anymore. 
 For a more recent description please visit the project homepage \url{https://github.com/ropensci/taxize}.
 
+\end{sloppypar}
 
 \newpage
 
@@ -83,7 +86,7 @@ Therefore, we hope that moving from a web to an R interface for taxonomic names 
 Here, we justify the need for programmatic taxonomic resolution tools like taxize, discuss our data sources, and run through a suite of use cases to demonstrate the variety of ways that users can use taxize.
 
 {\small
-\begin{longtable}{p{3.5cm}p{5cm}p{5cm}}
+\begin{longtable}{P{3.5cm}P{4.5cm}P{5.5cm}}
 \caption{Some key functions in taxize, what they do, and their data sources}\\
 \hline
 Function name & What it does & Source \\

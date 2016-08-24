@@ -1,4 +1,13 @@
+% silence warning
+% "Usage of package `titlesec' together(scrbook) with a KOMA-Script class is not recommended."
+% which comes from classicthesis, but is currently not fixable
+% see also https://bitbucket.org/amiede/classicthesis/issues/92/titlesec-deprecated
+\RequirePackage{silence}
+\WarningFilter{scrbook}{Usage of package `titlesec'}
+
+
 \documentclass[
+	% draft,
 	12pt,
     a4paper,
     footinclude=true,
@@ -6,20 +15,22 @@
 ]{scrbook}
 % for one sided layout
 % \KOMAoptions{twoside=false}
+
+% load preambly.sty
 \usepackage{preamble}
+
+
+
 
 \begin{document}
 \selectlanguage{american}
 \frontmatter
 
 
-
-
 % %----------------------------------------------------------------------------
 % % Titlepage
 \input{frontbackmatter/titlepage.tex}
 % \input{frontbackmatter/titlepage_accepted.tex}
-
 
 % %----------------------------------------------------------------------------
 % % Acknowledgements
@@ -33,14 +44,11 @@
 % \def\dir{frontbackmatter}
 % \input{\dir/abstract.tex}
 
-
 % %----------------------------------------------------------------------------
 % % Publications
 % \cleardoublepage
 % \def\dir{frontbackmatter}
 % \input{\dir/publications.tex}
-
-
 
 %----------------------------------------------------------------------------
 % Contents
@@ -49,25 +57,22 @@
 \input{\dir/contents.tex}
 
 
+
 \mainmatter
-
-
 % %----------------------------------------------------------------------------
 % % Introduction
 % \def\dir{chapters/introduction}
 % \input{\dir/introduction.tex}
 
-%----------------------------------------------------------------------------
-% Ecotoxicology is not normal
-\def\dir{chapters/usetheglm}
-\input{\dir/usetheglm.tex}
-
-
 % %----------------------------------------------------------------------------
+% % Ecotoxicology is not normal
+% \def\dir{chapters/usetheglm}
+% \input{\dir/usetheglm.tex}
+
+% % ----------------------------------------------------------------------------
 % % taxize: taxonomic search and retrieval in R
 % \def\dir{chapters/taxize}
 % \input{\dir/taxize.tex}
-
 
 % %----------------------------------------------------------------------------
 % % Discussion
@@ -76,20 +81,23 @@
 
 
 
-%----------------------------------------------------------------------------
-% appendices
 \appendix
 \cleardoublepage
+% %----------------------------------------------------------------------------
+% % usetheglm
+% \def\dir{appendix/usetheglm}
+% \input{\dir/ap_usetheglm.tex}
 
 %----------------------------------------------------------------------------
-% usetheglm
-\def\dir{appendix/usetheglm}
-\input{\dir/ap_usetheglm.tex}
+% taxize
+\def\dir{appendix/taxize}
+\input{\dir/ap_taxize.tex}
+
+
 
 
 %----------------------------------------------------------------------------
-%% backmatter
-% \backmatter
+\backmatter
 % %----------------------------------------------------------------------------
 % % Index
 % \cleardoublepage

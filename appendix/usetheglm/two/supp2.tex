@@ -417,7 +417,7 @@ A simple diagnostic would be to plot group variances vs. group means:
 \hlkwd{curve}\hlstd{(x} \hlopt{+} \hlstd{(x}\hlopt{^}\hlnum{2} \hlopt{/} \hlnum{3.91}\hlstd{),} \hlkwc{from} \hlstd{=} \hlnum{24}\hlstd{,} \hlkwc{to} \hlstd{=} \hlnum{119.25}\hlstd{,} \hlkwc{add} \hlstd{=} \hlnum{TRUE}\hlstd{,}
       \hlkwc{col} \hlstd{=} \hlstr{'darkred'}\hlstd{,} \hlkwc{lwd} \hlstd{=} \hlnum{2}\hlstd{)}
 \hlkwd{legend}\hlstd{(}\hlstr{'topleft'}\hlstd{,}
-       \hlkwc{legend} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{'NB(k = 3.91)'}\hlstd{,} \hlstr{'Poisson'}\hlstd{,} \hlstr{'Quasi-Poisson(t = 22.4)'}\hlstd{),}
+       \hlkwc{legend} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{'NB(k = 3.91)'}\hlstd{,}\hlstr{'Poisson'}\hlstd{,}\hlstr{'Quasi-Poisson(t=22.4)'}\hlstd{),}
        \hlkwc{col} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{'darkred'}\hlstd{,} \hlstr{'darkblue'}\hlstd{,} \hlstr{'darkgreen'}\hlstd{),}
        \hlkwc{lty} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{,}\hlnum{1}\hlstd{,} \hlnum{1}\hlstd{),}
        \hlkwc{lwd} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{2}\hlstd{,}\hlnum{2}\hlstd{,} \hlnum{2}\hlstd{))}
@@ -490,7 +490,7 @@ The summary gives the estimated coefficients:
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## (Dispersion parameter for quasipoisson family taken to be 22.41055)
+## (Dispersion parameter for quasipoisson family taken to be 22.411)
 ## 
 ##     Null deviance: 604.79  on 17  degrees of freedom
 ## Residual deviance: 273.77  on 12  degrees of freedom
@@ -799,8 +799,7 @@ We can use the Kruskal-Wallies test to check if there is a difference between tr
 To determine the LOEC we could use a Pairwise Wilcoxon test.
 The built-in \texttt{pairwise.wilcox.test()} compares by default all levels (Tukey-contrasts).
 We are only interested in a subset of these comparisons (Dunnett-contrast).
-
-Therefore, we use a custom function, which is a wrapper around \texttt{wilcox.exact()} from the exactRankTests package:
+Therefore, we use a custom function, which is a wrapper around \texttt{wilcox.exact} from the exactRankTests package:
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -808,10 +807,11 @@ Therefore, we use a custom function, which is a wrapper around \texttt{wilcox.ex
 \hlcom{#' pairwise wilcox.test with dunnett contrasrs}
 \hlcom{#' @param y numeric; vector of data values}
 \hlcom{#' @param g factor; grouping vector}
-\hlcom{#' @param dunnett logical; if TRUE dunnett contrast, otherwise Tukey-contrasts}
+\hlcom{#' @param dunnett logical; if TRUE dunnett contrast, otherwise 
+Tukey-contrasts}
 \hlcom{#' @param padj character; method for p-adjustment, see ?p.adjust.}
-\hlcom{#' @param ... other arguments passed to wilcox.exact \{exactRankTests\}}
-\hlstd{pairwise_wilcox} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{y}\hlstd{,} \hlkwc{g}\hlstd{,} \hlkwc{dunnett} \hlstd{=} \hlnum{TRUE}\hlstd{,} \hlkwc{padj} \hlstd{=} \hlstr{'holm'}\hlstd{,} \hlkwc{...}\hlstd{)\{}
+\hlcom{#' @param ... other arguments passed to exactRankTests::wilcox.exact}
+\hlstd{pairwise_wilcox} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{y}\hlstd{,} \hlkwc{g}\hlstd{,} \hlkwc{dunnett} \hlstd{=} \hlnum{TRUE}\hlstd{,} \hlkwc{padj}\hlstd{=}\hlstr{'holm'}\hlstd{,}\hlkwc{...}\hlstd{)\{}
   \hlkwa{if}\hlstd{(}\hlopt{!}\hlkwd{require}\hlstd{(exactRankTests))\{}
     \hlkwd{stop}\hlstd{(}\hlstr{'Install exactRankTests package'}\hlstd{)}
   \hlstd{\}}
@@ -824,13 +824,14 @@ Therefore, we use a custom function, which is a wrapper around \texttt{wilcox.ex
   \hlcom{# use wilcox.exact (for tied data)}
   \hlkwa{for}\hlstd{(i} \hlkwa{in} \hlkwd{seq_len}\hlstd{(}\hlkwd{nrow}\hlstd{(tc)))\{}
     \hlstd{pval[i]} \hlkwb{<-} \hlkwd{wilcox.exact}\hlstd{(y[}\hlkwd{as.numeric}\hlstd{(g)} \hlopt{==} \hlstd{tc[i,} \hlnum{2}\hlstd{]],}
-                            \hlstd{y[}\hlkwd{as.numeric}\hlstd{(g)} \hlopt{==} \hlstd{tc[i,} \hlnum{1}\hlstd{]],} \hlkwc{exact} \hlstd{=} \hlnum{TRUE}\hlstd{,}
+                            \hlstd{y[}\hlkwd{as.numeric}\hlstd{(g)} \hlopt{==} \hlstd{tc[i,} \hlnum{1}\hlstd{]],}\hlkwc{exact}\hlstd{=}\hlnum{TRUE}\hlstd{,}
                             \hlstd{...)}\hlopt{$}\hlstd{p.value}
   \hlstd{\}}
 
   \hlcom{# adjust p-values}
   \hlstd{pval} \hlkwb{<-} \hlkwd{p.adjust}\hlstd{(pval, padj)}
-  \hlkwd{names}\hlstd{(pval)} \hlkwb{=} \hlkwd{paste}\hlstd{(}\hlkwd{levels}\hlstd{(g)[tc[,}\hlnum{1}\hlstd{]],} \hlkwd{levels}\hlstd{(g)[tc[,}\hlnum{2}\hlstd{]],} \hlkwc{sep} \hlstd{=} \hlstr{' vs. '}\hlstd{)}
+  \hlkwd{names}\hlstd{(pval)} \hlkwb{=} \hlkwd{paste}\hlstd{(}\hlkwd{levels}\hlstd{(g)[tc[,}\hlnum{1}\hlstd{]],} \hlkwd{levels}\hlstd{(g)[tc[,}\hlnum{2}\hlstd{]],} 
+            \hlkwc{sep} \hlstd{=} \hlstr{' vs. '}\hlstd{)}
   \hlkwd{return}\hlstd{(pval)}
 \hlstd{\}}
 \end{alltt}
@@ -845,8 +846,8 @@ Here, we use one-sided Dunnett contrasts and adjust p-values using Holm's method
                 \hlkwc{dunnett} \hlstd{=} \hlnum{TRUE}\hlstd{,} \hlkwc{p.adj} \hlstd{=} \hlstr{'holm'}\hlstd{,} \hlkwc{alternative} \hlstd{=} \hlstr{'less'}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
-## Control vs. T0.1 Control vs. T0.3   Control vs. T1   Control vs. T3 
-##        0.2285714        0.2285714        0.2285714        0.1428571 
+## Control vs. T0.1 Control vs. T0.3  Control vs. T1  Control vs. T3 
+##        0.2285714        0.2285714       0.2285714       0.1428571 
 ##  Control vs. T10 
 ##        0.2285714
 \end{verbatim}
@@ -895,7 +896,8 @@ The we do some house-keeping, reformat the data and convert concentration to a f
 \begin{alltt}
 \hlkwd{require}\hlstd{(reshape2)}
 \hlcom{# wide to long}
-\hlstd{dfm} \hlkwb{<-} \hlkwd{melt}\hlstd{(df,} \hlkwc{id.vars} \hlstd{=} \hlstr{'conc'}\hlstd{,} \hlkwc{value.name} \hlstd{=} \hlstr{'y'}\hlstd{,} \hlkwc{variable.name} \hlstd{=} \hlstr{'tank'}\hlstd{)}
+\hlstd{dfm} \hlkwb{<-} \hlkwd{melt}\hlstd{(df,} \hlkwc{id.vars} \hlstd{=} \hlstr{'conc'}\hlstd{,} \hlkwc{value.name} \hlstd{=} \hlstr{'y'}\hlstd{,} 
+          \hlkwc{variable.name} \hlstd{=} \hlstr{'tank'}\hlstd{)}
 \hlcom{# conc as factor}
 \hlstd{dfm}\hlopt{$}\hlstd{conc} \hlkwb{<-} \hlkwd{factor}\hlstd{(dfm}\hlopt{$}\hlstd{conc)}
 \end{alltt}
@@ -1040,7 +1042,8 @@ And the LOEC is at the highest concentration:
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{summary}\hlstd{(}\hlkwd{glht}\hlstd{(modlm,} \hlkwc{linfct} \hlstd{=} \hlkwd{mcp}\hlstd{(}\hlkwc{conc} \hlstd{=} \hlstr{'Dunnett'}\hlstd{),} \hlkwc{alternative} \hlstd{=} \hlstr{'less'}\hlstd{),}
+\hlkwd{summary}\hlstd{(}\hlkwd{glht}\hlstd{(modlm,} \hlkwc{linfct} \hlstd{=} \hlkwd{mcp}\hlstd{(}\hlkwc{conc} \hlstd{=} \hlstr{'Dunnett'}\hlstd{),} 
+        \hlkwc{alternative} \hlstd{=} \hlstr{'less'}\hlstd{),}
         \hlkwc{test} \hlstd{=} \hlkwd{adjusted}\hlstd{(}\hlstr{'holm'}\hlstd{))}
 \end{alltt}
 \begin{verbatim}
@@ -1072,7 +1075,7 @@ The binomial model with a logit link (eqn. 7) between predictors and response ca
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{modglm} \hlkwb{<-} \hlkwd{glm}\hlstd{(y} \hlopt{~} \hlstd{conc ,} \hlkwc{data} \hlstd{= dfm,} \hlkwc{family} \hlstd{=} \hlkwd{binomial}\hlstd{(}\hlkwc{link} \hlstd{=} \hlstr{'logit'}\hlstd{),}
+\hlstd{modglm} \hlkwb{<-} \hlkwd{glm}\hlstd{(y} \hlopt{~} \hlstd{conc ,} \hlkwc{data} \hlstd{= dfm,} \hlkwc{family} \hlstd{=} \hlkwd{binomial}\hlstd{(}\hlkwc{link}\hlstd{=}\hlstr{'logit'}\hlstd{),}
               \hlkwc{weights} \hlstd{=} \hlkwd{rep}\hlstd{(}\hlnum{10}\hlstd{,} \hlkwd{nrow}\hlstd{(dfm)))}
 \end{alltt}
 \end{kframe}
@@ -1089,7 +1092,8 @@ The summary gives the estimated coefficients:
 \begin{verbatim}
 ## 
 ## Call:
-## glm(formula = y ~ conc, family = binomial(link = "logit"), data = dfm, 
+## glm(formula = y ~ conc, family = binomial(link = "logit"), 
+##     data = dfm, 
 ##     weights = rep(10, nrow(dfm)))
 ## 
 ## Deviance Residuals: 
@@ -1142,7 +1146,8 @@ Also with the binomial model the LOEC is at the highest concentration:
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{summary}\hlstd{(}\hlkwd{glht}\hlstd{(modglm,} \hlkwc{linfct} \hlstd{=} \hlkwd{mcp}\hlstd{(}\hlkwc{conc} \hlstd{=} \hlstr{'Dunnett'}\hlstd{),} \hlkwc{alternative} \hlstd{=} \hlstr{'less'}\hlstd{),}
+\hlkwd{summary}\hlstd{(}\hlkwd{glht}\hlstd{(modglm,} \hlkwc{linfct} \hlstd{=} \hlkwd{mcp}\hlstd{(}\hlkwc{conc} \hlstd{=} \hlstr{'Dunnett'}\hlstd{),} 
+        \hlkwc{alternative} \hlstd{=} \hlstr{'less'}\hlstd{),}
         \hlkwc{test} \hlstd{=} \hlkwd{adjusted}\hlstd{(}\hlstr{'holm'}\hlstd{))}
 \end{alltt}
 \begin{verbatim}
@@ -1152,7 +1157,8 @@ Also with the binomial model the LOEC is at the highest concentration:
 ## Multiple Comparisons of Means: Dunnett Contrasts
 ## 
 ## 
-## Fit: glm(formula = y ~ conc, family = binomial(link = "logit"), data = dfm, 
+## Fit: glm(formula = y ~ conc, family = binomial(link = "logit"), 
+##     data = dfm, 
 ##     weights = rep(10, nrow(dfm)))
 ## 
 ## Linear Hypotheses:

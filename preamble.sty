@@ -21,7 +21,9 @@
 \usepackage{textcomp}
 \usepackage{microtype}
 
-% knitr look-a-like
+
+
+% knitr look-a-like and environment
 \usepackage[dvipsnames]{xcolor}
 \usepackage{framed}
 \usepackage{alltt}
@@ -88,7 +90,6 @@
     parts,
     linedheaders, %  changes  the  look  of  the  chapter  headings  a  bit by adding a horizontal line above the chapter title. 
 ]{classicthesis}
-%\usepackage{MnSymbol}
 
 
 % % define page size and margins for the final print
@@ -110,9 +111,10 @@
 % tables
 \usepackage{tabularx}
 \usepackage{longtable}
-% \usepackage{slashbox}
-% \usepackage{rotating}
-% \usepackage{multirow}
+% to automate this solution for the longtable, as it was large, with many such box issues. The solution I propose here is to define a new column type (I call it P) which invokes \raggedright and other stuff necessary to handle all columns.
+% this fixeś underfull hboxes in longtable
+\usepackage{array}
+\newcolumntype{P}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
 
 % fixes for marginpar and latex
 \usepackage{mparhack}
@@ -138,41 +140,9 @@
 % insert pdfs
 \usepackage{pdfpages}
 
-% hyperref
-\usepackage{hyperref}
-\hypersetup{%
-    %draft,	% = no hyperlinking at all (useful in b/w printouts)
-    colorlinks=true, 
-    linktocpage=true, 
-    pdfstartpage=1, 
-    pdfstartview=FitV,%
-    % uncomment the following line if you want to have black links (e.g., for printing)
-    %colorlinks=false, linktocpage=false, pdfborder={0 0 0}, pdfstartpage=1, pdfstartview=FitV,% 
-    breaklinks=true, 
-    pdfpagemode=UseNone, 
-    pageanchor=true, 
-    pdfpagemode=UseOutlines,%
-    plainpages=false, 
-    bookmarksnumbered, 
-    bookmarksopen=true, 
-    bookmarksopenlevel=1,%
-    hypertexnames=true, 
-    pdfhighlight=/O,%hyperfootnotes=true,%nesting=true,%frenchlinks,%
-    urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webgreen, %pagecolor=RoyalBlue,%
-    %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
-    pdftitle={\myTitle},%
-    pdfauthor={\myName, \myUni},%
-    pdfsubject={},%
-    pdfkeywords={},%
-}   
-\renewcommand{\subsectionautorefname}{Subsection}
-\renewcommand{\sectionautorefname}{Section}
-\renewcommand{\chapterautorefname}{Chapter}
-
 % floats 
 \usepackage{placeins}
 % It gives you a \FloatBarrier command that you can use to prevent floats to appear beyond some point in your document. Use it as
-
 % \FloatBarrier
 % \section{My new section} % will not include floats from previous sections
 
@@ -210,16 +180,50 @@
 % signature function
 \newcommand{\signature}[1]{%
   \vspace{4em}
-  \parbox{\textwidth}{
+  \parbox{0.9\textwidth}{
     Neustadt a.d. Weinstraße, \\
     \today 
 
     \hfill 
-    \parbox{5cm}{
+    \parbox{4cm}{
       \centering
       \rule{4cm}{1pt}\\
        #1 
     }
   }
 }
+
+
+% hyperref
+\usepackage{hyperref}
+\hypersetup{%
+    %draft, % = no hyperlinking at all (useful in b/w printouts)
+    colorlinks=true, 
+    linktocpage=true, 
+    pdfstartpage=1, 
+    pdfstartview=FitV,%
+    % uncomment the following line if you want to have black links (e.g., for printing)
+    %colorlinks=false, linktocpage=false, pdfborder={0 0 0}, pdfstartpage=1, pdfstartview=FitV,% 
+    breaklinks=true, 
+    pdfpagemode=UseNone, 
+    pageanchor=true, 
+    pdfpagemode=UseOutlines,%
+    plainpages=false, 
+    bookmarksnumbered, 
+    bookmarksopen=true, 
+    bookmarksopenlevel=1,%
+    hypertexnames=true, 
+    pdfhighlight=/O,%hyperfootnotes=true,%nesting=true,%frenchlinks,%
+    urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webgreen, %pagecolor=RoyalBlue,%
+    %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
+    pdftitle={\myTitle},%
+    pdfauthor={\myName, \myUni},%
+    pdfsubject={},%
+    pdfkeywords={},%
+}   
+\renewcommand{\subsectionautorefname}{Subsection}
+\renewcommand{\sectionautorefname}{Section}
+\renewcommand{\chapterautorefname}{Chapter}
+
+
 
