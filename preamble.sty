@@ -1,6 +1,6 @@
 % document options
 \newcommand{\myTitle}{Title1 Title2}
-\newcommand{\myTitleOnTitlePageLineOne}{Title1}
+\newcommand{\myTitleOnTitlePageLineOne}{Statistical Ecotoxicology}
 \newcommand{\myTitleOnTitlePageLineTwo}{Title2}
 \newcommand{\myName}{Eduard Sz\"{o}cs}
 \newcommand{\myUni}{\protect{Universität Koblenz-Landau}}
@@ -115,6 +115,7 @@
 % this fixeś underfull hboxes in longtable
 \usepackage{array}
 \newcolumntype{P}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+\usepackage{enumerate}
 
 % fixes for marginpar and latex
 \usepackage{mparhack}
@@ -209,18 +210,22 @@
     pageanchor=true, 
     pdfpagemode=UseOutlines,%
     plainpages=false, 
+    bookmarks=true,
     bookmarksnumbered, 
     bookmarksopen=true, 
     bookmarksopenlevel=1,%
     hypertexnames=true, 
-    pdfhighlight=/O,%hyperfootnotes=true,%nesting=true,%frenchlinks,%
-    urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webgreen, %pagecolor=RoyalBlue,%
+    pdfhighlight=/O,
+    urlcolor=webbrown, 
+    linkcolor=RoyalBlue, 
+    citecolor=webgreen, %pagecolor=RoyalBlue,%
     %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
     pdftitle={\myTitle},%
     pdfauthor={\myName, \myUni},%
     pdfsubject={},%
     pdfkeywords={},%
 }   
+\usepackage{bookmark}
 \renewcommand{\subsectionautorefname}{Subsection}
 \renewcommand{\sectionautorefname}{Section}
 \renewcommand{\chapterautorefname}{Chapter}
