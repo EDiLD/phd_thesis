@@ -8,7 +8,7 @@ There are 5 treatments and one control group.
 
 First, we load the data, bring it to the long format and remove NA values.
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlstd{df} \hlkwb{<-} \hlkwd{read.table}\hlstd{(}\hlkwc{header} \hlstd{=} \hlnum{TRUE}\hlstd{,}
                  \hlkwc{text} \hlstd{=} \hlstr{'Control  T0.1 T0.3  T1  T3  T10
@@ -37,7 +37,7 @@ This results in a table with two columns - one indicating the treatment and one 
   
 Let's have a first look at the data:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{boxplot}\hlstd{(abu} \hlopt{~} \hlstd{treatment,} \hlkwc{data} \hlstd{= dfm,} \hlkwc{xlab} \hlstd{=} \hlstr{'Treatment'}\hlstd{,}
         \hlkwc{ylab} \hlstd{=} \hlstr{'Count'}\hlstd{,} \hlkwc{col} \hlstd{=} \hlstr{'grey75'}\hlstd{,} \hlkwc{main} \hlstd{=} \hlstr{'Raw abundances'}\hlstd{)}
@@ -63,7 +63,7 @@ A is chosen so that the term Ax equals two for the lowest non-zero abundance.
 We add these transformed abundances as extra column to our table.
 
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlstd{A} \hlkwb{<-} \hlnum{2} \hlopt{/} \hlkwd{min}\hlstd{(dfm}\hlopt{$}\hlstd{abu[dfm}\hlopt{$}\hlstd{abu} \hlopt{!=} \hlnum{0}\hlstd{])}
 \hlstd{A}
@@ -90,7 +90,7 @@ We add these transformed abundances as extra column to our table.
 
 It looks like the transformation does a good job in equalizing the variances:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{boxplot}\hlstd{(abu_t} \hlopt{~} \hlstd{treatment,} \hlkwc{data} \hlstd{= dfm,}
         \hlkwc{xlab} \hlstd{=} \hlstr{'Treatment'}\hlstd{,} \hlkwc{ylab} \hlstd{=} \hlstr{'Transf. Counts'}\hlstd{,}
@@ -111,7 +111,7 @@ It looks like the transformation does a good job in equalizing the variances:
 The model from eqn. 2 can be easily fitted using the \texttt{lm()} function:
 
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlstd{modlm} \hlkwb{<-} \hlkwd{lm}\hlstd{(abu_t} \hlopt{~} \hlstd{treatment,} \hlkwc{data} \hlstd{= dfm)}
 \end{alltt}
@@ -120,7 +120,7 @@ The model from eqn. 2 can be easily fitted using the \texttt{lm()} function:
 
 The residuals vs. fitted values diagnostic plot show no problematic pattern, though it might be difficult to decide with such a small sample size
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{plot}\hlstd{(}\hlkwd{residuals}\hlstd{(modlm)} \hlopt{~} \hlkwd{fitted}\hlstd{(modlm))}
 \hlkwd{abline}\hlstd{(}\hlkwc{h} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{lty} \hlstd{=} \hlstr{'dotted'}\hlstd{)}
@@ -137,7 +137,7 @@ The residuals vs. fitted values diagnostic plot show no problematic pattern, tho
 
 The \texttt{summary()} gives the estimated coefficients with standard errors and Wald t tests:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{summary}\hlstd{(modlm)}
 \end{alltt}
@@ -171,7 +171,7 @@ The \texttt{summary()} gives the estimated coefficients with standard errors and
 \subsubsection{Inference on general treatment effect}
 Or, if you want to have the ANOVA table with an F-test:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{summary.aov}\hlstd{(modlm)}
 \end{alltt}
@@ -194,7 +194,7 @@ This can be easily done using the multcomp package \citep{hothorn_simultaneous_2
 Here we perform a one-sided (\texttt{alternative = 'less'}) using Dunnett contrasts of treatment (\texttt{mcp(treatment='Dunnett')}).
 Moreover, we adjust for multiple testing using Holm's method (\texttt{test = adjusted('holm')}):
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{require}\hlstd{(multcomp)}
 \hlkwd{summary}\hlstd{(}\hlkwd{glht}\hlstd{(modlm,} \hlkwc{linfct} \hlstd{=} \hlkwd{mcp}\hlstd{(}\hlkwc{treatment} \hlstd{=} \hlstr{'Dunnett'}\hlstd{),}  
@@ -234,7 +234,7 @@ Here I use a step-up Williams contrast.
 First we need to define a contrast matrix (see also \texttt{?contrMat()}):
 
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlcom{# observations per treatment}
 \hlstd{n} \hlkwb{<-} \hlkwd{tapply}\hlstd{(dfm}\hlopt{$}\hlstd{abu_t, dfm}\hlopt{$}\hlstd{treatment, length)}
@@ -260,7 +260,7 @@ First we need to define a contrast matrix (see also \texttt{?contrMat()}):
 
 Then we supply this contrast matrix to \texttt{glht()}:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{summary}\hlstd{(}\hlkwd{glht}\hlstd{(modlm,} \hlkwc{linfct} \hlstd{=} \hlkwd{mcp}\hlstd{(}\hlkwc{treatment} \hlstd{= CM),}
              \hlkwc{alternative} \hlstd{=} \hlstr{'less'}\hlstd{),}
@@ -293,7 +293,7 @@ This indicates a LOEC at 3 mg/L.
 
 If we do not adjust for multiple testing (\texttt{test = adjusted('none')}), we end up with the same NOEC  (0.1 mg/L) as \citet{brock_minimum_2015}:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{summary}\hlstd{(}\hlkwd{glht}\hlstd{(modlm,} \hlkwc{linfct} \hlstd{=} \hlkwd{mcp}\hlstd{(}\hlkwc{treatment} \hlstd{= CM),}
              \hlkwc{alternative} \hlstd{=} \hlstr{'less'}\hlstd{),}
@@ -332,7 +332,7 @@ Note, this multiple contrast test is different from the original Williams test \
 We are dealing with count data, so a Poisson GLM might be a good choice.
 GLMs can be fitted using the \texttt{glm()} function and here we fit the model from eqn. 3:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlstd{modpois} \hlkwb{<-} \hlkwd{glm}\hlstd{(abu} \hlopt{~} \hlstd{treatment,} \hlkwc{data} \hlstd{= dfm,} 
 \hlkwc{family} \hlstd{=} \hlkwd{poisson}\hlstd{(}\hlkwc{link} \hlstd{=} \hlstr{'log'}\hlstd{))}
@@ -344,7 +344,7 @@ Here \texttt{family = poisson(link = 'log')} specifies that we want to fit a poi
 
 The \texttt{summary} gives the estimated coefficients, standard errors and Wald Z tests:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlstd{(sum_pois} \hlkwb{<-} \hlkwd{summary}\hlstd{(modpois))}
 \end{alltt}
@@ -386,7 +386,7 @@ A property of the poisson distribution is that its variance is equal to the mean
 A simple diagnostic would be to plot group variances vs. group means:
 
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{require}\hlstd{(plyr)}
 \hlcom{# mean and variance per treatment}
@@ -437,7 +437,7 @@ We clearly see that the variance increases much more than would be expected unde
 Moreover, we could check overdispersion from the \texttt{summary}:
 If the ratio of residual deviance to degrees of freedom is \textgreater 1 the data is overdispersed.
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlstd{sum_pois}\hlopt{$}\hlstd{deviance} \hlopt{/} \hlstd{sum_pois}\hlopt{$}\hlstd{df.residual}
 \end{alltt}
@@ -456,7 +456,7 @@ The plot above suggests that the variance may increasing stronger than the mean 
 \subsubsection{Model fitting}
 Fitting a quasi-Poisson model (eqn. 4) is straight forward:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlstd{modqpois} \hlkwb{<-} \hlkwd{glm}\hlstd{(abu} \hlopt{~} \hlstd{treatment,} \hlkwc{data} \hlstd{= dfm,} \hlkwc{family} \hlstd{=} \hlstr{'quasipoisson'}\hlstd{)}
 \end{alltt}
@@ -465,7 +465,7 @@ Fitting a quasi-Poisson model (eqn. 4) is straight forward:
 
 The summary gives the estimated coefficients:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{summary}\hlstd{(modqpois)}
 \end{alltt}
@@ -507,7 +507,7 @@ Note, that the coefficients estimates are the same as from the Poisson model, on
 \subsubsection{Inference on general treatment effect}
 An F-test can be performed using \texttt{drop1()}:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{drop1}\hlstd{(modqpois,} \hlkwc{test} \hlstd{=} \hlstr{'F'}\hlstd{)}
 \end{alltt}
@@ -529,7 +529,7 @@ Here we would reject that there is treatment effect (at alpha = 0.05).
 \subsubsection{Inference on LOEC}
 The LOEC can be determined with \texttt{multcomp}:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{summary}\hlstd{(}\hlkwd{glht}\hlstd{(modqpois,} \hlkwc{linfct} \hlstd{=} \hlkwd{mcp}\hlstd{(}\hlkwc{treatment} \hlstd{=} \hlstr{'Dunnett'}\hlstd{),}
              \hlkwc{alternative} \hlstd{=} \hlstr{'less'}\hlstd{),}
@@ -565,7 +565,7 @@ The LOEC can be determined with \texttt{multcomp}:
 \subsubsection{Model fitting}
 To fit a negative binomial GLM (eqn. 5) we could use \texttt{glm.nb()} from the MASS package \citep{venables_modern_2002}:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{require}\hlstd{(MASS)}
 \hlstd{modnb} \hlkwb{<-} \hlkwd{glm.nb}\hlstd{(abu} \hlopt{~} \hlstd{treatment,} \hlkwc{data} \hlstd{= dfm)}
@@ -575,7 +575,7 @@ To fit a negative binomial GLM (eqn. 5) we could use \texttt{glm.nb()} from the 
 
 The estimated coefficients:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{summary}\hlstd{(modnb)}
 \end{alltt}
@@ -624,7 +624,7 @@ The estimated coefficients:
 \subsubsection{Inference on general treatment effect (LR-test)}
 For an LR-Test we need to first fit a reduced model:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlstd{modnb.null} \hlkwb{<-} \hlkwd{glm.nb}\hlstd{(abu} \hlopt{~} \hlnum{1}\hlstd{,} \hlkwc{data} \hlstd{= dfm)}
 \end{alltt}
@@ -634,7 +634,7 @@ For an LR-Test we need to first fit a reduced model:
 , so that the dispersion parameter $\kappa$ is re-estimated for the reduced model.
 Then we can compare these two models with a LR-Test:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{anova}\hlstd{(modnb, modnb.null,} \hlkwc{test} \hlstd{=} \hlstr{'Chisq'}\hlstd{)}
 \end{alltt}
@@ -660,7 +660,7 @@ To test the LR statistic using paramtric bootstrap, we use two custom functions:
 
 The first function \texttt{myPBrefdist} generates a boostrap sample and return the LR statistic for this sample:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlcom{#' PB of LR statistic}
 \hlcom{#' @param m1 Full model}
@@ -694,7 +694,7 @@ The first function \texttt{myPBrefdist} generates a boostrap sample and return t
 
 The second one (\texttt{myPBmodcomp}) repeats \texttt{myPBrefdist} many time and returns a p-value:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlcom{#' generate LR distribution and return p value}
 \hlcom{#' @param m1 Full model}
@@ -721,7 +721,7 @@ The second one (\texttt{myPBmodcomp}) repeats \texttt{myPBrefdist} many time and
 
 Sounds complicated, but we can easily apply this to the negativ binomial model using:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{set.seed}\hlstd{(}\hlnum{1234}\hlstd{)}
 \hlkwd{myPBmodcomp}\hlstd{(modnb, modnb.null,} \hlkwc{data} \hlstd{= dfm,} \hlkwc{npb} \hlstd{=} \hlnum{500}\hlstd{)}
@@ -743,7 +743,7 @@ Of these 500 samples, 499 converged (\texttt{nconv\_LR}) (one did not and throws
 \subsubsection{Inference on LOEC}
 This is similar to the other parametric models:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{summary}\hlstd{(}\hlkwd{glht}\hlstd{(modnb,} \hlkwc{linfct} \hlstd{=} \hlkwd{mcp}\hlstd{(}\hlkwc{treatment} \hlstd{=} \hlstr{'Dunnett'}\hlstd{),}  
         \hlkwc{alternative} \hlstd{=} \hlstr{'less'}\hlstd{),}
@@ -781,7 +781,7 @@ which suggests a LOEC at the 0.3 mg/l treatment.
 We can use the Kruskal-Wallies test to check if there is a difference between treatments:
 
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{kruskal.test}\hlstd{(abu} \hlopt{~} \hlstd{treatment,} \hlkwc{data} \hlstd{= dfm)}
 \end{alltt}
@@ -797,12 +797,12 @@ We can use the Kruskal-Wallies test to check if there is a difference between tr
 
 \subsubsection{Pairwise Wilcoxon test}
 To determine the LOEC we could use a Pairwise Wilcoxon test.
-The built-in \texttt{pairwise.wilcox.test()} compares by default all levels (Tukey-contrasts).
+The built-in \linebreak \texttt{pairwise.wilcox.test()} compares by default all levels (Tukey-contrasts).
 We are only interested in a subset of these comparisons (Dunnett-contrast).
 Therefore, we use a custom function, which is a wrapper around \texttt{wilcox.exact} from the exactRankTests package:
 
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlcom{#' pairwise wilcox.test with dunnett contrasrs}
 \hlcom{#' @param y numeric; vector of data values}
@@ -840,7 +840,7 @@ Tukey-contrasts}
 
 Here, we use one-sided Dunnett contrasts and adjust p-values using Holm's method:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{pairwise_wilcox}\hlstd{(}\hlkwc{y} \hlstd{= dfm}\hlopt{$}\hlstd{abu,} \hlkwc{g} \hlstd{= dfm}\hlopt{$}\hlstd{treatment,}
                 \hlkwc{dunnett} \hlstd{=} \hlnum{TRUE}\hlstd{,} \hlkwc{p.adj} \hlstd{=} \hlstr{'holm'}\hlstd{,} \hlkwc{alternative} \hlstd{=} \hlstr{'less'}\hlstd{)}
@@ -866,7 +866,7 @@ Ten fathead minnow (\textit{Pimephales promelas}) larvals were exposed to sodium
 
 First we load the data:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlstd{df} \hlkwb{<-} \hlkwd{read.table}\hlstd{(}\hlkwc{header} \hlstd{=} \hlnum{TRUE}\hlstd{,} \hlkwc{text} \hlstd{=} \hlstr{'conc A B C D
 0 1 1 0.9 0.9
@@ -892,7 +892,7 @@ First we load the data:
 The we do some house-keeping, reformat the data and convert concentration to a factor:
 
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{require}\hlstd{(reshape2)}
 \hlcom{# wide to long}
@@ -906,7 +906,7 @@ The we do some house-keeping, reformat the data and convert concentration to a f
 
 So after data cleaning the data looks like
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{head}\hlstd{(dfm)}
 \end{alltt}
@@ -924,7 +924,7 @@ So after data cleaning the data looks like
 
 Let's have a first look at the data:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{boxplot}\hlstd{(y} \hlopt{~} \hlstd{conc,} \hlkwc{data} \hlstd{= dfm,}
         \hlkwc{xlab} \hlstd{=} \hlstr{'Concentration'}\hlstd{,} \hlkwc{ylab} \hlstd{=} \hlstr{'Proportion surv.'}\hlstd{,}
@@ -945,7 +945,7 @@ This plot indicates a strong effect at the highest concentration.
 \subsubsection{Assuming a normal distribution of transformed proportions}
 First, we arcsine transform (eqn. 6) the proportions:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlstd{dfm}\hlopt{$}\hlstd{y_asin} \hlkwb{<-} \hlkwd{ifelse}\hlstd{(dfm}\hlopt{$}\hlstd{y} \hlopt{==} \hlnum{1}\hlstd{,}
                      \hlkwd{asin}\hlstd{(}\hlnum{1}\hlstd{)} \hlopt{-} \hlkwd{asin}\hlstd{(}\hlkwd{sqrt}\hlstd{(}\hlnum{1}\hlopt{/}\hlnum{40}\hlstd{)),}
@@ -959,7 +959,7 @@ First, we arcsine transform (eqn. 6) the proportions:
 \end{knitrout}
 
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{boxplot}\hlstd{(y_asin} \hlopt{~} \hlstd{conc,} \hlkwc{data} \hlstd{= dfm,}
         \hlkwc{xlab} \hlstd{=} \hlstr{'Concentration'}\hlstd{,} \hlkwc{ylab} \hlstd{=} \hlstr{'Proportion surv.'}\hlstd{,}
@@ -978,7 +978,7 @@ First, we arcsine transform (eqn. 6) the proportions:
 
 Then, like in the count data example we fit the model using \texttt{lm()}:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlstd{modlm} \hlkwb{<-} \hlkwd{lm}\hlstd{(y_asin} \hlopt{~} \hlstd{conc,} \hlkwc{data} \hlstd{= dfm)}
 \end{alltt}
@@ -987,7 +987,7 @@ Then, like in the count data example we fit the model using \texttt{lm()}:
 
 The summary gives the estimated coefficients:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{summary}\hlstd{(modlm)}
 \end{alltt}
@@ -1020,7 +1020,7 @@ The summary gives the estimated coefficients:
 
 The F-test suggests a treatment related effect:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{drop1}\hlstd{(modlm,} \hlkwc{test} \hlstd{=} \hlstr{'F'}\hlstd{)}
 \end{alltt}
@@ -1040,7 +1040,7 @@ The F-test suggests a treatment related effect:
 
 And the LOEC is at the highest concentration:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{summary}\hlstd{(}\hlkwd{glht}\hlstd{(modlm,} \hlkwc{linfct} \hlstd{=} \hlkwd{mcp}\hlstd{(}\hlkwc{conc} \hlstd{=} \hlstr{'Dunnett'}\hlstd{),} 
         \hlkwc{alternative} \hlstd{=} \hlstr{'less'}\hlstd{),}
@@ -1073,7 +1073,7 @@ And the LOEC is at the highest concentration:
 \subsubsection{Assuming a binomial distribution}
 The binomial model with a logit link (eqn. 7) between predictors and response can be fitted using the \texttt{glm()} function:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlstd{modglm} \hlkwb{<-} \hlkwd{glm}\hlstd{(y} \hlopt{~} \hlstd{conc ,} \hlkwc{data} \hlstd{= dfm,} \hlkwc{family} \hlstd{=} \hlkwd{binomial}\hlstd{(}\hlkwc{link}\hlstd{=}\hlstr{'logit'}\hlstd{),}
               \hlkwc{weights} \hlstd{=} \hlkwd{rep}\hlstd{(}\hlnum{10}\hlstd{,} \hlkwd{nrow}\hlstd{(dfm)))}
@@ -1085,7 +1085,7 @@ Here the weights arguments, indicates how many fish where exposed in each treatm
 
 The summary gives the estimated coefficients:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{summary}\hlstd{(modglm)}
 \end{alltt}
@@ -1124,7 +1124,7 @@ The summary gives the estimated coefficients:
 
 To perform a LR-test we can used the \texttt{drop1()} function:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{drop1}\hlstd{(modglm,} \hlkwc{test} \hlstd{=} \hlstr{'Chisq'}\hlstd{)}
 \end{alltt}
@@ -1144,7 +1144,7 @@ To perform a LR-test we can used the \texttt{drop1()} function:
 
 Also with the binomial model the LOEC is at the highest concentration:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{summary}\hlstd{(}\hlkwd{glht}\hlstd{(modglm,} \hlkwc{linfct} \hlstd{=} \hlkwd{mcp}\hlstd{(}\hlkwc{conc} \hlstd{=} \hlstr{'Dunnett'}\hlstd{),} 
         \hlkwc{alternative} \hlstd{=} \hlstr{'less'}\hlstd{),}

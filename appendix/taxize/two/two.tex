@@ -3,14 +3,14 @@
 
 Trait-based approaches are a promising tool in ecology. Unlike taxonomy-based methods, traits may not be constrained to biogeographic boundaries \citep{baird_toward_2011} and have potential to disentangle the effects of multiple stressors \citep{statzner_can_2010}. 
 
-To analyse trait-composition abundance data must be matched with trait databases like \citep{usseglio-polatera_biological_2000}. However these two datatables may contain species information on different taxonomic levels and perhaps data must be aggregated to a joint taxonomic level.
+To analyse trait-composition abundance data must be matched with trait data\-bases like \citep{usseglio-polatera_biological_2000}. However these two datatables may contain species information on different taxonomic levels and perhaps data must be aggregated to a joint taxonomic level.
 
 taxize can help in this data-cleaning step, providing a reproducible workflow. Here we illustrate this on a small fictitious example.
 
 Suppose we have fuzzy coded trait table with 2 traits with 3 respectively 2 modalities:
 
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlstd{(traits} \hlkwb{<-} \hlkwd{read.table}\hlstd{(}\hlkwc{header} \hlstd{=} \hlnum{TRUE}\hlstd{,} \hlkwc{sep} \hlstd{=} \hlstr{';'}\hlstd{,} \hlkwc{stringsAsFactors}\hlstd{=}\hlnum{FALSE}\hlstd{,}
                       \hlkwc{text} \hlstd{=} \hlstr{'taxon;T1M1;T1M2;T1M3;T2M1;T2M2
@@ -37,7 +37,7 @@ Baetis sp.;0;0;0;0;0
 
 And want to match this to a table with abundances:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlstd{(abundances} \hlkwb{<-} \hlkwd{read.table}\hlstd{(}\hlkwc{header} \hlstd{=} \hlnum{TRUE}\hlstd{,} \hlkwc{sep} \hlstd{=} \hlstr{';'}\hlstd{,} \hlkwc{stringsAsFactors}\hlstd{=}\hlnum{FALSE}\hlstd{,}
                           \hlkwc{text} \hlstd{=} \hlstr{'taxon;abundance;sample
@@ -69,14 +69,15 @@ xxxxx;10;2
 
 First we do some basic data-cleaning and create a lookup-table, that will link taxa in trait table with the abundance table.
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlcom{# first we remove ' sp.' from out trait table:}
 \hlstd{traits}\hlopt{$}\hlstd{taxon_cleaned} \hlkwb{<-} \hlkwd{tolower}\hlstd{(}\hlkwd{gsub}\hlstd{(}\hlstr{" sp."}\hlstd{,} \hlstr{""}\hlstd{, traits}\hlopt{$}\hlstd{taxon))}
 \hlcom{# since abundance tables can be very long with repeating taxa, we look only}
 \hlcom{# at unique taxon names This will be a lookup-table linking taxon names}
 \hlcom{# between both tables}
-\hlstd{lookup} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{taxon} \hlstd{=} \hlkwd{tolower}\hlstd{(}\hlkwd{unique}\hlstd{(abundances}\hlopt{$}\hlstd{taxon)),} \hlkwc{stringsAsFactors} \hlstd{=} \hlnum{FALSE}\hlstd{)}
+\hlstd{lookup} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{taxon} \hlstd{=} \hlkwd{tolower}\hlstd{(}\hlkwd{unique}\hlstd{(abundances}\hlopt{$}\hlstd{taxon)),} 
+       \hlkwc{stringsAsFactors} \hlstd{=} \hlnum{FALSE}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -84,7 +85,7 @@ First we do some basic data-cleaning and create a lookup-table, that will link t
 
 The we query the taxonomic hierarchy for both tables, this will be the backbone of this procedure:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlkwd{library}\hlstd{(taxize)}
 \hlstd{traits_classi} \hlkwb{<-} \hlkwd{classification}\hlstd{(}\hlkwd{get_uid}\hlstd{(traits}\hlopt{$}\hlstd{taxon_cleaned))}
@@ -96,7 +97,7 @@ The we query the taxonomic hierarchy for both tables, this will be the backbone 
 
 First we look if we can find any direct matches between taxon names:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlcom{# first search for direct matches}
 \hlstd{direct} \hlkwb{<-} \hlkwd{match}\hlstd{(lookup}\hlopt{$}\hlstd{taxon, traits}\hlopt{$}\hlstd{taxon_cleaned)}
@@ -124,15 +125,18 @@ Next we look for species which are on a higher taxonomic resolution than our tra
 For these species we will take directly the trait-data since no better information is available.
 
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
-\hlcom{# look for cases where taxonomic resolution in abundance data is higher than}
-\hlcom{# in trait data: here we take the trait-values for the lower resolution}
+\hlcom{# look for cases where taxonomic resolution in abundance data is higher}
+\hlcom{# than in trait data: here we take the trait-values for the lower}
+\hlcom{# resolution}.
 \hlkwa{for} \hlstd{(i} \hlkwa{in} \hlkwd{which}\hlstd{(}\hlkwd{is.na}\hlstd{(lookup}\hlopt{$}\hlstd{traits))) \{}
     \hlkwa{if} \hlstd{(}\hlkwd{is.data.frame}\hlstd{(lookup_classi[[i]])) \{}
-        \hlstd{matches} \hlkwb{<-} \hlkwd{tolower}\hlstd{(lookup_classi[[i]]}\hlopt{$}\hlstd{ScientificName)} \hlopt{%in%} \hlstd{traits}\hlopt{$}\hlstd{taxon_cleaned}
+        \hlstd{matches} \hlkwb{<-} \hlkwd{tolower}\hlstd{(lookup_classi[[i]]}\hlopt{$}\hlstd{ScientificName)} \hlopt{%in%} 
+        \hlstd{traits}\hlopt{$}\hlstd{taxon_cleaned}
         \hlkwa{if} \hlstd{(}\hlkwd{any}\hlstd{(matches)) \{}
-            \hlstd{lookup}\hlopt{$}\hlstd{traits[i]} \hlkwb{<-} \hlkwd{tolower}\hlstd{(lookup_classi[[i]]}\hlopt{$}\hlstd{ScientificName[matches])}
+            \hlstd{lookup}\hlopt{$}\hlstd{traits[i]} \hlkwb{<-} \hlkwd{tolower}
+            \hlstd{(lookup_classi[[i]]}\hlopt{$}\hlstd{ScientificName[matches])}
             \hlstd{lookup}\hlopt{$}\hlstd{match[i]} \hlkwb{<-} \hlstd{lookup_classi[[i]]}\hlopt{$}\hlstd{Rank[matches]}
         \hlstd{\}}
     \hlstd{\}}
@@ -159,18 +163,20 @@ We are walking the taxonomic latter for the species in our trait-data upwards an
 
 
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlcom{# look for cases taxonomic resolution in abundance data is lower than in}
 \hlcom{# trait data, here we need to aggregate the trait-values (eg. median value}
 \hlcom{# for modality)}
 \hlkwa{for} \hlstd{(i} \hlkwa{in} \hlkwd{which}\hlstd{(}\hlkwd{is.na}\hlstd{(lookup}\hlopt{$}\hlstd{traits))) \{}
     \hlcom{# find matches}
-    \hlstd{agg} \hlkwb{<-} \hlkwd{sapply}\hlstd{(traits_classi,} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{)} \hlkwd{any}\hlstd{(}\hlkwd{tolower}\hlstd{(x}\hlopt{$}\hlstd{ScientificName)} \hlopt{%in%}
+    \hlstd{agg} \hlkwb{<-} \hlkwd{sapply}\hlstd{(traits_classi,} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{)} \hlkwd{any}\hlstd{(}
+    \hlkwd{tolower}\hlstd{(x}\hlopt{$}\hlstd{ScientificName)} \hlopt{%in%}
         \hlstd{lookup}\hlopt{$}\hlstd{taxon[i]))}
     \hlkwa{if} \hlstd{(}\hlkwd{sum}\hlstd{(agg)} \hlopt{>} \hlnum{1}\hlstd{) \{}
         \hlcom{# add taxon as aggregate to trait-table}
-        \hlstd{traits} \hlkwb{<-} \hlkwd{rbind}\hlstd{(traits,} \hlkwd{c}\hlstd{(}\hlkwd{paste0}\hlstd{(lookup}\hlopt{$}\hlstd{taxon[i],} \hlstr{"-aggregated"}\hlstd{),} \hlkwd{apply}\hlstd{(traits[agg,}
+        \hlstd{traits} \hlkwb{<-} \hlkwd{rbind}\hlstd{(traits,} \hlkwd{c}\hlstd{(}\hlkwd{paste0}\hlstd{(lookup}\hlopt{$}\hlstd{taxon[i],} \hlstr{"-aggregated"}\hlstd{),} 
+        \hlkwd{apply}\hlstd{(traits[agg,}
             \hlnum{2}\hlopt{:}\hlnum{6}\hlstd{],} \hlnum{2}\hlstd{, median),} \hlkwd{paste0}\hlstd{(lookup}\hlopt{$}\hlstd{taxon[i],} \hlstr{"-aggregated"}\hlstd{)))}
         \hlcom{# fill lookup table}
         \hlstd{lookup}\hlopt{$}\hlstd{traits[i]} \hlkwb{<-} \hlkwd{paste0}\hlstd{(lookup}\hlopt{$}\hlstd{taxon[i],} \hlstr{"-aggregated"}\hlstd{)}
@@ -193,9 +199,10 @@ We are walking the taxonomic latter for the species in our trait-data upwards an
 
 Finally we have only one taxon left - clearly an error. We remove this from our dataset:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
-\hlstd{abundances} \hlkwb{<-} \hlstd{abundances[}\hlopt{!}\hlstd{abundances}\hlopt{$}\hlstd{taxon} \hlopt{==} \hlstd{lookup}\hlopt{$}\hlstd{taxon[}\hlkwd{is.na}\hlstd{(lookup}\hlopt{$}\hlstd{traits)],}
+\hlstd{abundances} \hlkwb{<-} \hlstd{abundances[}\hlopt{!}\hlstd{abundances}\hlopt{$}\hlstd{taxon} \hlopt{==} \hlstd{lookup}\hlopt{$}\hlstd{taxon[}\hlkwd{is.na}\hlstd{(}
+\hlstd{lookup}\hlopt{$}\hlstd{traits)],}
     \hlstd{]}
 \end{alltt}
 \end{kframe}
@@ -207,13 +214,15 @@ Now we can create \emph{species x sites} and \emph{traits x species} matrices, w
 
 
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\small\begin{kframe}
 \begin{alltt}
 \hlcom{# species (as matched with trait table) by site matrix}
-\hlstd{abundances}\hlopt{$}\hlstd{traits_taxa} \hlkwb{<-} \hlstd{lookup}\hlopt{$}\hlstd{traits[}\hlkwd{match}\hlstd{(}\hlkwd{tolower}\hlstd{(abundances}\hlopt{$}\hlstd{taxon), lookup}\hlopt{$}\hlstd{taxon)]}
+\hlstd{abundances}\hlopt{$}\hlstd{traits_taxa} \hlkwb{<-} \hlstd{lookup}\hlopt{$}\hlstd{traits[}\hlkwd{match}\hlstd{(}\hlkwd{tolower}\hlstd{(abundances}\hlopt{$}\hlstd{taxon), 
+        lookup}\hlopt{$}\hlstd{taxon)]}
 \hlkwd{library}\hlstd{(reshape2)}
 \hlcom{# reshape data to long format and name rows by samples}
-\hlstd{L} \hlkwb{<-} \hlkwd{dcast}\hlstd{(abundances, sample} \hlopt{~} \hlstd{traits_taxa,} \hlkwc{fun.aggregate} \hlstd{= sum,} \hlkwc{value.var} \hlstd{=} \hlstr{"abundance"}\hlstd{)}
+\hlstd{L} \hlkwb{<-} \hlkwd{dcast}\hlstd{(abundances, sample} \hlopt{~} \hlstd{traits_taxa,} \hlkwc{fun.aggregate} \hlstd{= sum,} 
+        \hlkwc{value.var} \hlstd{=} \hlstr{"abundance"}\hlstd{)}
 \hlkwd{rownames}\hlstd{(L)} \hlkwb{<-} \hlstd{L}\hlopt{$}\hlstd{sample}
 \hlstd{L}\hlopt{$}\hlstd{sample} \hlkwb{<-} \hlkwa{NULL}
 \hlstd{L}
@@ -247,7 +256,7 @@ Now we can create \emph{species x sites} and \emph{traits x species} matrices, w
 \end{knitrout}
 
 
-This is just an example how taxonomic APIs (via taxize) could be used to search for matches up- and downwards the taxonomic ladder. We are looking forward to integrate the freshwaterecology.info database \url{www.freshwaterecology.info} into taxize, which will facilitate trait-based analyses in R.
+This is just an example how taxonomic APIs (via taxize) could be used to search for matches up- and downwards the taxonomic ladder. We are looking forward to integrate other databases into taxize, which will facilitate trait-based analyses in R.
 
 
 %% ----------------------------------------------------------------------------
