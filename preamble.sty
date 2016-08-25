@@ -5,10 +5,10 @@
 \newcommand{\myName}{Eduard Sz\"{o}cs}
 \newcommand{\myUni}{\protect{Universität Koblenz-Landau}}
 \newcommand{\myLocation}{Z\v{a}rnesti / Romania}
-\newcommand{\myTime}{\today}
 
-% list all packages
-% \listfiles
+
+% list all packages/files in log files
+\listfiles
 
 % use ragged bottom (=no vertical stretch of paragraphs (=\flushbottom))
 \raggedbottom
@@ -21,6 +21,16 @@
 \usepackage{textcomp}
 \usepackage{microtype}
 
+% custom date format (for titlepage)
+\usepackage[nodayofweek]{datetime}
+%dd. monthname YYYY
+\newdateformat{mydate}{%
+    \THEDAY.\ \monthname[\THEMONTH] \THEYEAR%
+    }
+\newcommand{\myTime}{\mydate{\today}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % knitr look-a-like and environment
 \usepackage[dvipsnames]{xcolor}
 \usepackage{framed}
@@ -78,9 +88,6 @@
 
 % thesis style
 \usepackage[%
-%    drafting,
-%    minionpro,
-    % minionprospacing,
     beramono,
     eulermath,
     pdfspacing,
@@ -112,7 +119,7 @@
 \usepackage{tabularx}
 \usepackage{longtable}
 % to automate this solution for the longtable, as it was large, with many such box issues. The solution I propose here is to define a new column type (I call it P) which invokes \raggedright and other stuff necessary to handle all columns.
-% this fixeś underfull hboxes in longtable
+% this fixes underfull hboxes in longtable
 \usepackage{array}
 \newcolumntype{P}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
 \usepackage{enumerate}
@@ -151,22 +158,44 @@
 \usepackage{csquotes}
 \usepackage[%
     backend=biber, 
-    refsection=chapter,
-    natbib=true,
-    style=authoryear,%
+    refsection=chapter, % references per chapter
+    natbib=true,        % natbib style (citep & citet)
+    style=authoryear,%,
     dashed=false,%
     doi=false,%
     isbn=false,%
     hyperref=auto,%
-    % backref,%
-    % backrefstyle=three,%
-    maxbibnames=99,%
-    maxcitenames=3,
+    maxbibnames=99,     % all namesd in biobilography
+    maxcitenames=3,     % max three names in citation
+    firstinits=true,     % render all first and middle names as initials.  
+    uniquename=init
 ]{biblatex}
+%% Customizatiomns
+% Bibliography
+% increase space between entries in bibliography
+\setlength{\bibitemsep}{1em} 
 % Change Bibliograpgy to "References"
 \DefineBibliographyStrings{english}{%
   bibliography = {References},
 }
+%% Citation Styles
+% remove 'In:' before journal names
+% source: http://tex.stackexchange.com/questions/10682/suppress-in-biblatex
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
+% remove pp. before pages
+\DeclareFieldFormat{pages}{#1}
+% format volume and number as Volume(Number)
+% source http://tex.stackexchange.com/questions/81569/biblatex-parentheses-around-the-volume-number-of-an-article#81573
+\renewbibmacro*{volume+number+eid}{%
+  \printfield{volume}%
+%  \setunit*{\adddot}% DELETED
+  \setunit*{\addnbthinspace}% NEW (optional); there's also \addnbspace
+  \printfield{number}%
+  \setunit{\addcomma\space}%
+  \printfield{eid}}
+\DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
+
 % add bib files
 \addbibresource[label=publications]{frontbackmatter/publications.bib}
 \addbibresource[label=usetheglm]{chapters/usetheglm/refs_usetheglm.bib}
@@ -210,7 +239,7 @@
     pageanchor=true, 
     pdfpagemode=UseOutlines,%
     plainpages=false, 
-    bookmarks=true,
+    % bookmarks=true,
     bookmarksnumbered, 
     bookmarksopen=true, 
     bookmarksopenlevel=1,%
@@ -230,5 +259,3 @@
 \renewcommand{\sectionautorefname}{Section}
 \renewcommand{\chapterautorefname}{Chapter}
 
-
-% % Bold small caps for chapters in toc
