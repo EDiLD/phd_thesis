@@ -1,0 +1,85 @@
+\usetikzlibrary{shapes, arrows, positioning, calc}
+\pgfmathtruncatemacro\distance{1}
+
+% Define elements
+\tikzstyle{line} = [draw, -latex',ultra thick]
+\tikzstyle{block} = [rectangle, draw,
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{paper} = [circle, draw, fill=gray!50, fill opacity=0.4, text opacity=1,  font = \bf, minimum width=2.5cm]
+\tikzstyle{textbf} = [text centered, font = \bf\LARGE]
+
+\begin{tikzpicture}[node distance = 2cm, auto]
+
+% Nodes
+	%% Effects
+	\node [name = exp, block, minimum width=2cm] {Experiment} ;
+	\node [name = stat, block, minimum width=2cm, right=1cm of exp] {Data / Statistics} ;
+    \node [name = eff, block, 
+		minimum width=6.5cm, 
+		minimum height=2.5cm, left=5mm of exp.west, anchor = west] {} ;
+	\node[textbf, below=10mm of eff, anchor = south]{Effects};
+
+	%% Exposure
+  	\node [name = prop, block, minimum width=2cm, below=4cm of exp] {Properties} ;
+	\node [name = model, block, minimum width=2cm, right=1cm of prop] {Models} ;
+	\node [name = expo, block, 
+		minimum width=6.5cm, 
+		minimum height=2.5cm, left=5mm of prop.west, anchor = west] {} ;
+	\node[textbf, above=10mm of expo, anchor = north]{Exposure};
+
+	%% Risk Assessment
+	\node [name = risk, block, below right=0.75cm and 2cm of stat,
+       minimum width=3.5cm, 
+		minimum height=2.5cm, 
+		font = \bf\large,
+		align = center,
+       text width = 3cm] {Ecological Risk Assessment};
+
+	%% Monitoring data
+	\node [name = monit, block, 
+		right = 9cm of risk,
+        minimum width=3.5cm, 
+		minimum height=2.5cm, 
+		font = \bf\large,
+		align = center,
+       text width = 3cm] {Environmental Monitoring};
+
+	%% biological data
+	\node [name = bio, block, 
+		above left = 2cm and 3cm of monit, anchor = north,
+		minimum width=3cm] { Biological data};
+	%% chemical data
+	\node [name = chem, block, 
+		below left = 2cm and 3cm of monit, anchor = south,
+		minimum width=3cm] { Chemial data};
+
+
+  %% Chapters
+	\node[name = chap2, paper, 
+		above right = 8mm and 10mm of stat, 
+		anchor = east]{Chapter 2};
+
+	\node[name = chap5, paper, 
+		above = -3mm of bio, anchor = south,
+		]{Chapter 5};
+	\node[name = chap4, paper, 
+		below left =  -10mm and 5mm of chem, anchor = north,
+		]{Chapter 4};
+	\node[name = chap3, paper, 
+		below left = -30mm and 5mm of chem, anchor = north,
+		]{Chapter 3};
+
+
+
+
+% arrows
+	\path [line] (exp) -- (stat);
+	\path [line] (prop) -- (model);
+	\path [line] (eff) -| (risk);
+	\path [line] (expo) -| (risk);
+	\path [line] (monit) |- (chem);
+	\path [line] (monit) |- (bio);
+
+
+
+\end{tikzpicture}
