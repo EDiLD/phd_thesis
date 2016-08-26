@@ -128,22 +128,20 @@
 \usepackage{mparhack}
 \usepackage{fixltx2e} 
 
+% smaller cpations
+\usepackage[font={small}]{caption}
+
 % % indexing
 % \usepackage{makeidx}
 % \makeindex
 
 % graphics, figures, captions
 \usepackage{graphicx}
-% \usepackage{tikz}
-% \usepackage{pgfplots}
-% \pgfplotsset{compat=newest}
-% \usetikzlibrary{external}
-% \usetikzlibrary{calc}
-% \usepackage{tkz-gm} % graphical models
-% \usepackage{caption}
-% \usepackage{subcaption}
-% \tikzexternalize
-% \tikzsetexternalprefix{externalized/}
+\usepackage{tikz}
+\usetikzlibrary{external}
+\usetikzlibrary{shapes, arrows, positioning, calc}
+\tikzexternalize
+\tikzsetexternalprefix{tikz/}
 
 % insert pdfs
 \usepackage{pdfpages}

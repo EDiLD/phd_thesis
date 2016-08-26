@@ -1,44 +1,68 @@
 \chapter{Introduction and Objectives}
 \label{sec:introduction} 
 
-\section{Statistical Ecotoxicology}
-
 \section{Chemical pollution of freshwater ecosystems}
 
-\section{Dealing with \emph{big data} in eco(toxico-)logy}
+\section{Ecological Risk Assessment (ERA)}
+Ecological Risk Assessment is based on two main components: Effects and Exposure Assessment, which are combined in ecological risk assessment.
+Exposure Assessment aims to derive a predicted environmental concentration (PEC) using mainly modeling techniques.
+Effect Assessment identifies hazards to the environmental ....
+%kleingewässer!
+
+\section{Statistical Ecotoxicology}
+
+\section{Environmental Monitoring}
 
 
 
 
-\section{Objectives and structure of the thesis}
-
+\section{Objectives and Outline of the thesis}
 This thesis pursues three objectives: 
 \begin{enumerate}[i]
 	\item to scrutinize new methods in statistical ecotoxicology,
-	\item explore available monitoring data for ecological risk assessment and
-	\item provide tools for scientists to deal more effective with the data they generate.
+	\item explore available monitoring data and
+	\item provide tools to deal with data in ERA
 \end{enumerate}
+Figure \ref{fig:intro:overview} provides an overview on the research performed and its relation to ERA.
 
 
-The thesis starts with a comparison of statistical methods for ecotoxicological experiments (Chapter \ref{sec:usetheglm}). 
+\noindent
+The thesis starts with a comparison of statistical methods to analyse ecotoxicological experiments (Chapter \ref{sec:usetheglm}). 
 Specific questions addressed were:
 
 \begin{itemize}
-	\item Are statistical methods taking the nature of the data into account more powerful than currently used methods?
-	\item How much statistical power do current experimental designs ecotoxicology have?
+	\item Are newer statistical methods more powerful than currently used methods?
+	\item How much statistical power do current experimental designs in ecotoxicology exhibit?
+\end{itemize}
+
+\noindent
+ERA focuses with its predictions on small streams. 
+ xxxxxxxxxxxxxxxxxxxxxxxx
+Specific goals were:
+\begin{itemize}
+	\item Compile all available monitoring data on pesticides in Germany, with a focus on small streams.
+	\item Derive thresholds for agricultural use and catchment size.
+	\item Assess the current pollution in german streams.
 \end{itemize}
 
 
 
-
-
-
-
-
+\noindent
+The compilation of monitoring data from different data sources, lead to a big inhomogeneous amount of data that first needs to be harmonized.
 Chapters \ref{sec:webchem} (chemical data) and \ref{sec:taxize} (biological data) describe software solutions to simplify and accelerate the workflow of:
 
 \begin{itemize}
-	\item validating chemical and taxonomic names
-	\item link them to other dataset
+	\item validating and harmonizing chemical and taxonomic names
+	\item link them to other datasets
 	\item search properties and identifiers
 \end{itemize}
+
+
+\begin{figure}[h]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\input{chapters/introduction/tikz/overview.tikz}
+	}
+	\caption[Conceptual overview of the topics addressed by this thesis]{Conceptual overview on data in ecological risk assessment and environmental monitoring, as well as parts addressed by this thesis.}
+	\label{fig:intro:overview}
+\end{figure}

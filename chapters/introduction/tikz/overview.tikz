@@ -1,14 +1,21 @@
+% \tikzsetnextfilename{overview}
 \usetikzlibrary{shapes, arrows, positioning, calc}
-\pgfmathtruncatemacro\distance{1}
-
 % Define elements
-\tikzstyle{line} = [draw, -latex',ultra thick]
-\tikzstyle{block} = [rectangle, draw,
+\tikzstyle{line} = [draw, -latex', ultra thick]
+\tikzstyle{block} = [rectangle, draw, 
     text width=5em, text centered, rounded corners, minimum height=4em]
-\tikzstyle{paper} = [circle, draw, fill=gray!50, fill opacity=0.4, text opacity=1,  font = \bf, minimum width=2.5cm]
-\tikzstyle{textbf} = [text centered, font = \bf\LARGE]
+\tikzstyle{paper} = [circle, draw, fill=gray!85, fill opacity=0.4, text opacity=1,  font = \bf, minimum width=2.5cm]
+\tikzstyle{textbf} = [text centered, font = \bf\Large]
 
 \begin{tikzpicture}[node distance = 2cm, auto]
+% clip figure
+\clip(-2,-11.5) rectangle (27.5,5);
+
+% % grid for coordinates for clip
+% \draw[help lines,xstep=1,ystep=1] (-2,-13) grid (30,6.5);
+% \foreach \x in {-2,-1,...,30} { \node [anchor=north] at (\x,0) {\x}; }
+% \foreach \y in {-13,-12,...,6} { \node [anchor=east] at (0,\y) {\y}; }
+
 
 % Nodes
 	%% Effects
@@ -16,29 +23,31 @@
 	\node [name = stat, block, minimum width=2cm, right=1cm of exp] {Data / Statistics} ;
     \node [name = eff, block, 
 		minimum width=6.5cm, 
-		minimum height=2.5cm, left=5mm of exp.west, anchor = west] {} ;
-	\node[textbf, below=10mm of eff, anchor = south]{Effects};
+		minimum height=3.5cm, 
+	below left=5mm of exp.west, anchor = west] {} ;
+	\node[textbf, below right=10mm and 5mm of exp, anchor = south]{Effects};
 
 	%% Exposure
   	\node [name = prop, block, minimum width=2cm, below=4cm of exp] {Properties} ;
 	\node [name = model, block, minimum width=2cm, right=1cm of prop] {Models} ;
 	\node [name = expo, block, 
 		minimum width=6.5cm, 
-		minimum height=2.5cm, left=5mm of prop.west, anchor = west] {} ;
-	\node[textbf, above=10mm of expo, anchor = north]{Exposure};
+		minimum height=3.5cm, 
+		below = 15mm of eff] {} ;
+	\node[textbf, above=-2mm of expo, anchor = north]{Exposure};
 
 	%% Risk Assessment
-	\node [name = risk, block, below right=0.75cm and 2cm of stat,
-       minimum width=3.5cm, 
+	\node [name = risk, block, below right=0.75cm and 1cm of stat,
+       minimum width=5cm, 
 		minimum height=2.5cm, 
-		font = \bf\large,
+		font = \bf\Large,
 		align = center,
-       text width = 3cm] {Ecological Risk Assessment};
+       text width = 3cm] {Ecological Risk\\  Assessment};
 
 	%% Monitoring data
 	\node [name = monit, block, 
-		right = 9cm of risk,
-        minimum width=3.5cm, 
+		right = 11cm of risk,
+        minimum width=5.5cm, 
 		minimum height=2.5cm, 
 		font = \bf\large,
 		align = center,
@@ -46,28 +55,27 @@
 
 	%% biological data
 	\node [name = bio, block, 
-		above left = 2cm and 3cm of monit, anchor = north,
+		above left = 2cm and 2cm of monit, anchor = north,
 		minimum width=3cm] { Biological data};
 	%% chemical data
 	\node [name = chem, block, 
-		below left = 2cm and 3cm of monit, anchor = south,
+		below left = 2cm and 2cm of monit, anchor = south,
 		minimum width=3cm] { Chemial data};
 
 
   %% Chapters
 	\node[name = chap2, paper, 
-		above right = 8mm and 10mm of stat, 
-		anchor = east]{Chapter 2};
-
-	\node[name = chap5, paper, 
-		above = -3mm of bio, anchor = south,
-		]{Chapter 5};
+		above left = 10mm and -25mm of stat, 
+		anchor = east]{Chapter 2};	
+    \node[name = chap3, paper, 
+		below left = -32mm and 5mm of chem, anchor = north,
+		]{Chapter 3};
 	\node[name = chap4, paper, 
 		below left =  -10mm and 5mm of chem, anchor = north,
 		]{Chapter 4};
-	\node[name = chap3, paper, 
-		below left = -30mm and 5mm of chem, anchor = north,
-		]{Chapter 3};
+	\node[name = chap5, paper, 
+		above left= -10mm and 5mm of bio, anchor = south,
+		]{Chapter 5};
 
 
 
@@ -79,6 +87,15 @@
 	\path [line] (expo) -| (risk);
 	\path [line] (monit) |- (chem);
 	\path [line] (monit) |- (bio);
+	\path [line, dashed] (chap4) edge [bend left = 30]  node[yshift = 5mm, pos=0.5, font = \large, align = center, fill = white] {Retrieve \& \\ link data}  (prop);
+    \path [line, dashed] (chap5) edge [bend right = 30]  node[below, yshift = 5mm, pos=0.45, font = \large, align = center, fill = white] {Retrieve \&\\ link data}  (stat);
+    \path [line, dashed] (chem) -- node [name = feff, right, align = left, font = \large, fill = white, xshift = -10mm, yshift = 5mm] {Field \\ Effects?} (bio);
+    \path [dashed] (bio.south west) edge [ -latex', bend right = 20, ultra thick] (risk);
+    \path [dashed] (chap3.north) edge [-latex', bend right = 20, ultra thick] (risk);
+    \path [dashed] (feff.west) edge [-latex', bend right = 20, ultra thick] node[xshift = 0mm, yshift =8mm, font = \large, align = center, solid, fill = white] {Retro-\\spection} (risk);
+	\path [line, dashed] (risk.south east) .. controls ([yshift = -3cm, xshift= 8mm] chap4)  ..  node [xshift = 5mm, pos =0.05,  below, font = \large, align = center, fill = white] {Approves \\ Substance} (chem);
+    \path [line, dashed] (eff) .. controls([yshift = 40mm, xshift = -20mm] chap2) and ([yshift = 40mm, xshift = 20mm] chap5)  ..  node[above, yshift = -3mm, pos=0.45, font = \large, align = center, fill = white] {PNEC}  (bio);
+	\path [line, dashed] (expo) .. controls([yshift = -40mm, xshift = -20mm] expo) and  ([yshift = -70mm, xshift= 20mm] chap4)  ..  node[below, yshift = 2mm, pos=0.7, font = \large, align = center, fill = white] {PEC}  (chem);
 
 
 
