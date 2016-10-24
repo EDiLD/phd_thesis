@@ -1,7 +1,7 @@
 % document options
-\newcommand{\myTitle}{Title1 Title2}
-\newcommand{\myTitleOnTitlePageLineOne}{Statistical Ecotoxicology}
-\newcommand{\myTitleOnTitlePageLineTwo}{Title2}
+\newcommand{\myTitle}{Statistical Eco(-toxico)logy - Improving the utilization of data for ecological risk assessment}
+\newcommand{\myTitleOnTitlePageLineOne}{Statistical Eco(-toxico)logy}
+\newcommand{\myTitleOnTitlePageLineTwo}{Improving the utilization of data for ecological risk assessment}
 \newcommand{\myName}{Eduard Sz\"{o}cs}
 \newcommand{\myUni}{\protect{Universität Koblenz-Landau}}
 \newcommand{\myLocation}{Z\v{a}rnesti / Romania}
@@ -152,6 +152,7 @@
 % \FloatBarrier
 % \section{My new section} % will not include floats from previous sections
 
+
 % bibliography
 \usepackage{csquotes}
 \usepackage[%
@@ -193,12 +194,14 @@
   \setunit{\addcomma\space}%
   \printfield{eid}}
 \DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
+% force fullcite to use maxnames
+\preto\fullcite{\AtNextCite{\defcounter{maxnames}{99}}}
 
 % add bib files
 \addbibresource[label=publications]{frontbackmatter/publications.bib}
 \addbibresource[label=usetheglm]{chapters/usetheglm/refs_usetheglm.bib}
 \addbibresource[label=taxize]{chapters/taxize/refs_taxize.bib}
-
+\addbibresource[label=webchem]{chapters/webchem/references.bib}
 
 
 % dummy counter for correct TOC etc
