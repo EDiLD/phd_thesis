@@ -15,11 +15,12 @@
 
 
 % character encoding and languages
-\usepackage[american]{babel}
+\usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{textcomp}
-\usepackage{microtype}
+\usepackage[final]{microtype}
+\usepackage[hyphens]{url}
 
 % custom date format (for titlepage)
 \usepackage[nodayofweek]{datetime}
@@ -118,7 +119,7 @@
 % tables
 \usepackage{tabularx}
 \usepackage{longtable}
-% to automate this solution for the longtable, as it was large, with many such box issues. The solution I propose here is to define a new column type (I call it P) which invokes \raggedright and other stuff necessary to handle all columns.
+% define a new column type (I call it P) which invokes \raggedright and other stuff necessary to handle all columns.
 % this fixes underfull hboxes in longtable
 \usepackage{array}
 \newcolumntype{P}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
@@ -199,10 +200,12 @@
 
 % add bib files
 \addbibresource[label=publications]{frontbackmatter/publications.bib}
+\addbibresource[label=introduction]{chapters/introduction/references.bib}
 \addbibresource[label=usetheglm]{chapters/usetheglm/refs_usetheglm.bib}
+\addbibresource[label=smallstreams]{chapters/smallstreams/references.bib}
 \addbibresource[label=taxize]{chapters/taxize/refs_taxize.bib}
 \addbibresource[label=webchem]{chapters/webchem/references.bib}
-
+\addbibresource[label=discussion]{chapters/discussion/references.bib}
 
 % dummy counter for correct TOC etc
 \newcounter{dummy}
@@ -256,6 +259,7 @@
     pdfkeywords={},%
 }   
 \usepackage{bookmark}
+
 \renewcommand{\subsectionautorefname}{Subsection}
 \renewcommand{\sectionautorefname}{Section}
 \renewcommand{\chapterautorefname}{Chapter}
