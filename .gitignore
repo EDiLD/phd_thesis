@@ -13,6 +13,9 @@
 *.out
 *.run.xml
 
+# tikz
+*.dpth
+
 # Sublime
 *.sublime-project
 *.sublime-workspace

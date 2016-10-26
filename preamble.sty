@@ -14,6 +14,7 @@
 \raggedbottom
 
 
+
 % character encoding and languages
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
@@ -162,14 +163,17 @@
     natbib=true,        % natbib style (citep & citet)
     style=authoryear,%,
     dashed=false,%
-    doi=false,%
-    isbn=false,%
+    doi=false,%  no doi
+    isbn=false,% no isbn
     hyperref=auto,%
-    maxbibnames=99,     % all namesd in biobilography
-    maxcitenames=3,     % max three names in citation
+    maxbibnames=99,     % all names in biobilography
+    maxcitenames=2,     % max 2 name in citation
     firstinits=true,     % render all first and middle names as initials.  
-    uniquename=init
+    uniquename=init,
+    uniquelist=false,
+    sortcites=false
 ]{biblatex}
+
 %% Customizatiomns
 % Bibliography
 % increase space between entries in bibliography
@@ -198,9 +202,10 @@
 % force fullcite to use maxnames
 \preto\fullcite{\AtNextCite{\defcounter{maxnames}{99}}}
 
-% add bib files
+
+%% add bib files
 \addbibresource[label=publications]{frontbackmatter/publications.bib}
-\addbibresource[label=introduction]{chapters/introduction/references.bib}
+\addbibresource[label=introduction]{chapters/introduction/Introduction.bib}
 \addbibresource[label=usetheglm]{chapters/usetheglm/refs_usetheglm.bib}
 \addbibresource[label=smallstreams]{chapters/smallstreams/references.bib}
 \addbibresource[label=taxize]{chapters/taxize/refs_taxize.bib}
