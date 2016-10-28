@@ -103,7 +103,7 @@
 
 % % define page size and margins for the final print
 \usepackage{geometry}
-\geometry{left = 3.5cm,
+\geometry{left = 3cm,
     right = 2.5cm,
     top = 2.5cm,
     bottom = 2.5cm}
@@ -116,6 +116,10 @@
 % 	marginparsep=0.6cm,
 % 	marginparwidth=3cm,
 % }
+
+%% increase line-spacing
+\usepackage{setspace}
+\setstretch{1.4}
 
 % tables
 \usepackage{tabularx}
@@ -159,19 +163,20 @@
 \usepackage{csquotes}
 \usepackage[%
     backend=biber, 
-    refsection=chapter, % references per chapter
-    natbib=true,        % natbib style (citep & citet)
-    style=authoryear,%,
-    dashed=false,%
-    doi=false,%  no doi
-    isbn=false,% no isbn
-    hyperref=auto,%
-    maxbibnames=99,     % all names in biobilography
-    maxcitenames=2,     % max 2 name in citation
-    firstinits=true,     % render all first and middle names as initials.  
+    refsection=chapter,   % references per chapter
+    natbib=true,          % natbib style (citep & citet)
+    style=authoryear,     %,
+    dashed=false,         % option for author yea
+    doi=false,            %  no doi
+    isbn=false,           % no isbn
+    url=false,            % no url
+    hyperref=auto,        %
+    maxbibnames=99,       % all names in biobilography
+    maxcitenames=2,       % max 2 name in citation
+    firstinits=true,      % render all first and middle names as initials.  
     uniquename=init,
-    uniquelist=false,
-    sortcites=false
+    uniquelist=false,      %
+    sorting=nyt
 ]{biblatex}
 
 %% Customizatiomns
@@ -183,13 +188,20 @@
   bibliography = {References},
 }
 %% Citation Styles
-% remove 'In:' before journal names
+% remove language entry from every item
+\AtEveryBibitem{%
+  \clearlist{language}%
+}
+
+%% remove 'In:' before journal names
 % source: http://tex.stackexchange.com/questions/10682/suppress-in-biblatex
 \renewbibmacro{in:}{%
   \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
-% remove pp. before pages
+
+%% remove pp. before pages
 \DeclareFieldFormat{pages}{#1}
-% format volume and number as Volume(Number)
+
+%% format volume and number as Volume(Number)
 % source http://tex.stackexchange.com/questions/81569/biblatex-parentheses-around-the-volume-number-of-an-article#81573
 \renewbibmacro*{volume+number+eid}{%
   \printfield{volume}%
@@ -199,7 +211,8 @@
   \setunit{\addcomma\space}%
   \printfield{eid}}
 \DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
-% force fullcite to use maxnames
+
+%% force fullcite to use maxnames (used in publications.tex)
 \preto\fullcite{\AtNextCite{\defcounter{maxnames}{99}}}
 
 
