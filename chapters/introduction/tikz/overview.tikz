@@ -9,7 +9,7 @@
 
 \begin{tikzpicture}[node distance = 2cm, auto]
 % clip figure
-%\clip(-2,-11) rectangle (26.5,4);
+\clip(-2,-10.5) rectangle (26.5,5);
 
 % % % grid for coordinates for clip
 % \draw[help lines,xstep=1,ystep=1] (-2,-13) grid (30,6.5);

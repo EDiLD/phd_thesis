@@ -29,8 +29,7 @@ It is mainly based on modeling the fate of chemicals in the environment using co
 In the European Union, the FOCUS models are used \citep{focus_focus_2001, efsa_guidance_2013}.
 To calculate PECs these models need many compound specific input parameters like the molecular weight, water solubility, partitioning coefficients and dissipation time. 
 Additionally, information on the application regime and crop type is needed. 
-FOCUS models the concentration within edge-of-field streams of 1 meter width and 30 cm depth \citep{erlacher_regulation_2011}. 
-Such a stream width corresponds to a catchment size of 7~$km^2$ (See figure~\ref{fig:size_width}) \textcolor{red}{ref to small streams supplement} which is considered as small stream \citep{lorenz_specifics_2016}. 
+FOCUS models the concentration within edge-of-field streams of 1~meter width and 30cm depth \citep{erlacher_regulation_2011}. 
 Nevertheless, recent research showed that FOCUS models fail predict measured field concentrations of pesticides \citep{knabel_regulatory_2012, knabel_fungicide_2014}. 
 
 % Risk characterisation
@@ -43,59 +42,75 @@ Substances with a ration lower than one could be approved for usage and potentia
 
 %% ----------------------------------------------------------------------------
 \section{Environmental Monitoring}
+
+Concerns on the environmental state have lead to extensive monitoring activities. 
+Widespread anthropogenic activities induced environmental changes have resulted in concerns about the state of the environment and have lead to development of environmental monitoring programs worldwide \citep{nichols_monitoring_2006}. 
+In Europe the Water Framework Directive (WFD) \citep{european_union_directive_2000} establishes monitoring requirements for all European river basins. 
+This monitoring efforts are used to estimate the environmental state and trends. 
+
+Environmental monitoring can be complementary to ecological risk assessment \citep{suter_ecological_2007}.
+Moreover, data from long-term monitoring programs can be used to study hypotheses about spatial and temporal dynamics and interactions, that are not evident from short term and short scale studies \citep{gitzen_design_2012}.
+Therefore, monitoring data could be used to inform and review ERA after approval \citep{knauer_pesticides_2016}. 
+However, there is a mismatch between streams assessed: The WFD aims at monitoring medium size to large streams greater than 10~$km^2$ catchment size, whereas ERA assesses risks for streams corresponding to a catchment size of approximately 7~$km^2$ (corresponding to 1~meter width, see Figure~\ref{fig:size_width} \textcolor{red}{ref to small streams supplement}). 
+
+
 %%! Mehr auf UBA projekt eingehen.
 %%! Hier den Link zu Stehle reinbringen?
+%%! Malaj einbauen!
 
 %% ----------------------------------------------------------------------------
 \section{Statistical Ecotoxicology}
 % Link to previous section
 Ecological effect assessment generates data on ecological effects using experiments. 
 The produced datasets range from small univariate datasets (lower tier assessment) to medium sized multivariate datasets (higher tier assessment).
-These datasets are analyzed using statistical techniques in order to deliver usable information for assessment.
 % Statistical Ecotoxicology
-Therefore, effect assessment relies heavily on statistical methods.
+These datasets are analyzed using statistical techniques in order to extract usable information for assessment and therefore, statistics are crucial for effect assessment \citep{newman_quantitative_2012}.
 Statistical ecotoxicology combines statistics with the specific needs and constraints of ecotoxicology. 
 It aims to provide solutions to statistical challenges in ecotoxicology \citep{fox_comment_2016}, guidance on experimental designs \citep{johnson_power_2015} and tools to integrate big data \citep {van_den_brink_new_2016} to improve accuracy of ERA. 
 
 % Dose-response, NOEC
-The relationships between the concentration of a compound and the observed effects are usually analysed using using dose-response models \citep{ritz_toward_2010}, which can be used to derive an effective concentration for x\% effect ($EC_{x}$). 
+The relationships between the concentration of a compound and the observed effects are usually analysed using using dose-response models, which can be used to derive an effective concentration for x\% effect ($EC_{x}$) \citep{ritz_toward_2010}. 
 Nevertheless, such relationships cannot always be established from experimental data.
 For example, model ecosystem experiments are conducted to characterize effects on whole biological communities.
 However, because of multivariate responses and potential indirect effects, there is no clear dose-response relationship and no models for this kind of data available. 
 There are also other examples were fitting dose-response models is problematic \citep{green_issues_2016}. 
 In such cases there is usually a no-observed-effect concentration (NOEC) computed. 
-The NOEC is the highest tested concentration that does not lead to significant deviation from the control response and therefore relies on null hypothesis significance testing (NHST). 
-However, the use of NOEC as toxicity measure in ecological effect assessment has been heavily in the past \citep{laskowski_good_1995, chapman_warning:_1996, warne_noec_2008, fox_what_2012, jager_bad_2012, fox_dont_2016}. 
 
-Instead of conducting experiments, toxicity could be also predicted from molecular structures using quantitative structure-activity relationships (QSAR), which are calculated using machine-learning techniques \citep{murrell_chemically_2015, cortes-ciriano_bioalerts:_2016}. 
-However, improving these models to give sufficient prediction accuracy needs to integrate more input data \citep{kuhne_read-across_2013}.
+The NOEC is the highest tested concentration that does not lead to significant deviation from the control response and therefore relies on null hypothesis significance testing (NHST). 
+However, the use of NOEC as toxicity measure in ecological effect assessment has been heavily criticised in the past \citep{laskowski_good_1995, chapman_warning:_1996, warne_noec_2008, fox_what_2012, jager_bad_2012, fox_dont_2016}. 
+One such critic is the low statistical power for NHST in common ecotoxicological experiments \citep{van_der_hoeven_power_1998}.
+\emph{A priori} power calculations can provide useful guidance for choosing experimental designs \citep{johnson_power_2015}, but are rarely used by ecotoxicologists \citep{newman_what_2008}. 
+
+Instead of conducting experiments, toxicity could be also predicted from molecular structures using quantitative structure-activity relationships (QSAR), which are usually calculated using machine-learning techniques \citep{murrell_chemically_2015, cortes-ciriano_bioalerts:_2016}. 
+Nevertheless, in order to improve these models to give sufficient prediction accuracy more data from experiments is needed \citep{kuhne_read-across_2013}. 
 
 % Big data
 Large amount of data are available that could be use for effect and exposure assessment. 
 For example, the US EPA ECOTOX database \citep{u.s._epa_ecotoxicology_2016}, the Pesticides Properties Database \citep{lewis_international_2016} and ETOX \citep{umweltbundesamt_etox:_2016} provide toxicity data that could be used for effect assessment.
-Databases like Physprop \citep{howard_physical/chemical_2016} and Pubchem \citep{kim_pubchem_2016} provide chemical properties that are needed as input for exposure models.
+Databases like Physprop \citep{howard_physical_2016} and Pubchem \citep{kim_pubchem_2016} provide chemical properties that are needed as input for exposure models.
 Monitoring data provides information on realised concentrations, could be used for validation of models and retrospective risk assessment.
-This big data can provide new information and opportunities for ERA \citep{dafforn_big_2015}. 
-However, it needs to be linked in order to be used effectively in ERA.
-
-
-
-
-
-
-
-
+This "big data" can provide new information and opportunities for ERA \citep{dafforn_big_2015}. 
+However, it needs to be linked and easily accessible in order to be used effectively in ERA.
 
 
 
 %% ----------------------------------------------------------------------------
 \section{Objectives and Outline of the thesis}
 
-The overall goal of this thesis was to contribute to the emerging field of statistical ecotoxicology and ERA.
+The overall goal of this thesis was to contribute to the emerging field of statistical ecotoxicology, ecological risk assessment and environmental monitoring.
 The main objectives were (i) to scrutinize new methods in statistical ecotoxicology,
 (ii) explore available monitoring data and
 (iii) provide tools to deal with big data.
-Figure \ref{fig:intro:overview} provides a conceptual overview on the parts of this thesis and its relations to ERA as outlined in the previous sections.
+Figure \ref{fig:intro:overview} provides a conceptual overview on ERA and environmental monitoring as outlined in the previous sections, as well as the parts of this thesis and its relations. 
+
+\begin{figure}[ht]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\input{chapters/introduction/tikz/overview.tikz}
+	}
+	\caption[Conceptual overview of the topics addressed by this thesis]{Conceptual overview on data in ecological risk assessment, environmental monitoring and the parts addressed by this thesis.}
+	\label{fig:intro:overview}
+\end{figure}
 
 \noindent The thesis starts with a comparison of statistical methods to analyse ecotoxicological experiments in effect assessment (Chapter \ref{sec:usetheglm}). 
 Specific questions addressed were:
@@ -127,16 +142,6 @@ Chapters \ref{sec:webchem} (chemical data) and \ref{sec:taxize} (biological data
 \end{itemize}
 
 
-
-
-\begin{figure}[h]
-	\centering
-	\resizebox{\textwidth}{!}{%
-		\input{chapters/introduction/tikz/overview.tikz}
-	}
-	\caption[Conceptual overview of the topics addressed by this thesis]{Conceptual overview on data in ecological risk assessment, environmental monitoring and the parts addressed by this thesis.}
-	\label{fig:intro:overview}
-\end{figure}
 
 
 
