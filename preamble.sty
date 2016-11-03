@@ -106,7 +106,9 @@
 \geometry{left = 3cm,
     right = 2.5cm,
     top = 2.5cm,
-    bottom = 2.5cm}
+    bottom = 2.5cm,
+    head = 21pt}
+\setlength{\footheight}{21pt}
 % \geometry{paperwidth=18.91cm,
 % 	paperheight=24.589cm,
 % 	bindingoffset=0.89cm, % gutter
@@ -169,14 +171,16 @@
     dashed=false,         % option for author yea
     doi=false,            %  no doi
     isbn=false,           % no isbn
-    url=false,            % no url
+    %url=false,            % no url
     hyperref=auto,        %
     maxbibnames=99,       % all names in biobilography
     maxcitenames=2,       % max 2 name in citation
     firstinits=true,      % render all first and middle names as initials.  
     uniquename=init,
-    uniquelist=false,      %
-    sorting=nyt
+    uniquelist=false,     %
+    sorting=ynt,          % year, name title (for text citations), changed to
+                          % sorting=nyt within each chapter for bibliography.
+    sortcites             % 
 ]{biblatex}
 
 %% Customizatiomns

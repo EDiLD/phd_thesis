@@ -9,7 +9,7 @@
 
 \begin{tikzpicture}[node distance = 2cm, auto]
 % clip figure
-\clip(-2,-11) rectangle (26.5,4);
+%\clip(-2,-11) rectangle (26.5,4);
 
 % % % grid for coordinates for clip
 % \draw[help lines,xstep=1,ystep=1] (-2,-13) grid (30,6.5);
@@ -60,35 +60,32 @@
 	%% chemical data
 	\node [name = chem, block, 
 		below left = 2cm and 2cm of monit, anchor = south,
-		minimum width=3cm] { Chemial data};
+		minimum width=3cm] { Chemical data};
 
 
   %% Chapters
 	\node[name = chap2, paper, 
-		above left = 9mm and -25mm of stat, 
+		above left = 9mm and -15mm of stat, 
 		anchor = east]{Chapter 2};	
     \node[name = chap3, paper, 
 		below left = -32mm and 5mm of chem, anchor = north,
 		]{Chapter 3};
-	\node[name = chap4, paper, 
-		below right =  -7mm and 0mm of chem, anchor = north,
-		]{Chapter 4};
-	\node[name = chap5, paper, 
-		above left= -8mm and 5mm of bio, anchor = south,
-		]{Chapter 5};
-
+	\node[name = chap4, paper, anchor = north, yshift=-25mm,  xshift = 10mm,
+		] (chap4) at ($(chem)!0.5!(expo)$) {Chapter 4};
+	\node[name = chap5, paper, anchor = south, yshift=25mm, xshift = 10mm,
+		] (chap5) at ($(bio)!0.5!(eff)$) {Chapter 5};
 
 % arrows
 	\path [line] (exp) -- (stat);
 	\path [line] (prop) -- (model);
-	\path [line] (eff) -| (risk);
-	\path [line] (expo) -| (risk);
+	\path [line] (eff) -| node[pos = 0.4, font = \large]{RAC} (risk);
+	\path [line] (expo) -| node[pos = 0.4, font = \large,  below]{PEC} (risk);
 	\path [line] (monit) |- (chem);
 	\path [line] (monit) |- (bio);
-	\path [line, dashed] (chap4) edge [bend left = 30]  node[yshift = 5mm, pos=0.5, font = \large, align = center, fill = white] {Retrieve \& \\ link data}  (prop);
-    \path [line, dashed] (chap5) edge [bend right = 30]  node[below, yshift = 5mm, pos=0.45, font = \large, align = center, fill = white] {Retrieve \&\\ link data}  (stat);
-    \path [line, dashed] (chem) -- node [name = feff, right, align = left, font = \large, fill = white, xshift = -10mm, yshift = 5mm] {Field \\ Effects?} (bio);
-    \path [dashed] (bio.south west) edge [ -latex', bend right = 20, ultra thick] (risk);
+	\path [line, dashed] (chap4) edge [bend left = 20]  node[font = \large, pos = 0.2]{Retrieve \& Link data}  (prop);
+    \path [line, dashed] (chap5) edge [bend right = 20]   (stat);
+	\path [line, dashed] (chap4) edge [bend right = 20]   (chem);
+    \path [line, dashed] (chap5) edge [bend left = 20]   node[font = \large, pos = 0.2]{Retrieve \& Link data} (bio);
     \path [dashed] (chap3.north west) edge [-latex', bend right = 20, ultra thick] node[xshift = 15mm, yshift =10mm, font = \large, align = center] {Retrospection}  (risk);
 	\path [dashed] (risk.south east) edge [-latex' ,bend right = 30, ultra thick]  node [xshift = 10mm, pos =0.2,  below, font = \large, align = center, fill = white] {Approves \\ Substance} (chem);
 

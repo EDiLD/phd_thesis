@@ -10,7 +10,7 @@
 %% ----------------------------------------------------------------------------
 \section{Ecological Risk Assessment}
 %! Link to previous section
-Ecological risk assessment (ERA) tries to estimate risks to non-human organisms, populations or ecosystems and is used as a tool for decision making under uncertainty. 
+Ecological risk assessment (ERA) tries to estimate risks to animals, populations or ecosystems and is used as a tool for decision making under uncertainty \citep{newman_fundamentals_2015}. 
 The decision to be made is, whether a (new) pesticide can be approved for usage and a potential release in the environment without a risk to the environment. 
 Ecological risk is defined as a combination of the severity and the probability of occurrence of a potential adverse effect \citep{suter_ecological_2007}. 
 Therefore, ERA is based on two components: Effect- and exposure assessment.
@@ -21,30 +21,30 @@ Effect assessment characterizes the strength of effects using laboratory and sem
 It establishes relationships between the concentration of a compound and the observed ecological effects.
 In the European Union a tiered approach with increasing complexity and realism.
 Lower tier assessment is based on highly standardized single species laboratory experiments, whereas higher tier assessment is refined by testing additional species, extended laboratory experiments or model ecosystem experiments. 
-To address the various uncertainties in effect assessment (experimental variation, variation between species, variation in environmental conditions etc) the retrieved toxicity values are multiplied by a assessment factor between 0.01 (lower tier assessment) and 0.5 (higher tier assessment) depending on data quality, which yields to a regulatory acceptable concentration (RAC) \citep{efsa_guidance_2013}. 
+To address the various uncertainties in effect assessment (e.g. experimental variation, variation between species, variation in environmental conditions etc) the retrieved toxicity values are multiplied by a assessment factor between 0.01 (lower tier assessment) and 0.5 (higher tier assessment) depending on data quality, which yields to a regulatory acceptable concentration (RAC) \citep{efsa_guidance_2013}. 
 
 % Exposure assessment
 Exposure Assessment for freshwaters aims to characterise the probability of a adverse effect by deriving a predicted environmental concentration (PEC) in surface waters and sediments \citep{newman_fundamentals_2015}. 
 It is mainly based on modeling the fate of chemicals in the environment using computer simulations. 
 In the European Union, the FOCUS models are used \citep{focus_focus_2001, efsa_guidance_2013}.
-To calculate PECs these model need many compound specific input parameters like the molecular weight, water solubility, partitioning coefficients and dissipation time. 
+To calculate PECs these models need many compound specific input parameters like the molecular weight, water solubility, partitioning coefficients and dissipation time. 
 Additionally, information on the application regime and crop type is needed. 
 FOCUS models the concentration within edge-of-field streams of 1 meter width and 30 cm depth \citep{erlacher_regulation_2011}. 
 Such a stream width corresponds to a catchment size of 7~$km^2$ (See figure~\ref{fig:size_width}) \textcolor{red}{ref to small streams supplement} which is considered as small stream \citep{lorenz_specifics_2016}. 
 Nevertheless, recent research showed that FOCUS models fail predict measured field concentrations of pesticides \citep{knabel_regulatory_2012, knabel_fungicide_2014}. 
 
 % Risk characterisation
-Risk characterisation is the final step in ERA.
+The final step in ERA is risk characterisation.
 It puts together the information gained from effect and exposure assessment. 
-Risk can expressed in several ways, for example simply as the ratio between RAC and PEC, but also as a quantitative description \citep{efsa_guidance_2013, suter_ecological_2007}.
+Risk can expressed in several ways, a quantitative way being the risk quotient approach: A PEC / RAC ratio greater than one indicating potential risks \citep{efsa_guidance_2013, suter_ecological_2007, amiard-triquet_aquatic_2015}. 
+Substances with a ration lower than one could be approved for usage and potential release to the environment.
 
 
 
 %% ----------------------------------------------------------------------------
 \section{Environmental Monitoring}
-
-
-
+%%! Mehr auf UBA projekt eingehen.
+%%! Hier den Link zu Stehle reinbringen?
 
 %% ----------------------------------------------------------------------------
 \section{Statistical Ecotoxicology}
@@ -52,6 +52,10 @@ Risk can expressed in several ways, for example simply as the ratio between RAC 
 Ecological effect assessment generates data on ecological effects using experiments. 
 The produced datasets range from small univariate datasets (lower tier assessment) to medium sized multivariate datasets (higher tier assessment).
 These datasets are analyzed using statistical techniques in order to deliver usable information for assessment.
+% Statistical Ecotoxicology
+Therefore, effect assessment relies heavily on statistical methods.
+Statistical ecotoxicology combines statistics with the specific needs and constraints of ecotoxicology. 
+It aims to provide solutions to statistical challenges in ecotoxicology \citep{fox_comment_2016}, guidance on experimental designs \citep{johnson_power_2015} and tools to integrate big data \citep {van_den_brink_new_2016} to improve accuracy of ERA. 
 
 % Dose-response, NOEC
 The relationships between the concentration of a compound and the observed effects are usually analysed using using dose-response models \citep{ritz_toward_2010}, which can be used to derive an effective concentration for x\% effect ($EC_{x}$). 
@@ -59,23 +63,23 @@ Nevertheless, such relationships cannot always be established from experimental 
 For example, model ecosystem experiments are conducted to characterize effects on whole biological communities.
 However, because of multivariate responses and potential indirect effects, there is no clear dose-response relationship and no models for this kind of data available. 
 There are also other examples were fitting dose-response models is problematic \citep{green_issues_2016}. 
-In such theses there is usually a no-observed-effect concentration (NOEC) computed. 
+In such cases there is usually a no-observed-effect concentration (NOEC) computed. 
 The NOEC is the highest tested concentration that does not lead to significant deviation from the control response and therefore relies on null hypothesis significance testing (NHST). 
 However, the use of NOEC as toxicity measure in ecological effect assessment has been heavily in the past \citep{laskowski_good_1995, chapman_warning:_1996, warne_noec_2008, fox_what_2012, jager_bad_2012, fox_dont_2016}. 
-% QSAR, machine-learning
-Instead of conducting experiments, toxicity could be also predicted from molecular structures using quantitative structure-activity relationships (QSAR) \citep{kuhne_read-across_2013}, which are calculated using machine-learning techniques \citep{murrell_chemically_2015, cortes-ciriano_bioalerts:_2016}.
-Although, QSARs may save resources they also need huge amounts of input data. 
+
+Instead of conducting experiments, toxicity could be also predicted from molecular structures using quantitative structure-activity relationships (QSAR), which are calculated using machine-learning techniques \citep{murrell_chemically_2015, cortes-ciriano_bioalerts:_2016}. 
+However, improving these models to give sufficient prediction accuracy needs to integrate more input data \citep{kuhne_read-across_2013}.
 
 % Big data
-Eco(toxico-)logists produce large amounts of data. 
-For example chemical monitoring produces
+Large amount of data are available that could be use for effect and exposure assessment. 
+For example, the US EPA ECOTOX database \citep{u.s._epa_ecotoxicology_2016}, the Pesticides Properties Database \citep{lewis_international_2016} and ETOX \citep{umweltbundesamt_etox:_2016} provide toxicity data that could be used for effect assessment.
+Databases like Physprop \citep{howard_physical/chemical_2016} and Pubchem \citep{kim_pubchem_2016} provide chemical properties that are needed as input for exposure models.
+Monitoring data provides information on realised concentrations, could be used for validation of models and retrospective risk assessment.
+This big data can provide new information and opportunities for ERA \citep{dafforn_big_2015}. 
+However, it needs to be linked in order to be used effectively in ERA.
 
-Big data can provide new information and opportunities for ERA \citep{dafforn_big_2015}. 
 
-% Statistical Ecotoxicology
-Effect assessment relies heavily on statistical methods.
-Statistical ecotoxicology combines statistics with the specific needs and constraints of ecotoxicology. 
-It aims to provide solutions to statistical challenges in ecotoxicology \citep{fox_comment_2016}, guidance on experimental designs \citep{johnson_power_2015} and tools to integrate big data \citep {van_den_brink_new_2016} to improve accuracy of ERA. 
+
 
 
 
@@ -91,22 +95,22 @@ The overall goal of this thesis was to contribute to the emerging field of stati
 The main objectives were (i) to scrutinize new methods in statistical ecotoxicology,
 (ii) explore available monitoring data and
 (iii) provide tools to deal with big data.
-Figure \ref{fig:intro:overview} provides an overview on the research performed and its relation to ERA as outlined in the previous sections.
+Figure \ref{fig:intro:overview} provides a conceptual overview on the parts of this thesis and its relations to ERA as outlined in the previous sections.
 
-The thesis starts with a comparison of statistical methods to analyse ecotoxicological experiments in effect assessment (Chapter \ref{sec:usetheglm}). 
+\noindent The thesis starts with a comparison of statistical methods to analyse ecotoxicological experiments in effect assessment (Chapter \ref{sec:usetheglm}). 
 Specific questions addressed were:
 
 \begin{itemize}
-	\item Are newer statistical methods more powerful than currently used methods?
+	\item Are newer statistical methods more powerful than currently used methods for NHST?
 	\item How much statistical power do current experimental designs in ecotoxicology exhibit?
 \end{itemize}
 
 
-\noindent Exposure assessment makes predictions on concentrations in small streams.
+\noindent Exposure assessment aims at predicting concentrations in small streams. 
 Chapter \ref{sec:smallstreams} focuses on large-scale realised environmental concentrations and the drivers thereof. 
 Specific goals were:
 \begin{itemize}
-	\item Compile all available monitoring data on pesticides in Germany, with a focus on small streams.
+	\item Compile all available monitoring data on pesticides in small streams in Germany
 	\item Explore the relationship between agricultural land use and streams sizze and measured pesticide concentrations.
 	\item Study annual dynamics of pesticide exposure, as well as influence of precipitation on measured pesticide concentrations.
 	\item Assess the current pollution in German streams and identify responsible pesticides.
@@ -118,10 +122,9 @@ Chapters \ref{sec:webchem} (chemical data) and \ref{sec:taxize} (biological data
 
 \begin{itemize}
 	\item validating and harmonizing chemical and taxonomic data
-	\item linking to other datasets
-	\item searching properties and identifiers
+	\item linking datasets
+	\item retrieving properties and identifiers
 \end{itemize}
-%%% mehr auf ERA und einleitung hier eingehen
 
 
 
@@ -131,7 +134,7 @@ Chapters \ref{sec:webchem} (chemical data) and \ref{sec:taxize} (biological data
 	\resizebox{\textwidth}{!}{%
 		\input{chapters/introduction/tikz/overview.tikz}
 	}
-	\caption[Conceptual overview of the topics addressed by this thesis]{Conceptual overview on data in ecological risk assessment and environmental monitoring, as well as parts addressed by this thesis.}
+	\caption[Conceptual overview of the topics addressed by this thesis]{Conceptual overview on data in ecological risk assessment, environmental monitoring and the parts addressed by this thesis.}
 	\label{fig:intro:overview}
 \end{figure}
 
@@ -141,4 +144,4 @@ Chapters \ref{sec:webchem} (chemical data) and \ref{sec:taxize} (biological data
 %% ----------------------------------------------------------------------------
 \newpage
 \section{References}
-\printbibliography[heading=none]
+\printbibliography[heading=none, sorting=nyt]
