@@ -4,7 +4,9 @@
 \newcommand{\myTitleOnTitlePageLineTwo}{Improving the utilization of data for ecological risk assessment}
 \newcommand{\myName}{Eduard Sz\"{o}cs}
 \newcommand{\myUni}{\protect{Universität Koblenz-Landau}}
-\newcommand{\myLocation}{Z\v{a}rnesti / Romania}
+% comma below small s (romanian, see https://groups.google.com/forum/#!topic/diacritice/vxT3RYdZDHc)
+\newcommand{\sh}{\ooalign{s\crcr\hidewidth\raise-.31ex\hbox{\scriptsize,}\hidewidth}}
+\newcommand{\myLocation}{Z\v{a}rne\c{s} ti / Romania}
 
 
 % list all packages/files in log files
@@ -104,21 +106,22 @@
 
 % % define page size and margins for the final print
 \usepackage{geometry}
-\geometry{left = 3cm,
-    right = 2.5cm,
-    top = 2.5cm,
-    bottom = 2.5cm,
-    head = 21pt}
-\setlength{\footheight}{21pt}
-% \geometry{paperwidth=18.91cm,
-% 	paperheight=24.589cm,
-% 	bindingoffset=0.89cm, % gutter
-% 	inner=2cm, % inside margin
-% 	outer=4cm, % outside margin
-% 	vmargin=2.5cm, % top and bottom margins
-% 	marginparsep=0.6cm,
-% 	marginparwidth=3cm,
-% }
+% \geometry{left = 3cm,
+%     right = 2.5cm,
+%     top = 2.5cm,
+%     bottom = 2.5cm,
+%     head = 21pt}
+% \setlength{\footheight}{21pt}
+\geometry{
+  twoside,
+  paper = b5paper,
+  layout=b5paper,
+  right=25mm,
+  left=25mm,
+  bottom=25mm,
+  top=25mm,
+  showframe
+}
 
 %% increase line-spacing
 \usepackage{setspace}
