@@ -6,7 +6,7 @@
 \newcommand{\myUni}{\protect{Universität Koblenz-Landau}}
 % comma below small s (romanian, see https://groups.google.com/forum/#!topic/diacritice/vxT3RYdZDHc)
 \newcommand{\sh}{\ooalign{s\crcr\hidewidth\raise-.31ex\hbox{\scriptsize,}\hidewidth}}
-\newcommand{\myLocation}{Z\v{a}rne\c{s} ti / Romania}
+\newcommand{\myLocation}{Z\v{a}rne\c{s}ti / Romania}
 
 
 % list all packages/files in log files
@@ -89,8 +89,6 @@
 
 % math packages
 \usepackage{amsmath}
-
-
 % thesis style
 \usepackage[%
     beramono,
@@ -100,8 +98,12 @@
     dottedtoc,
     floatperchapter,
     parts,
-    linedheaders, %  changes  the  look  of  the  chapter  headings  a  bit by adding a horizontal line above the chapter title. 
+    tabheaders,    % custom header
+    %linedheaders, %  changes  the  look  of  the  chapter  headings  a  bit by adding a horizontal line above the chapter title. 
 ]{classicthesis}
+
+
+
 
 
 % % define page size and margins for the final print
@@ -112,20 +114,41 @@
 %     bottom = 2.5cm,
 %     head = 21pt}
 % \setlength{\footheight}{21pt}
+% \geometry{
+%   twoside,
+%   paper = b5paper,
+%   layout = b5paper,
+%   right=25mm,
+%   left=25mm,
+%   bottom=25mm,
+%   top=25mm,
+%   showframe
+% }
 \geometry{
-  twoside,
-  paper = b5paper,
-  layout=b5paper,
-  right=25mm,
-  left=25mm,
-  bottom=25mm,
-  top=25mm,
+  right=20mm,
+  left=20mm,
+  bottom=20mm,
+  top=20mm
+  }
+
+% b5
+\geometry{
+  bindingoffset=6mm,
   showframe
 }
 
-%% increase line-spacing
+% % b5 on a4 page with crop marks
+% \geometry{
+%   paper=a4paper,
+%   layout=b5paper,
+%   bindingoffset=6mm,
+%   showcrop,
+%   showframe
+% }
+
+% %% increase line-spacing
 \usepackage{setspace}
-\setstretch{1.3}
+\setstretch{1.12}
 
 % tables
 \usepackage{tabularx}

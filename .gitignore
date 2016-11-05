@@ -6,6 +6,7 @@
 *.fls
 *.log
 *.synctex.gz
+*.synctex.gz*
 *.lot
 *.lof
 *.toc
