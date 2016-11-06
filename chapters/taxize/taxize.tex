@@ -1,3 +1,5 @@
+% -*- root: ../../thesis.tex -*-
+
 \chapter{taxize: taxonomic search and retrieval in R}
 \label{sec:taxize} 
  
@@ -86,7 +88,7 @@ Therefore, we hope that moving from a web to an R interface for taxonomic names 
 Here, we justify the need for programmatic taxonomic resolution tools like taxize, discuss our data sources, and run through a suite of use cases to demonstrate the variety of ways that users can use taxize.
 
 {\small
-\begin{longtable}{P{3.5cm}P{4.5cm}P{5.5cm}}
+\begin{longtable}{P{3cm}P{4cm}P{5cm}}
 \caption{Some key functions in taxize, what they do, and their data sources}\\
 \hline
 Function name & What it does & Source \\
@@ -546,7 +548,8 @@ taxize has three functions to interact with GenBank to search for available gene
 In this example, one can search for gene sequences for \emph{Umbra limi}.
 
 \begin{knitrout}\small
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}
+\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{out} \hlkwb{<-} \hlkwd{get_genes_avail}\hlstd{(}\hlkwc{taxon_name} \hlstd{=} \hlstr{"Umbra limi"}\hlstd{,}
                        \hlkwc{seqrange} \hlstd{=} \hlstr{"1:2000"}\hlstd{,}
@@ -703,6 +706,7 @@ Contributions to taxize are strongly encouraged, and can be easily done using Gi
 We hope taxize will be taken up by the community and developed collaboratively, making it progressively better through time as new use cases arise, bug reports are squashed, and contributions are merged.
 
 %% ----------------------------------------------------------------------------
+\newpage
 \section{References}
 \printbibliography[heading=none,sorting=nyt]
 

@@ -86,7 +86,7 @@ Currently, data can be retrieved from 11 sources.
 These cover a broad spectrum of available data, like identifiers, experimental and predicted properties and regulatory information (Figure~\ref{fig:fig1}, a detailed overview of all sources is included as supplement):
 
 \begin{description}
-  \item[NIH Chemical Identifier Resolver (CIR)]{A web service that converts from and to various chemical identifiers \citep{cir}.}
+  \item[NIH Chemical Identifier Resolver (CIR)]{A web service that converts \\from and to various chemical identifiers \citep{cir}.}
   \item[Chemical Translation Service (CTS)]{A web service that converts from and to various chemical identifiers \citep{wohlgemuth_haldiya_willighagen_kind_fiehn_2010}.}
   \item[ETOX]{Information System Ecotoxicology and Environmental Quality Targets by the German Federal Environmental Agency. Provides basic identifiers, synonyms, ecotoxicological data and quality targets for different countries \citep{etox}.}
   \item[PAN Pesticide Database]{Information on pesticides - provides basic identifiers, ecotoxicological data and chemical properties \citep{pan}.}
@@ -96,7 +96,7 @@ These cover a broad spectrum of available data, like identifiers, experimental a
   We use an interface to the PUG-REST web service \citep{Kim_Thiessen_Bolton_Bryant_2015}.}
   \item[Wikidata]{Wikipedia contains information for over 15,000 chemicals \citep{Ertl_Patiny_Sander_Rufener_Zasso_2015, wiki}. Currently webchem can only query chemical identifiers.}
   \item[Compendium of Pesticide Common Names]{The compendium provides information on pesticide common names, identifiers and classification \citep{wood}.}
-  \item[ChemID\emph{plus}]{ChemID\emph{plus} is a large web-based database provided by the National Library of Medicine (NLM). It provides identifiers, synonyms, toxicological data and chemical properties \citep{tomasulo2002}.}
+  \item[ChemID\emph{plus}] {is a large web-based database provided by the National Library of Medicine (NLM). It provides identifiers, synonyms, toxicological data and chemical properties \citep{tomasulo2002}.}
   \item[ChemSpider]{is a free chemical structure database providing access to over 40 million structures. It provides identifiers, properties and can also be used to convert identifiers \citep{pence_chemspider:_2010}.}
   \item[OPSIN]{The Open Parser for Systematic IUPAC nomenclature is a chemical name interpreter and provides InChI and SMILES identifiers \citep{lowe_corbett_murray-rust_glen_2011}.}
 \end{description}
@@ -104,14 +104,14 @@ These cover a broad spectrum of available data, like identifiers, experimental a
 Though the data sources exhibit some overlap in the provided information, each has been selected because it also provides unique information and we encourage the interested reader to consult the related source for details. 
 However, we provide a brief overview in the Supporting Information.
 
-\begin{figure}[ht]
+\begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{chapters/webchem/fig1.pdf}
   \caption[Overview of current data sources.]{Overview of current data sources. Input and output possibilities currently implemented in the package.}
   \label{fig:fig1}
 \end{figure}
 
-
+\newpage
 \section[Use cases]{Use cases}
 \subsection[Install webchem]{Installation}
 webchem can be easily installed and loaded from CRAN:
@@ -199,6 +199,7 @@ A common work flow when dealing with web resources is to 1) query a unique ident
 First we search for ETOX internal ID numbers using the substance names:
 
 \begin{knitrout}
+\small
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{subs} \hlkwb{<-} \hlkwd{unique}\hlstd{(jagst}\hlopt{$}\hlstd{substance)}
@@ -235,6 +236,7 @@ We use these data to retrieve basic information on the substances.
 webchem always returns a named list (one entry for each substance) and the available information content can be very voluminous.
 Therefore, we provide extractor functions for the common identifiers: CAS, SMILES and InChIKeys.
 \begin{knitrout}
+\small
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{etox_cas} \hlkwb{<-} \hlkwd{cas}\hlstd{(etox_data)}
@@ -347,7 +349,7 @@ To extract the chemical group from the retrieved data set, we write a simple ext
 Figure \ref{fig:fig2} displays the result after additional data cleaning (see supplement for full code).
 Overall, it took only 5 R statements to retrieve, clean and plot the data using ggplot2 \citep{ggplot2}.
 
-\begin{figure}[ht]
+\begin{figure}[h]
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
 
@@ -376,7 +378,7 @@ Here we query for the lc50 data the $\mathrm{log}~P_{oct/wat}$ from the SRC PHYS
 \end{knitrout}
 
 The database contains predicted and experimental values.
-Extracting $\mathrm{log}~P_{oct/wat}$ from the data object is slightly more complicated,  
+Extracting \\ $\mathrm{log}~P_{oct/wat}$ from the data object is slightly more complicated,  
 because i) for some compounds no data could be found and ii) the data-object has a more complex structure (a data frame within a list).
 
 \begin{knitrout}
@@ -396,7 +398,7 @@ Moreover, it provides users with high flexibility regarding organisation of thei
 Nevertheless, in the documentation of each function we provide examples on how to extract more complicated parts of the data.
 The resulting data and model is displayed in Figure~\ref{fig:fig3}.
 
-\begin{figure}[ht]
+\begin{figure}[h]
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
 
@@ -559,5 +561,6 @@ webchem can save \emph{"hundreds of working hours"} gathering this knowledge \ci
 
 
 %% ----------------------------------------------------------------------------
+\newpage
 \section{References}
 \printbibliography[heading=none, sorting=nyt]

@@ -4,12 +4,12 @@
 \tikzstyle{line} = [draw, -latex', ultra thick]
 \tikzstyle{block} = [rectangle, draw, 
     text width=5em, text centered, rounded corners, minimum height=4em]
-\tikzstyle{paper} = [circle, draw, fill=gray!85, fill opacity=0.4, text opacity=1,  font = \bf, minimum width=2.5cm]
+\tikzstyle{paper} = [circle, draw, fill=gray!85, fill opacity=0.4, text opacity=1,  font = \bf\large, minimum width=2.5cm]
 \tikzstyle{textbf} = [text centered, font = \bf\Large]
 
 \begin{tikzpicture}[node distance = 2cm, auto]
 % clip figure
-\clip(-2,-10.5) rectangle (26.5,5);
+\clip(-1.6,-11) rectangle (21.1,5.2);
 
 % % % grid for coordinates for clip
 % \draw[help lines,xstep=1,ystep=1] (-2,-13) grid (30,6.5);
@@ -38,7 +38,7 @@
 
 	%% Risk Assessment
 	\node [name = risk, block, below right=0.75cm and 1cm of stat,
-       minimum width=5cm, 
+       minimum width=40mm, 
 		minimum height=2.5cm, 
 		font = \bf\large,
 		align = center,
@@ -46,34 +46,36 @@
 
 	%% Monitoring data
 	\node [name = monit, block, 
-		right = 10cm of risk,
-        minimum width=5.5cm, 
-		minimum height=2.5cm, 
+		right = 8cm of risk,
+        minimum width=35mm, 
+		minimum height=20mm, 
 		font = \bf\large,
 		align = center,
-       text width = 3cm] {Environmental Monitoring};
+       text width = 3cm] {Monitoring};
 
 	%% biological data
 	\node [name = bio, block, 
 		above left = 2cm and 2cm of monit, anchor = north,
-		minimum width=3cm] { Biological data};
+		minimum width=30mm, align = center, text width = 30mm, font=\large] {Biology   };
 	%% chemical data
 	\node [name = chem, block, 
 		below left = 2cm and 2cm of monit, anchor = south,
-		minimum width=3cm] { Chemical data};
+		minimum width=3cm, font=\large,text width = 30mm] { Chemistry};
 
 
   %% Chapters
 	\node[name = chap2, paper, 
 		above left = 9mm and -15mm of stat, 
-		anchor = east]{Chapter 2};	
+		anchor = east]{Chap. 2};	
     \node[name = chap3, paper, 
-		below left = -32mm and 5mm of chem, anchor = north,
-		]{Chapter 3};
+		below left = -32mm and 3mm of chem, anchor = north,
+		]{Chap. 3};
 	\node[name = chap4, paper, anchor = north, yshift=-25mm,  xshift = 10mm,
-		] (chap4) at ($(chem)!0.5!(expo)$) {Chapter 4};
+		] (chap4) at ($(chem)!0.5!(expo)$) {Chap. 4};
 	\node[name = chap5, paper, anchor = south, yshift=25mm, xshift = 10mm,
-		] (chap5) at ($(bio)!0.5!(eff)$) {Chapter 5};
+		] (chap5) at ($(bio)!0.5!(eff)$) {Chap. 5};
+   \node[name=rl1, above= 0mm of chap5]{Retrieve \& Link data};
+   \node[name=rl1, below= 0mm of chap4]{Retrieve \& Link data};
 
 % arrows
 	\path [line] (exp) -- (stat);
@@ -82,12 +84,12 @@
 	\path [line] (expo) -| node[pos = 0.4, font = \large,  below]{PEC} (risk);
 	\path [line] (monit) |- (chem);
 	\path [line] (monit) |- (bio);
-	\path [line, dashed] (chap4) edge [bend left = 20]  node[font = \large, pos = 0.2]{Retrieve \& Link data}  (prop);
+	\path [line, dashed] (chap4) edge [bend left = 20]  (prop);
     \path [line, dashed] (chap5) edge [bend right = 20]   (stat);
 	\path [line, dashed] (chap4) edge [bend right = 20]   (chem);
-    \path [line, dashed] (chap5) edge [bend left = 20]   node[font = \large, pos = 0.2]{Retrieve \& Link data} (bio);
-    \path [dashed] (chap3.north west) edge [-latex', bend right = 20, ultra thick] node[xshift = 15mm, yshift =10mm, font = \large, align = center] {Retrospection}  (risk);
-	\path [dashed] (risk.south east) edge [-latex' ,bend right = 30, ultra thick]  node [xshift = 10mm, pos =0.2,  below, font = \large, align = center, fill = white] {Approves \\ Substance} (chem);
+    \path [line, dashed] (chap5) edge [bend left = 20]   (bio);
+    \path [dashed] (chap3.north west) edge [-latex', bend right = 30, ultra thick] node[xshift = 25mm, yshift =5mm, font = \large, align = center, fill = white] {Retrospection}  (risk);
+	\path [dashed] (risk.south east) edge [-latex' ,bend right = 40, ultra thick]  node [xshift = 10mm, pos =0.2,  below, font = \large, align = center, fill = white] {Approves \\ Substance} (chem);
 
 
 \end{tikzpicture}

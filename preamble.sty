@@ -108,47 +108,34 @@
 
 % % define page size and margins for the final print
 \usepackage{geometry}
-% \geometry{left = 3cm,
-%     right = 2.5cm,
-%     top = 2.5cm,
-%     bottom = 2.5cm,
-%     head = 21pt}
-% \setlength{\footheight}{21pt}
-% \geometry{
-%   twoside,
-%   paper = b5paper,
-%   layout = b5paper,
-%   right=25mm,
-%   left=25mm,
-%   bottom=25mm,
-%   top=25mm,
-%   showframe
-% }
 \geometry{
+  includeheadfoot,
   right=20mm,
   left=20mm,
-  bottom=20mm,
-  top=20mm
+  bottom=15mm,
+  top=15mm
   }
 
 % b5
-\geometry{
-  bindingoffset=6mm,
-  showframe
-}
+% \geometry{
+%   bindingoffset=7mm,
+%   % showframe
+% }
 
-% % b5 on a4 page with crop marks
+% b5 on a4 page with crop marks
 % \geometry{
 %   paper=a4paper,
 %   layout=b5paper,
 %   bindingoffset=6mm,
 %   showcrop,
-%   showframe
+%   % showframe
 % }
 
 % %% increase line-spacing
 \usepackage{setspace}
 \setstretch{1.12}
+
+\usepackage{float}
 
 % tables
 \usepackage{tabularx}
@@ -283,7 +270,7 @@
 % hyperref
 \usepackage{hyperref}
 \hypersetup{%
-    %draft, % = no hyperlinking at all (useful in b/w printouts)
+    draft=false, % = no hyperlinking at all (useful in b/w printouts)
     colorlinks=true, 
     linktocpage=true, 
     pdfstartpage=1, 
@@ -303,7 +290,9 @@
     pdfhighlight=/O,
     urlcolor=webbrown, 
     linkcolor=RoyalBlue, 
-    citecolor=webgreen, %pagecolor=RoyalBlue,%
+    citecolor=webgreen, 
+    % uncomment the following line if you want to have black
+    %pagecolor=RoyalBlue,%
     %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
     pdftitle={\myTitle},%
     pdfauthor={\myName, \myUni},%

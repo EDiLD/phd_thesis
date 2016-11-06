@@ -11,7 +11,7 @@ force:		;
 
 clean:
 			latexmk -C
-			rm -f *.auxlock *.snm *.nav *.out *.fdb_latexmk *.vrb *.table *.gnuplot *-blx.bib *.mtc* *.maf *.bbl *.run.xml
+			rm -f *.auxlock *.snm *.nav *.out *.fdb_latexmk *.vrb *.table *.gnuplot *-blx.bib *.mtc* *.maf *.bbl *.run.xml tikz/*.dpth tikz/*.log *.fls *.aux
 
 
 .PHONY: tikzclean

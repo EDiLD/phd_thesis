@@ -270,7 +270,7 @@
             \geometry{
               twoside,
               paper = b5paper,
-              layout = b5paper,
+              layout = b5paper
             }
         }{% A4
             \ifthenelse{\boolean{@minionpro}}%
@@ -430,10 +430,10 @@
     }
     % sections \FloatBarrier
     \titleformat{\section}
-        {\relax}{\textsc{\MakeTextLowercase{\thesection}}}{1em}{\spacedlowsmallcaps}
+        {\relax}{\textsc{\Large\MakeTextLowercase{\thesection}}}{1em}{\Large\spacedlowsmallcaps}
     % subsections
     \titleformat{\subsection}
-        {\relax}{\textsc{\MakeTextLowercase{\thesubsection}}}{1em}{\normalsize\itshape}
+        {\relax}{\textsc{\large\MakeTextLowercase{\thesubsection}}}{1em}{\large\itshape}
     % subsubsections
     \titleformat{\subsubsection}
         {\relax}{\textsc{\MakeTextLowercase{\thesubsubsection}}}{1em}{\normalsize\itshape}        
