@@ -1,5 +1,6 @@
 # Latex
 *.aux
+*.auxlock
 *.bbl
 *.blg
 *.fdb_latexmk
@@ -16,6 +17,7 @@
 
 # tikz
 *.dpth
+*.md5
 
 # Sublime
 *.sublime-project
