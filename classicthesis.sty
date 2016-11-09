@@ -2,6 +2,7 @@
 % classicthesis.sty
 %
 % Copyright (C) 2015 André Miede http://www.miede.de
+%   modified by  Eduard Szöcs
 %
 % If you like the style then I would appreciate a postcard. My address 
 % can be found in the file ClassicThesis.pdf. A collection of the 
@@ -413,11 +414,19 @@
     }{    
         \ifthenelse{\boolean{@tabheaders}}%
             {% add tabbed header, see http://tex.stackexchange.com/questions/7798/how-to-get-multi-line-chapter-name-with-classicthesis-package
-               \newcommand\formatchapter[1]{% 
-                    \begin{tabularx}{0.8\linewidth}{@{} l X @{}} 
-                        \chapterNumber & \spacedallcaps{#1}
-                    \end{tabularx}
-                    }
+               % \newcommand\formatchapter[1]{% 
+               %      \begin{tabularx}{0.8\linewidth}{@{} l X @{}} 
+               %          \chapterNumber & \spacedallcaps{#1}
+               %      \end{tabularx}
+               %      }
+            % and 
+            % http://tex.stackexchange.com/questions/228220/problem-with-long-chapter-title-and-arsclassica
+               \newcommand\formatchapter[1]{%
+                    \setbox0=\hbox{\chapterNumber\thechapter\hspace{10pt}\vline\ }%
+                    \begin{minipage}[t]{\dimexpr\linewidth-\wd0\relax}%
+                    \raggedright\spacedallcaps{#1}%
+                    \end{minipage}%
+                }
                \titleformat{\chapter}[block] 
                    {\normalfont\Large\sffamily} 
                    {\textcolor{halfgray}{\chapterNumber\thechapter} 

@@ -16,6 +16,7 @@
 
 # tikz
 *.dpth
+*.md5
 
 # Sublime
 *.sublime-project

@@ -1,3 +1,4 @@
+%----------------------------------------------------------------------------
 % document options
 \newcommand{\myTitle}{Statistical Eco(-toxico)logy - Improving the utilization of data for ecological risk assessment}
 \newcommand{\myTitleOnTitlePageLineOne}{Statistical Eco(-toxico)logy}
@@ -9,14 +10,14 @@
 \newcommand{\myLocation}{Z\v{a}rne\c{s}ti / Romania}
 
 
+%----------------------------------------------------------------------------
 % list all packages/files in log files
 \listfiles
-
 % use ragged bottom (=no vertical stretch of paragraphs (=\flushbottom))
 \raggedbottom
 
 
-
+%----------------------------------------------------------------------------
 % character encoding and languages
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
@@ -25,6 +26,8 @@
 \usepackage[final]{microtype}
 \usepackage[hyphens]{url}
 
+
+%----------------------------------------------------------------------------
 % custom date format (for titlepage)
 \usepackage[nodayofweek]{datetime}
 %dd. monthname YYYY
@@ -35,7 +38,7 @@
 %! change today to actual date! e.g. 5. December 2016
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%----------------------------------------------------------------------------
 % knitr look-a-like and environment
 \usepackage[dvipsnames]{xcolor}
 \usepackage{framed}
@@ -86,9 +89,12 @@
 \newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
 
 
-
+%----------------------------------------------------------------------------
 % math packages
 \usepackage{amsmath}
+
+
+%----------------------------------------------------------------------------
 % thesis style
 \usepackage[%
     beramono,
@@ -103,9 +109,7 @@
 ]{classicthesis}
 
 
-
-
-
+%----------------------------------------------------------------------------
 % % define page size and margins for the final print
 \usepackage{geometry}
 \geometry{
@@ -115,8 +119,7 @@
   bottom=15mm,
   top=15mm
   }
-
-% b5
+% b5 (b5paper set in documentclass)
 % \geometry{
 %   bindingoffset=7mm,
 %   % showframe
@@ -131,12 +134,18 @@
 %   % showframe
 % }
 
+
+%----------------------------------------------------------------------------
 % %% increase line-spacing
 \usepackage{setspace}
 \setstretch{1.12}
 
+
+%----------------------------------------------------------------------------
 \usepackage{float}
 
+
+%----------------------------------------------------------------------------
 % tables
 \usepackage{tabularx}
 \usepackage{longtable}
@@ -146,25 +155,35 @@
 \newcolumntype{P}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
 \usepackage{enumerate}
 
+
+%----------------------------------------------------------------------------
 % fixes for marginpar and latex
 \usepackage{mparhack}
-\usepackage{fixltx2e} 
+% \usepackage{fixltx2e} 
 
+
+%----------------------------------------------------------------------------
 % smaller cpations
 \usepackage[font={small}]{caption}
 
+
+%----------------------------------------------------------------------------
 % % indexing
 % \usepackage{makeidx}
 % \makeindex
 
+
+%----------------------------------------------------------------------------
 % graphics, figures, captions
 \usepackage{graphicx}
 \usepackage{tikz}
 \usetikzlibrary{external}
 \usetikzlibrary{shapes, arrows, positioning, calc}
-\tikzexternalize
+\tikzexternalize[optimize=false]
 \tikzsetexternalprefix{tikz/}
 
+
+%----------------------------------------------------------------------------
 % insert pdfs
 \usepackage{pdfpages}
 
@@ -175,6 +194,7 @@
 % \section{My new section} % will not include floats from previous sections
 
 
+%----------------------------------------------------------------------------
 % bibliography
 \usepackage{csquotes}
 \usepackage[%
@@ -236,7 +256,6 @@
 %% force fullcite to use maxnames (used in publications.tex)
 \preto\fullcite{\AtNextCite{\defcounter{maxnames}{99}}}
 
-
 %% add bib files
 \addbibresource[label=publications]{frontbackmatter/publications.bib}
 \addbibresource[label=introduction]{chapters/introduction/Introduction.bib}
@@ -250,6 +269,7 @@
 \newcounter{dummy}
 
 
+%----------------------------------------------------------------------------
 % signature function
 \newcommand{\signature}[1]{%
   \vspace{4em}
@@ -267,6 +287,7 @@
 }
 
 
+%----------------------------------------------------------------------------
 % hyperref
 \usepackage{hyperref}
 \hypersetup{%

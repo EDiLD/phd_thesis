@@ -17,7 +17,7 @@ clean:
 .PHONY: tikzclean
 
 tikzclean:	clean
-			rm -f tikz/*.pdf tikz/*.dpth tikz/*.log tikz/*.idx tikz/*.run.xml tikz/*.dep 
+			rm -f tikz/*.pdf tikz/*.dpth tikz/*.log tikz/*.idx tikz/*.run.xml tikz/*.dep tikz/*.md5 tikz/*.run.xml
 
 # .PHONY: nup
 
