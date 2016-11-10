@@ -92,6 +92,7 @@
 %----------------------------------------------------------------------------
 % math packages
 \usepackage{amsmath}
+\usepackage{xfrac}
 
 
 %----------------------------------------------------------------------------
@@ -160,6 +161,7 @@
 % fixes for marginpar and latex
 \usepackage{mparhack}
 % \usepackage{fixltx2e} 
+\usepackage{scrhack}
 
 
 %----------------------------------------------------------------------------
@@ -209,10 +211,10 @@
     hyperref=auto,        %
     maxbibnames=99,       % all names in biobilography
     maxcitenames=2,       % max 2 name in citation
-    firstinits=true,      % render all first and middle names as initials.  
+    giveninits=true,      % render all first and middle names as initials.  
     uniquename=init,
     uniquelist=false,     %
-    sorting=ynt,          % year, name title (for text citations), changed to
+    sorting=nyt,          % year, name title (for text citations), changed to
                           % sorting=nyt within each chapter for bibliography.
     sortcites             % 
 ]{biblatex}
@@ -232,6 +234,9 @@
 }
 \AtEveryBibitem{%
   \clearfield{urlyear}
+}
+\AtEveryBibitem{%
+  \clearfield{type}
 }
 
 %% remove 'In:' before journal names
