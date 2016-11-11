@@ -8,6 +8,7 @@
 \manualmark
 \markboth{\spacedlowsmallcaps{\contentsname}}{\spacedlowsmallcaps{\contentsname}}
 \tableofcontents
+\thispagestyle{empty}
 \automark[section]{chapter}
 \renewcommand{\chaptermark}[1]{\markboth{\spacedlowsmallcaps{#1}}{\spacedlowsmallcaps{#1}}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\enspace\spacedlowsmallcaps{#1}}}
@@ -21,12 +22,15 @@
     \refstepcounter{dummy}
     \pdfbookmark[1]{\listfigurename}{lof}
     \listoffigures
+    \thispagestyle{empty}
 
     \newpage
 
     \refstepcounter{dummy}
     \pdfbookmark[1]{\listtablename}{lot}
     \listoftables
+    \thispagestyle{empty}
+    
 \endgroup
 
 \cleardoublepage

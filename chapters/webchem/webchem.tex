@@ -1,4 +1,24 @@
 % -*- root: ../../thesis.tex -*-
+
+%%% Change colors of R code
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\definecolor{shadecolor}{rgb}{1, 1, 1}
+\renewcommand{\hlnum}[1]{\textcolor[rgb]{0.15, 0.15, 0.15}{#1}}%
+\renewcommand{\hlstr}[1]{\textcolor[rgb]{0.15, 0.15, 0.15}{#1}}%
+\renewcommand{\hlcom}[1]{\textcolor[rgb]{0.15, 0.15, 0.15}{\textit{#1}}}%
+\renewcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\renewcommand{\hlstd}[1]{\textcolor[rgb]{0.15, 0.15, 0.15}{#1}}%
+\renewcommand{\hlkwa}[1]{\textcolor[rgb]{0.15, 0.15, 0.15}{\textbf{#1}}}%
+\renewcommand{\hlkwb}[1]{\textcolor[rgb]{0.15, 0.15, 0.15}{#1}}%
+\renewcommand{\hlkwc}[1]{\textcolor[rgb]{0.15, 0.15, 0.15}{#1}}%
+\renewcommand{\hlkwd}[1]{\textcolor[rgb]{0.15, 0.15, 0.15}{\textbf{#1}}}%
+
+
+
 \chapter[webchem: An R Package to Retrieve Chemical Information]{webchem: An R Package to Retrieve Chemical Information from the Web}
 \label{sec:webchem}  
 
@@ -117,10 +137,10 @@ However, we provide a brief overview in the Supporting Information.
 webchem can be easily installed and loaded from CRAN:
 
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{install.packages}\hlstd{(}\hlstr{"webchem"}\hlstd{)}
-\hlkwd{library}\hlstd{(}\hlstr{"webchem"}\hlstd{)}
+\hlkwd{R> install.packages}\hlstd{(}\hlstr{"webchem"}\hlstd{)}
+\hlkwd{R> library}\hlstd{(}\hlstr{"webchem"}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -142,10 +162,10 @@ It comprises concentrations  (in $\mu g~/~L$) of  34 substances  on 13 sampling 
 First we load the data set and inspect the first six rows:
 
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{data}\hlstd{(}\hlstr{"jagst"}\hlstd{)}
-\hlkwd{head}\hlstd{(jagst)}
+\hlkwd{R> data}\hlstd{(}\hlstr{"jagst"}\hlstd{)}
+\hlkwd{R> head}\hlstd{(jagst)}
 \end{alltt}
 \begin{verbatim}
 ##         date          substance value qual
@@ -165,10 +185,10 @@ This data set identifies substances only by substance names. Values below the li
 The data has been retrieved from the EPA ECOTOX database \citep{epa_2016}.
 
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{data}\hlstd{(}\hlstr{"lc50"}\hlstd{)}
-\hlkwd{head}\hlstd{(lc50)}
+\hlkwd{R> data}\hlstd{(}\hlstr{"lc50"}\hlstd{)}
+\hlkwd{R> head}\hlstd{(lc50)}
 \end{alltt}
 \begin{verbatim}
 ##        cas        value
@@ -200,11 +220,11 @@ First we search for ETOX internal ID numbers using the substance names:
 
 \begin{knitrout}
 \small
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{subs} \hlkwb{<-} \hlkwd{unique}\hlstd{(jagst}\hlopt{$}\hlstd{substance)}
-\hlstd{ids} \hlkwb{<-} \hlkwd{get_etoxid}\hlstd{(subs,} \hlkwc{match} \hlstd{=} \hlstr{'best'}\hlstd{)}
-\hlkwd{head}\hlstd{(ids)}
+\hlstd{R> subs} \hlkwb{<-} \hlkwd{unique}\hlstd{(jagst}\hlopt{$}\hlstd{substance)}
+\hlstd{R> ids} \hlkwb{<-} \hlkwd{get_etoxid}\hlstd{(subs,} \hlkwc{match} \hlstd{=} \hlstr{'best'}\hlstd{)}
+\hlkwd{R> head}\hlstd{(ids)}
 \end{alltt}
 \begin{verbatim}
 ##   etoxid                           match distance                  query
@@ -226,9 +246,9 @@ Other options include: \emph{`all'} - returns all matches; \emph{`first'} - retu
 We use these data to retrieve basic information on the substances.
 
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{etox_data} \hlkwb{<-} \hlkwd{etox_basic}\hlstd{(ids}\hlopt{$}\hlstd{etoxid)}
+\hlstd{R> etox_data} \hlkwb{<-} \hlkwd{etox_basic}\hlstd{(ids}\hlopt{$}\hlstd{etoxid)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -237,10 +257,10 @@ webchem always returns a named list (one entry for each substance) and the avail
 Therefore, we provide extractor functions for the common identifiers: CAS, SMILES and InChIKeys.
 \begin{knitrout}
 \small
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{etox_cas} \hlkwb{<-} \hlkwd{cas}\hlstd{(etox_data)}
-\hlkwd{head}\hlstd{(etox_cas)}
+\hlstd{R> etox_cas} \hlkwb{<-} \hlkwd{cas}\hlstd{(etox_data)}
+\hlkwd{R> head}\hlstd{(etox_cas)}
 \end{alltt}
 \begin{verbatim}
 ##        8668        8494        <NA>        8397        7240        7331 
@@ -256,31 +276,31 @@ In the same manner, we can now query other identifiers from another source using
 
 
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{cids} \hlkwb{<-} \hlkwd{get_cid}\hlstd{(etox_cas)}
-\hlstd{pc_data} \hlkwb{<-} \hlkwd{pc_prop}\hlstd{(cids,} \hlkwc{properties} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{'CanonicalSMILES'}\hlstd{))}
-\hlstd{pc_smiles} \hlkwb{<-} \hlkwd{smiles}\hlstd{(pc_data)}
+\hlstd{R> cids} \hlkwb{<-} \hlkwd{get_cid}\hlstd{(etox_cas)}
+\hlstd{R> pc_data} \hlkwb{<-} \hlkwd{pc_prop}\hlstd{(cids,} \hlkwc{properties} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{'CanonicalSMILES'}\hlstd{))}
+\hlstd{R> pc_smiles} \hlkwb{<-} \hlkwd{smiles}\hlstd{(pc_data)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
 
 or ChemSpider
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{csids} \hlkwb{<-} \hlkwd{get_csid}\hlstd{(etox_cas,} \hlkwc{token} \hlstd{= token)}
-\hlstd{cs_data} \hlkwb{<-} \hlkwd{cs_compinfo}\hlstd{(csids,} \hlkwc{token} \hlstd{= token)}
-\hlstd{cs_inchikey} \hlkwb{<-} \hlkwd{inchikey}\hlstd{(cs_data)}
+\hlstd{R> csids} \hlkwb{<-} \hlkwd{get_csid}\hlstd{(etox_cas,} \hlkwc{token} \hlstd{= token)}
+\hlstd{R> cs_data} \hlkwb{<-} \hlkwd{cs_compinfo}\hlstd{(csids,} \hlkwc{token} \hlstd{= token)}
+\hlstd{R> cs_inchikey} \hlkwb{<-} \hlkwd{inchikey}\hlstd{(cs_data)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
 
 Finally, we combine the queried data into one data.frame
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{res} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{name} \hlstd{= subs,} \hlkwc{cas} \hlstd{= etox_cas,} \hlkwc{smiles} \hlstd{= pc_smiles,}
+\hlstd{R> res} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{name} \hlstd{= subs,} \hlkwc{cas} \hlstd{= etox_cas,} \hlkwc{smiles} \hlstd{= pc_smiles,}
   \hlkwc{cid} \hlstd{= pc_data}\hlopt{$}\hlstd{CID,} \hlkwc{inchikey} \hlstd{= cs_inchikey,} \hlkwc{csid} \hlstd{= cs_data}\hlopt{$}\hlstd{csid,}
   \hlkwc{stringsAsFactors} \hlstd{=} \hlnum{FALSE}\hlstd{)}
 \end{alltt}
@@ -320,9 +340,9 @@ Answering this question would require tedious lookup of insecticide groups for e
 The Compendium of Pesticide Common Names \citep{wood} contains such information and can be easily queried using CAS numbers with webchem: 
 
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{aw_data} \hlkwb{<-} \hlkwd{aw_query}\hlstd{(lc50}\hlopt{$}\hlstd{cas,} \hlkwc{type} \hlstd{=} \hlstr{'cas'}\hlstd{)}
+\hlstd{R> aw_data} \hlkwb{<-} \hlkwd{aw_query}\hlstd{(lc50}\hlopt{$}\hlstd{cas,} \hlkwc{type} \hlstd{=} \hlstr{'cas'}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -330,10 +350,10 @@ The Compendium of Pesticide Common Names \citep{wood} contains such information 
 To extract the chemical group from the retrieved data set, we write a simple extractor function and apply this to the retrieved data:
 
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{igroup} \hlkwb{<-} \hlkwd{sapply}\hlstd{(aw_data,} \hlkwa{function}\hlstd{(}\hlkwc{y}\hlstd{) y}\hlopt{$}\hlstd{subactivity[}\hlnum{1}\hlstd{])}
-\hlstd{igroup[}\hlnum{1}\hlopt{:}\hlnum{3}\hlstd{]}
+\hlstd{R> igroup} \hlkwb{<-} \hlkwd{sapply}\hlstd{(aw_data,} \hlkwa{function}\hlstd{(}\hlkwc{y}\hlstd{) y}\hlopt{$}\hlstd{subactivity[}\hlnum{1}\hlstd{])}
+\hlstd{R> igroup[}\hlnum{1}\hlopt{:}\hlnum{3}\hlstd{]}
 \end{alltt}
 \begin{verbatim}
 ##                                   50-29-3 
@@ -351,7 +371,7 @@ Overall, it took only 5 R statements to retrieve, clean and plot the data using 
 
 \begin{figure}[ht]
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\color{fgcolor}
 
 {\centering 
 \includegraphics[width=0.7\textwidth]{chapters/webchem/plot_lc50-1.pdf}
@@ -370,9 +390,9 @@ Some data sources also provide data on chemical properties that can be queried.
 Here we query for the lc50 data the $\mathrm{log}~P_{oct/wat}$ from the SRC PHYSPROP database to build a simple quantitative structure–activity relationship (QSAR) to predict toxicity.
 
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{pp_data} \hlkwb{<-} \hlkwd{pp_query}\hlstd{(lc50}\hlopt{$}\hlstd{cas)}
+\hlstd{R> pp_data} \hlkwb{<-} \hlkwd{pp_query}\hlstd{(lc50}\hlopt{$}\hlstd{cas)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -382,9 +402,9 @@ Extracting \\ $\mathrm{log}~P_{oct/wat}$ from the data object is slightly more c
 because i) for some compounds no data could be found and ii) the data-object has a more complex structure (a data frame within a list).
 
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{lc50}\hlopt{$}\hlstd{logp} \hlkwb{<-} \hlkwd{sapply}\hlstd{(pp_data,} \hlkwa{function}\hlstd{(}\hlkwc{y}\hlstd{) \{}
+\hlstd{R> lc50}\hlopt{$}\hlstd{logp} \hlkwb{<-} \hlkwd{sapply}\hlstd{(pp_data,} \hlkwa{function}\hlstd{(}\hlkwc{y}\hlstd{) \{}
   \hlkwa{if} \hlstd{(}\hlkwd{length}\hlstd{(y)} \hlopt{==} \hlnum{1} \hlopt{&&} \hlkwd{is.na}\hlstd{(y))}
     \hlkwd{return}\hlstd{(}\hlnum{NA}\hlstd{)}
   \hlstd{y}\hlopt{$}\hlstd{prop}\hlopt{$}\hlstd{value[y}\hlopt{$}\hlstd{prop}\hlopt{$}\hlstd{variable} \hlopt{==} \hlstr{'Log P (octanol-water)'}\hlstd{]}
@@ -400,7 +420,7 @@ The resulting data and model is displayed in Figure~\ref{fig:fig3}.
 
 \begin{figure}[h]
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\color{fgcolor}
 
 {\centering \includegraphics[width=0.7\textwidth]{chapters/webchem/plot_qsar-1.pdf} 
 
@@ -426,10 +446,10 @@ In this example we search for the minimum EQS for the EU for the compounds in th
 
 We re-use the above queried ETOX-IDs to obtain further information from ETOX, namely the MAC-EQS:
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{eqs} \hlkwb{<-} \hlkwd{etox_targets}\hlstd{(ids}\hlopt{$}\hlstd{etoxid)}
-\hlstd{ids}\hlopt{$}\hlstd{mac} \hlkwb{<-} \hlkwd{sapply}\hlstd{(eqs,} \hlkwa{function}\hlstd{(}\hlkwc{y}\hlstd{)\{}
+\hlstd{R> eqs} \hlkwb{<-} \hlkwd{etox_targets}\hlstd{(ids}\hlopt{$}\hlstd{etoxid)}
+\hlstd{R> ids}\hlopt{$}\hlstd{mac} \hlkwb{<-} \hlkwd{sapply}\hlstd{(eqs,} \hlkwa{function}\hlstd{(}\hlkwc{y}\hlstd{)\{}
   \hlkwa{if} \hlstd{(}\hlkwd{length}\hlstd{(y)} \hlopt{==} \hlnum{1} \hlopt{&&} \hlkwd{is.na}\hlstd{(y)) \{}
     \hlkwd{return}\hlstd{(}\hlnum{NA}\hlstd{)}
   \hlstd{\}} \hlkwa{else} \hlstd{\{}
@@ -447,9 +467,9 @@ Here, the column Designation defines the type of EQS and Value\_Target\_LR conta
 Unfortunately, we only found MAC-EQS values for 5 substances:
 
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{(mac} \hlkwb{<-} \hlkwd{with}\hlstd{(ids, ids[}\hlopt{!}\hlkwd{is.na}\hlstd{(mac)} \hlopt{&} \hlkwd{is.finite}\hlstd{(mac),}
+\hlstd{R> (mac} \hlkwb{<-} \hlkwd{with}\hlstd{(ids, ids[}\hlopt{!}\hlkwd{is.na}\hlstd{(mac)} \hlopt{&} \hlkwd{is.finite}\hlstd{(mac),}
                       \hlkwd{c}\hlstd{(}\hlstr{'etoxid'}\hlstd{,} \hlstr{'query'}\hlstd{,} \hlstr{'mac'}\hlstd{)]))}
 \end{alltt}
 \begin{verbatim}
@@ -466,10 +486,10 @@ Unfortunately, we only found MAC-EQS values for 5 substances:
 The get\_etoxid() function used to search ETOX-IDs returns also the original substance name (query),
 so that we can easily join the table with MAC values with the measurements table :
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{jagst_eqs} \hlkwb{<-} \hlkwd{merge}\hlstd{(jagst, mac,} \hlkwc{by.x} \hlstd{=} \hlstr{'substance'}\hlstd{,} \hlkwc{by.y} \hlstd{=} \hlstr{'query'}\hlstd{)}
-\hlkwd{head}\hlstd{(jagst_eqs)}
+\hlstd{R> jagst_eqs} \hlkwb{<-} \hlkwd{merge}\hlstd{(jagst, mac,} \hlkwc{by.x} \hlstd{=} \hlstr{'substance'}\hlstd{,} \hlkwc{by.y} \hlstd{=} \hlstr{'query'}\hlstd{)}
+\hlkwd{R> head}\hlstd{(jagst_eqs)}
 \end{alltt}
 \begin{verbatim}
 ##   substance       date  value qual etoxid mac
@@ -493,9 +513,9 @@ Furthermore, webchem provides also basic functions to check identifiers that can
 The functions either use simple formatting rules,
 
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{is.inchikey}\hlstd{(}\hlstr{'BQJCRHHNABKAKU-KBQPJGBKS-AN'}\hlstd{)}
+\hlkwd{R> is.inchikey}\hlstd{(}\hlstr{'BQJCRHHNABKAKU-KBQPJGBKS-AN'}\hlstd{)}
 \end{alltt}
 
 
@@ -503,7 +523,7 @@ The functions either use simple formatting rules,
 ## [1] FALSE
 \end{verbatim}
 \begin{alltt}
-\hlkwd{is.cas}\hlstd{(}\hlstr{'64-17-6'}\hlstd{)}
+\hlkwd{R> is.cas}\hlstd{(}\hlstr{'64-17-6'}\hlstd{)}
 \end{alltt}
 
 
@@ -515,9 +535,9 @@ The functions either use simple formatting rules,
 
 or web resources like ChemSpider
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{is.inchikey}\hlstd{(}\hlstr{'BQJCRHHNABKAKU-KBQPJGBKSA-5'}\hlstd{,}
+\hlkwd{R> is.inchikey}\hlstd{(}\hlstr{'BQJCRHHNABKAKU-KBQPJGBKSA-5'}\hlstd{,}
   \hlkwc{type} \hlstd{=} \hlstr{'chemspider'}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
