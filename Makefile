@@ -11,13 +11,13 @@ force:		;
 
 clean:
 			latexmk -C
-			rm -f *.auxlock *.snm *.nav *.out *.fdb_latexmk *.vrb *.table *.gnuplot *-blx.bib *.mtc* *.maf *.bbl *.run.xml tikz/*.dpth tikz/*.log *.fls *.aux
+			rm -f *.auxlock *.snm *.nav *.out *.fdb_latexmk *.vrb *.table *.gnuplot *-blx.bib *.mtc* *.maf *.bbl *.run.xml tikz/*.dpth tikz/*.log *.fls *.aux tikz/*.pdf tikz/*.dpth tikz/*.log tikz/*.idx tikz/*.dep tikz/*.md5 tikz/*.run.xml
 
 
-.PHONY: tikzclean
+# .PHONY: tikzclean
 
-tikzclean:	clean
-			rm -f tikz/*.pdf tikz/*.dpth tikz/*.log tikz/*.idx tikz/*.run.xml tikz/*.dep tikz/*.md5 tikz/*.run.xml
+# tikzclean:	clean
+# 			rm -f tikz/*.pdf tikz/*.dpth tikz/*.log tikz/*.idx tikz/*.dep tikz/*.md5 tikz/*.run.xml
 
 # .PHONY: nup
 

@@ -1,3 +1,5 @@
+% -*- root: thesis.tex -*-
+
 %----------------------------------------------------------------------------
 % document options
 \newcommand{\myTitle}{Statistical Eco(-toxico)logy - Improving the utilization of data for ecological risk assessment}
@@ -110,36 +112,57 @@
 ]{classicthesis}
 
 
+
 %----------------------------------------------------------------------------
 % % define page size and margins for the final print
-\usepackage{geometry}
+% space between text and footer
+\setlength{\footskip}{10mm}
+
+% b5 pdf
+\usepackage[twoside]{geometry}
 \geometry{
-  includeheadfoot,
+  includehead,
+  includefoot,
   right=20mm,
   left=20mm,
-  bottom=15mm,
-  top=15mm
+  bottom=10mm, % space from bottomn to footer (space from text to bottom = footskip + bottom)
+  top=10mm,    % space from top to text
   }
-% b5 (b5paper set in documentclass)
-% \geometry{
-%   bindingoffset=7mm,
-%   % showframe
-% }
+\geometry{
+  paper=b5paper
+}
 
-% b5 on a4 page with crop marks
+
+
+% % % b5 on a4 page with crop marks
+% \usepackage[twoside,a4paper,layout=b5paper]{geometry}
 % \geometry{
-%   paper=a4paper,
-%   layout=b5paper,
-%   bindingoffset=6mm,
+%   includehead,
+%   includefoot,
+%   right=20mm,
+%   left=20mm,
+%   bottom=10mm,
+%   top=10mm,
+%   }
+%  % fix twoside, to match in center.
+%  % see http://tex.stackexchange.com/questions/45283/how-can-i-use-the-layout-and-twoside-options-of-the-geometry-package
+% \makeatletter
+% \newlength\hcorr
+% \setlength\hcorr{\paperwidth}
+% \addtolength\hcorr{-\Gm@layoutwidth}
+% \makeatother
+% \geometry{
+%   layouthoffset=.5\hcorr,  
+%   bindingoffset=5mm,
 %   showcrop,
-%   % showframe
+%   % showframe,
 % }
 
 
 %----------------------------------------------------------------------------
 % %% increase line-spacing
 \usepackage{setspace}
-\setstretch{1.12}
+\setstretch{1.1}
 
 
 %----------------------------------------------------------------------------

@@ -1,15 +1,21 @@
 % \tikzsetnextfilename{overview}
-\usetikzlibrary{shapes, arrows, positioning, calc}
+\usetikzlibrary{shapes, arrows, positioning, calc, arrows.meta}
+
 % Define elements
-\tikzstyle{line} = [draw, -latex', ultra thick]
+% arrows, see also http://tex.stackexchange.com/questions/5461/is-it-possible-to-change-the-size-of-an-arrowhead-in-tikz-pgf/161238#161238
+\tikzstyle{line} = [draw, -{Latex[length=4mm,width=3mm]}, ultra thick]
+
 \tikzstyle{block} = [rectangle, draw, 
     text width=5em, text centered, rounded corners, minimum height=4em]
-\tikzstyle{paper} = [circle, draw, fill=gray!85, fill opacity=0.4, text opacity=1,  font = \bf\large, minimum width=2.5cm]
+
+% papers
+\tikzstyle{paper} = [circle, draw, fill=gray!85, fill opacity=0.4, text opacity=1,  font = \bf\Large, minimum width=2.5cm]
 \tikzstyle{textbf} = [text centered, font = \bf\Large]
+
 
 \begin{tikzpicture}[node distance = 2cm, auto]
 % clip figure
-\clip(-1.6,-11) rectangle (21.1,5.2);
+\clip(-1.6,-10.7) rectangle (22.6,5);
 
 % % % grid for coordinates for clip
 % \draw[help lines,xstep=1,ystep=1] (-2,-13) grid (30,6.5);
@@ -38,11 +44,11 @@
 
 	%% Risk Assessment
 	\node [name = risk, block, below right=0.75cm and 1cm of stat,
-       minimum width=40mm, 
+       minimum width=55mm, 
 		minimum height=2.5cm, 
 		font = \bf\large,
 		align = center,
-       text width = 3cm] {Ecological Risk\\  Assessment};
+       text width = 3cm] {Environmental Risk\\  Assessment};
 
 	%% Monitoring data
 	\node [name = monit, block, 
@@ -88,8 +94,8 @@
     \path [line, dashed] (chap5) edge [bend right = 20]   (stat);
 	\path [line, dashed] (chap4) edge [bend right = 20]   (chem);
     \path [line, dashed] (chap5) edge [bend left = 20]   (bio);
-    \path [dashed] (chap3.north west) edge [-latex', bend right = 30, ultra thick] node[xshift = 25mm, yshift =5mm, font = \large, align = center, fill = white] {Retrospection}  (risk);
-	\path [dashed] (risk.south east) edge [-latex' ,bend right = 40, ultra thick]  node [xshift = 10mm, pos =0.2,  below, font = \large, align = center, fill = white] {Approves \\ Substance} (chem);
+    \path [dashed] (chap3.north west) edge [line, bend right = 30] node[xshift = 25mm, yshift =5mm, font = \large, align = center, fill = white] {Retrospection}  (risk);
+	\path [dashed] (risk.south east) edge [line ,bend right = 40]  node [xshift = 10mm, pos =0.2,  below, font = \large, align = center, fill = white] {Approves \\ Substance} (chem);
 
 
 \end{tikzpicture}
