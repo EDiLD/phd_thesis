@@ -1,21 +1,6 @@
 % -*- root: ../../thesis.tex -*-
 
-%%% Change colors of R code
-\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
-\definecolor{shadecolor}{rgb}{.97, .97, .97}
-\definecolor{messagecolor}{rgb}{0, 0, 0}
-\definecolor{warningcolor}{rgb}{1, 0, 1}
-\definecolor{errorcolor}{rgb}{1, 0, 0}
-\definecolor{shadecolor}{rgb}{1, 1, 1}
-\renewcommand{\hlnum}[1]{\textcolor[rgb]{0.15, 0.15, 0.15}{#1}}%
-\renewcommand{\hlstr}[1]{\textcolor[rgb]{0.15, 0.15, 0.15}{#1}}%
-\renewcommand{\hlcom}[1]{\textcolor[rgb]{0.15, 0.15, 0.15}{\textit{#1}}}%
-\renewcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
-\renewcommand{\hlstd}[1]{\textcolor[rgb]{0.15, 0.15, 0.15}{#1}}%
-\renewcommand{\hlkwa}[1]{\textcolor[rgb]{0.15, 0.15, 0.15}{\textbf{#1}}}%
-\renewcommand{\hlkwb}[1]{\textcolor[rgb]{0.15, 0.15, 0.15}{#1}}%
-\renewcommand{\hlkwc}[1]{\textcolor[rgb]{0.15, 0.15, 0.15}{#1}}%
-\renewcommand{\hlkwd}[1]{\textcolor[rgb]{0.15, 0.15, 0.15}{\textbf{#1}}}%
+
 
 
 
@@ -139,8 +124,8 @@ webchem can be easily installed and loaded from CRAN:
 \begin{knitrout}
 \color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{R> install.packages}\hlstd{(}\hlstr{"webchem"}\hlstd{)}
-\hlkwd{R> library}\hlstd{(}\hlstr{"webchem"}\hlstd{)}
+\hlstd{R> }\hlkwd{install.packages}\hlstd{(}\hlstr{"webchem"}\hlstd{)}
+\hlstd{R> }\hlkwd{library}\hlstd{(}\hlstr{"webchem"}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -164,8 +149,8 @@ First we load the data set and inspect the first six rows:
 \begin{knitrout}
 \color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{R> data}\hlstd{(}\hlstr{"jagst"}\hlstd{)}
-\hlkwd{R> head}\hlstd{(jagst)}
+\hlstd{R> }\hlkwd{data}\hlstd{(}\hlstr{"jagst"}\hlstd{)}
+\hlstd{R> }\hlkwd{head}\hlstd{(jagst)}
 \end{alltt}
 \begin{verbatim}
 ##         date          substance value qual
@@ -187,8 +172,8 @@ The data has been retrieved from the EPA ECOTOX database \citep{epa_2016}.
 \begin{knitrout}
 \color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{R> data}\hlstd{(}\hlstr{"lc50"}\hlstd{)}
-\hlkwd{R> head}\hlstd{(lc50)}
+\hlstd{R> }\hlkwd{data}\hlstd{(}\hlstr{"lc50"}\hlstd{)}
+\hlstd{R> }\hlkwd{head}\hlstd{(lc50)}
 \end{alltt}
 \begin{verbatim}
 ##        cas        value
@@ -224,7 +209,7 @@ First we search for ETOX internal ID numbers using the substance names:
 \begin{alltt}
 \hlstd{R> subs} \hlkwb{<-} \hlkwd{unique}\hlstd{(jagst}\hlopt{$}\hlstd{substance)}
 \hlstd{R> ids} \hlkwb{<-} \hlkwd{get_etoxid}\hlstd{(subs,} \hlkwc{match} \hlstd{=} \hlstr{'best'}\hlstd{)}
-\hlkwd{R> head}\hlstd{(ids)}
+\hlstd{R> }\hlkwd{head}\hlstd{(ids)}
 \end{alltt}
 \begin{verbatim}
 ##   etoxid                           match distance                  query
@@ -260,7 +245,7 @@ Therefore, we provide extractor functions for the common identifiers: CAS, SMILE
 \color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{R> etox_cas} \hlkwb{<-} \hlkwd{cas}\hlstd{(etox_data)}
-\hlkwd{R> head}\hlstd{(etox_cas)}
+\hlstd{R> }\hlkwd{head}\hlstd{(etox_cas)}
 \end{alltt}
 \begin{verbatim}
 ##        8668        8494        <NA>        8397        7240        7331 
@@ -401,6 +386,7 @@ The database contains predicted and experimental values.
 Extracting \\ $\mathrm{log}~P_{oct/wat}$ from the data object is slightly more complicated,  
 because i) for some compounds no data could be found and ii) the data-object has a more complex structure (a data frame within a list).
 
+\newpage
 \begin{knitrout}
 \color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -418,7 +404,7 @@ Moreover, it provides users with high flexibility regarding organisation of thei
 Nevertheless, in the documentation of each function we provide examples on how to extract more complicated parts of the data.
 The resulting data and model is displayed in Figure~\ref{fig:fig3}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \begin{knitrout}
 \color{fgcolor}
 
@@ -431,11 +417,12 @@ The resulting data and model is displayed in Figure~\ref{fig:fig3}.
 \end{knitrout}
 \caption[Simple QSAR for predicting log LC\textsubscript{50} of pesticides by log P.]{Simple QSAR for predicting log LC\textsubscript{50} of pesticides by log P. 
 Log P values have been retrieved from SRC Physprop database (97 experimental data, 9 estimated data and 18 substances without data). 
-Blue line indicates the regression model ($\mathrm{log~LC}_{50} = 2.88\ensuremath{-0.37}~\mathrm{log} P$, RMSE = 1.45).}
+The line indicates the regression model ($\mathrm{log~LC}_{50} = 2.88\ensuremath{-0.37}~\mathrm{log} P$, RMSE = 1.45).}
 \label{fig:fig3}
 \end{figure}
 
 
+\newpage
 \subsection[Regulatory information]{Regulatory information}
 Regulatory information is of particular interest if concentrations exceed national thresholds.
 In the European Union (EU) the Water Framework Directive (WFD, \citet{wfd2000directive}) defines Environmental Quality Standards (EQS).
@@ -445,6 +432,8 @@ Information on these standards can be queried with webchem from the PAN Pesticid
 In this example we search for the minimum EQS for the EU for the compounds in the jagst data set, join these with measured concentrations and evaluate wether exceedances occurred..
 
 We re-use the above queried ETOX-IDs to obtain further information from ETOX, namely the MAC-EQS:
+
+\newpage
 \begin{knitrout}
 \color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -489,7 +478,7 @@ so that we can easily join the table with MAC values with the measurements table
 \color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{R> jagst_eqs} \hlkwb{<-} \hlkwd{merge}\hlstd{(jagst, mac,} \hlkwc{by.x} \hlstd{=} \hlstr{'substance'}\hlstd{,} \hlkwc{by.y} \hlstd{=} \hlstr{'query'}\hlstd{)}
-\hlkwd{R> head}\hlstd{(jagst_eqs)}
+\hlstd{R> }\hlkwd{head}\hlstd{(jagst_eqs)}
 \end{alltt}
 \begin{verbatim}
 ##   substance       date  value qual etoxid mac
@@ -515,7 +504,7 @@ The functions either use simple formatting rules,
 \begin{knitrout}
 \color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{R> is.inchikey}\hlstd{(}\hlstr{'BQJCRHHNABKAKU-KBQPJGBKS-AN'}\hlstd{)}
+\hlstd{R> }\hlkwd{is.inchikey}\hlstd{(}\hlstr{'BQJCRHHNABKAKU-KBQPJGBKS-AN'}\hlstd{)}
 \end{alltt}
 
 
@@ -523,7 +512,7 @@ The functions either use simple formatting rules,
 ## [1] FALSE
 \end{verbatim}
 \begin{alltt}
-\hlkwd{R> is.cas}\hlstd{(}\hlstr{'64-17-6'}\hlstd{)}
+\hlstd{R> }\hlkwd{is.cas}\hlstd{(}\hlstr{'64-17-6'}\hlstd{)}
 \end{alltt}
 
 
@@ -537,7 +526,7 @@ or web resources like ChemSpider
 \begin{knitrout}
 \color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{R> is.inchikey}\hlstd{(}\hlstr{'BQJCRHHNABKAKU-KBQPJGBKSA-5'}\hlstd{,}
+\hlstd{R> }\hlkwd{is.inchikey}\hlstd{(}\hlstr{'BQJCRHHNABKAKU-KBQPJGBKSA-5'}\hlstd{,}
   \hlkwc{type} \hlstd{=} \hlstr{'chemspider'}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
@@ -546,6 +535,7 @@ or web resources like ChemSpider
 \end{kframe}
 \end{knitrout}
 
+\newpage
 \section[Discussion]{Discussion}
 \subsection[Related software]{Related software}
 Within the R ecosystem, there are only a few similar projects:

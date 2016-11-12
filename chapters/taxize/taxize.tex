@@ -174,12 +174,12 @@ First, one must install and load taxize into the R session.
 
 \begin{knitrout}
 \small
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}
+
 \color{fgcolor}
 \begin{kframe}
 \begin{alltt}
-\hlkwd{install.packages}\hlstd{(}\hlstr{"taxize"}\hlstd{)}
-\hlkwd{library}\hlstd{(taxize)}
+\hlstd{R> }\hlkwd{install.packages}\hlstd{(}\hlstr{"taxize"}\hlstd{)}
+\hlstd{R> }\hlkwd{library}\hlstd{(taxize)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -195,13 +195,13 @@ Here, on can search for two misspelled names:
 
 \begin{knitrout}
 \small
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}
+
 \color{fgcolor}
 \begin{kframe}
 \begin{alltt}
-\hlstd{temp} \hlkwb{<-} \hlkwd{gnr_resolve}\hlstd{(}\hlkwc{names} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"Helianthos annus"}\hlstd{,}
+\hlstd{R> temp} \hlkwb{<-} \hlkwd{gnr_resolve}\hlstd{(}\hlkwc{names} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"Helianthos annus"}\hlstd{,}
                               \hlstr{"Homo saapiens"}\hlstd{))}
-\hlstd{temp[ ,} \hlopt{-}\hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{,}\hlnum{4}\hlstd{)]}
+\hlstd{R> temp[ ,} \hlopt{-}\hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{,}\hlnum{4}\hlstd{)]}
 \end{alltt}
 \begin{verbatim}
 #                  matched_name       data_source_title
@@ -221,11 +221,11 @@ In this example is a list of species names, some of which are misspelled, and th
 
 \begin{knitrout}
 \small
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}
+
 \color{fgcolor}
 \begin{kframe}
 \begin{alltt}
-\hlstd{mynames} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"Helianthus annuus"}\hlstd{,} \hlstr{"Pinus contort"}\hlstd{,}
+\hlstd{R> mynames} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"Helianthus annuus"}\hlstd{,} \hlstr{"Pinus contort"}\hlstd{,}
              \hlstr{"Poa anua"}\hlstd{,} \hlstr{"Abis magnifica"}\hlstd{,} \hlstr{"Rosa california"}\hlstd{,}
              \hlstr{"Festuca arundinace"}\hlstd{,} \hlstr{"Sorbus occidentalos"}\hlstd{,}
              \hlstr{"Madia sateva"}\hlstd{)}
@@ -262,19 +262,19 @@ In this example, there are six synonyms of the currently accepted name for a spe
 
 \begin{knitrout}
 \small
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}
+
 \color{fgcolor}
 \begin{kframe}
 \begin{alltt}
-\hlkwd{library}\hlstd{(plyr)}
-\hlstd{mynames} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"Helianthus annuus ssp. jaegeri"}\hlstd{,}
+\hlstd{R> }\hlkwd{library}\hlstd{(plyr)}
+\hlstd{R> mynames} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"Helianthus annuus ssp. jaegeri"}\hlstd{,}
              \hlstr{"Helianthus annuus ssp. lenticularis"}\hlstd{,}
              \hlstr{"Helianthus annuus ssp. texanus"}\hlstd{,}
              \hlstr{"Helianthus annuus var. lenticularis"}\hlstd{,}
              \hlstr{"Helianthus annuus var. macrocarpus"}\hlstd{,}
              \hlstr{"Helianthus annuus var. texanus"}\hlstd{)}
-\hlstd{tsn} \hlkwb{<-} \hlkwd{get_tsn}\hlstd{(mynames)}
-\hlkwd{ldply}\hlstd{(tsn, itis_acceptname)}
+\hlstd{R> tsn} \hlkwb{<-} \hlkwd{get_tsn}\hlstd{(mynames)}
+\hlstd{R> }\hlkwd{ldply}\hlstd{(tsn, itis_acceptname)}
 \end{alltt}
 \begin{verbatim}
 #   submittedTsn      acceptedName acceptedTsn
@@ -300,12 +300,12 @@ First, search for two species, \emph{Abies procera} and \emph{Pinus contorta} wi
 
 \begin{knitrout}
 \small
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}
+
 \color{fgcolor}
 \begin{kframe}
 \begin{alltt}
-\hlstd{specieslist} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"Abies procera"}\hlstd{,} \hlstr{"Pinus contorta"}\hlstd{)}
-\hlkwd{classification}\hlstd{(specieslist,} \hlkwc{db} \hlstd{=} \hlstr{"itis"}\hlstd{)}
+\hlstd{R> specieslist} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"Abies procera"}\hlstd{,} \hlstr{"Pinus contorta"}\hlstd{)}
+\hlstd{R> }\hlkwd{classification}\hlstd{(specieslist,} \hlkwc{db} \hlstd{=} \hlstr{"itis"}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
 # $`Abies procera`
@@ -348,11 +348,11 @@ As with the \emph{classification}-function you can specify the data source with 
 
 \begin{knitrout}
 \small
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}
+
 \color{fgcolor}
 \begin{kframe}
 \begin{alltt}
-\hlkwd{tax_name}\hlstd{(}\hlkwc{query} \hlstd{=} \hlstr{"Helianthus annuus"}\hlstd{,} \hlkwc{get} \hlstd{=} \hlstr{"family"}\hlstd{,}
+\hlstd{R> }\hlkwd{tax_name}\hlstd{(}\hlkwc{query} \hlstd{=} \hlstr{"Helianthus annuus"}\hlstd{,} \hlkwc{get} \hlstd{=} \hlstr{"family"}\hlstd{,}
          \hlkwc{db} \hlstd{=} \hlstr{"itis"}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
@@ -360,7 +360,7 @@ As with the \emph{classification}-function you can specify the data source with 
 # 1 Asteraceae
 \end{verbatim}
 \begin{alltt}
-\hlkwd{tax_name}\hlstd{(}\hlkwc{query} \hlstd{=} \hlstr{"Helianthus annuus"}\hlstd{,} \hlkwc{get} \hlstd{=} \hlstr{"family"}\hlstd{,}
+\hlstd{R> }\hlkwd{tax_name}\hlstd{(}\hlkwc{query} \hlstd{=} \hlstr{"Helianthus annuus"}\hlstd{,} \hlkwc{get} \hlstd{=} \hlstr{"family"}\hlstd{,}
          \hlkwc{db} \hlstd{=} \hlstr{"ncbi"}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
@@ -383,11 +383,11 @@ The function returns a data.frame of the matches, and asks for the user to input
 
 \begin{knitrout}
 \small
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}
+
 \color{fgcolor}
 \begin{kframe}
 \begin{alltt}
-\hlkwd{get_tsn}\hlstd{(}\hlkwc{searchterm} \hlstd{=} \hlstr{"Heliastes"}\hlstd{,} \hlkwc{searchtype} \hlstd{=} \hlstr{"sciname"}\hlstd{)}
+\hlstd{R> }\hlkwd{get_tsn}\hlstd{(}\hlkwc{searchterm} \hlstd{=} \hlstr{"Heliastes"}\hlstd{,} \hlkwc{searchtype} \hlstd{=} \hlstr{"sciname"}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
 #            combinedname    tsn
@@ -411,15 +411,15 @@ In another example, you can pass in a long character vector of taxonomic names:
 
 \begin{knitrout}
 \small
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}
+
 \color{fgcolor}
 \begin{kframe}
 \begin{alltt}
-\hlstd{splist} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"annona cherimola"}\hlstd{,} \hlstr{'annona muricata'}\hlstd{,}
+\hlstd{R> splist} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"annona cherimola"}\hlstd{,} \hlstr{'annona muricata'}\hlstd{,}
             \hlstr{"quercus robur"}\hlstd{,} \hlstr{"shorea robusta"}\hlstd{,}
             \hlstr{"pandanus patina"}\hlstd{,} \hlstr{"oryza sativa"}\hlstd{,}
             \hlstr{"durio zibethinus"}\hlstd{)}
-\hlkwd{get_tsn}\hlstd{(}\hlkwc{searchterm} \hlstd{= splist,} \hlkwc{searchtype} \hlstd{=} \hlstr{"sciname"}\hlstd{)}
+\hlstd{R> }\hlkwd{get_tsn}\hlstd{(}\hlkwc{searchterm} \hlstd{= splist,} \hlkwc{R> searchtype} \hlstd{=} \hlstr{"sciname"}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
 # [1] "506198" "18098"  "19405"  "506787" "507376" "41976" 
@@ -434,11 +434,11 @@ In another example, note that no match at all returns an NA:
 
 \begin{knitrout}
 \small
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}
+
 \color{fgcolor}
 \begin{kframe}
 \begin{alltt}
-\hlkwd{get_uid}\hlstd{(}\hlkwc{sciname} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"Chironomus riparius"}\hlstd{,} \hlstr{"aaa vva"}\hlstd{))}
+\hlstd{R> get_uid}\hlstd{(}\hlkwc{sciname} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"Chironomus riparius"}\hlstd{,} \hlstr{"aaa vva"}\hlstd{))}
 \end{alltt}
 \begin{verbatim}
 # [1] "315576" NA      
@@ -458,14 +458,14 @@ Here is a short example, producing the tree in figure \ref{fig:taxize:phylomatic
 
 \begin{knitrout}
 \small
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}
+
 \color{fgcolor}
 \begin{kframe}
 \begin{alltt}
-\hlstd{taxa} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"Poa annua"}\hlstd{,} \hlstr{"Abies procera"}\hlstd{,} \hlstr{"Helianthus annuus"}\hlstd{)}
-\hlstd{tree} \hlkwb{<-} \hlkwd{phylomatic_tree}\hlstd{(}\hlkwc{taxa} \hlstd{= taxa)}
-\hlstd{tree}\hlopt{$}\hlstd{tip.label} \hlkwb{<-} \hlkwd{capwords}\hlstd{(tree}\hlopt{$}\hlstd{tip.label)}
-\hlkwd{plot}\hlstd{(tree,} \hlkwc{cex} \hlstd{=} \hlnum{1}\hlstd{)}
+\hlstd{R> taxa} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"Poa annua"}\hlstd{,} \hlstr{"Abies procera"}\hlstd{,} \hlstr{"Helianthus annuus"}\hlstd{)}
+\hlstd{R> tree} \hlkwb{<-} \hlkwd{phylomatic_tree}\hlstd{(}\hlkwc{taxa} \hlstd{= taxa)}
+\hlstd{R> tree}\hlopt{$}\hlstd{tip.label} \hlkwb{<-} \hlkwd{capwords}\hlstd{(tree}\hlopt{$}\hlstd{tip.label)}
+\hlstd{R> plot}\hlstd{(tree,} \hlkwc{cex} \hlstd{=} \hlnum{1}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -496,11 +496,11 @@ Here is a short example using the CoL in which we want to find all the species w
 
 \begin{knitrout}
 \small
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}
+
 \color{fgcolor}
 \begin{kframe}
 \begin{alltt}
-\hlkwd{col_downstream}\hlstd{(}\hlkwc{name} \hlstd{=} \hlstr{"Apis"}\hlstd{,} \hlkwc{downto} \hlstd{=} \hlstr{"Species"}\hlstd{)[[}\hlnum{1}\hlstd{]]}
+\hlstd{R> col_downstream}\hlstd{(}\hlkwc{name} \hlstd{=} \hlstr{"Apis"}\hlstd{,} \hlkwc{downto} \hlstd{=} \hlstr{"Species"}\hlstd{)[[}\hlnum{1}\hlstd{]]}
 \end{alltt}
 \begin{verbatim}
 #   childtaxa_id     childtaxa_name childtaxa_rank
@@ -525,12 +525,12 @@ We have provided a set of functions, \emph{iucn\_summary} and \emph{iucn\_status
 Here, you can search for the panther and lynx.
 
 \begin{knitrout}\small
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}
+
 \color{fgcolor}
 \begin{kframe}
 \begin{alltt}
-\hlstd{ia} \hlkwb{<-} \hlkwd{iucn_summary}\hlstd{(}\hlkwd{c}\hlstd{(}\hlstr{"Panthera uncia"}\hlstd{,} \hlstr{"Lynx lynx"}\hlstd{))}
-\hlkwd{iucn_status}\hlstd{(ia)}
+\hlstd{R> ia} \hlkwb{<-} \hlkwd{iucn_summary}\hlstd{(}\hlkwd{c}\hlstd{(}\hlstr{"Panthera uncia"}\hlstd{,} \hlstr{"Lynx lynx"}\hlstd{))}
+\hlstd{R> iucn_status}\hlstd{(ia)}
 \end{alltt}
 \begin{verbatim}
 # Panthera uncia      Lynx lynx 
@@ -548,10 +548,10 @@ taxize has three functions to interact with GenBank to search for available gene
 In this example, one can search for gene sequences for \emph{Umbra limi}.
 
 \begin{knitrout}\small
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}
+
 \color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{out} \hlkwb{<-} \hlkwd{get_genes_avail}\hlstd{(}\hlkwc{taxon_name} \hlstd{=} \hlstr{"Umbra limi"}\hlstd{,}
+\hlstd{R> out} \hlkwb{<-} \hlkwd{get_genes_avail}\hlstd{(}\hlkwc{taxon_name} \hlstd{=} \hlstr{"Umbra limi"}\hlstd{,}
                        \hlkwc{seqrange} \hlstd{=} \hlstr{"1:2000"}\hlstd{,}
                        \hlkwc{getrelated} \hlstd{=} \hlnum{FALSE}\hlstd{)}
 \end{alltt}
@@ -562,9 +562,9 @@ In this example, one can search for gene sequences for \emph{Umbra limi}.
 Then one can ask if 'RAG1' exists in any of the gene names.
 
 \begin{knitrout}\small
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{out[}\hlkwd{grep}\hlstd{(}\hlstr{"RAG1"}\hlstd{, out}\hlopt{$}\hlstd{genesavail,} \hlkwc{ignore.case} \hlstd{=} \hlnum{TRUE}\hlstd{),} \hlopt{-}\hlnum{3}\hlstd{]}
+\hlstd{R> out[}\hlkwd{grep}\hlstd{(}\hlstr{"RAG1"}\hlstd{, out}\hlopt{$}\hlstd{genesavail,} \hlkwc{ignore.case} \hlstd{=} \hlnum{TRUE}\hlstd{),} \hlopt{-}\hlnum{3}\hlstd{]}
 \end{alltt}
 \begin{verbatim}
 #         spused length access_num       ids
@@ -592,21 +592,21 @@ A user can use the mentioned \emph{classification}-function to retrieve the taxo
 Here is an example to match a species (A) with names of on different taxonomic levels (B1 \& B2).
 
 \begin{knitrout}\small
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{A} \hlkwb{<-} \hlstr{"gammarus roeseli"}
-\hlstd{B1} \hlkwb{<-} \hlstr{"gammarus"}
-\hlstd{B2} \hlkwb{<-} \hlstr{"gammaridae"}
-\hlstd{A_clas} \hlkwb{<-} \hlkwd{classification}\hlstd{(A,} \hlkwc{db} \hlstd{=} \hlstr{'ncbi'}\hlstd{)}
-\hlstd{B1_clas} \hlkwb{<-} \hlkwd{classification}\hlstd{(B1,} \hlkwc{db} \hlstd{=} \hlstr{'ncbi'}\hlstd{)}
-\hlstd{B2_clas} \hlkwb{<-} \hlkwd{classification}\hlstd{(B2,} \hlkwc{db} \hlstd{=} \hlstr{'ncbi'}\hlstd{)}
-\hlstd{A_clas[[}\hlnum{1}\hlstd{]]}\hlopt{$}\hlstd{Rank[}\hlkwd{tolower}\hlstd{(A_clas[[}\hlnum{1}\hlstd{]]}\hlopt{$}\hlstd{ScientificName)} \hlopt{%in%} \hlstd{B1]}
+\hlstd{R> A} \hlkwb{<-} \hlstr{"gammarus roeseli"}
+\hlstd{R> B1} \hlkwb{<-} \hlstr{"gammarus"}
+\hlstd{R> B2} \hlkwb{<-} \hlstr{"gammaridae"}
+\hlstd{R> A_clas} \hlkwb{<-} \hlkwd{classification}\hlstd{(A,} \hlkwc{db} \hlstd{=} \hlstr{'ncbi'}\hlstd{)}
+\hlstd{R> B1_clas} \hlkwb{<-} \hlkwd{classification}\hlstd{(B1,} \hlkwc{db} \hlstd{=} \hlstr{'ncbi'}\hlstd{)}
+\hlstd{R> B2_clas} \hlkwb{<-} \hlkwd{classification}\hlstd{(B2,} \hlkwc{db} \hlstd{=} \hlstr{'ncbi'}\hlstd{)}
+\hlstd{R> A_clas[[}\hlnum{1}\hlstd{]]}\hlopt{$}\hlstd{Rank[}\hlkwd{tolower}\hlstd{(A_clas[[}\hlnum{1}\hlstd{]]}\hlopt{$}\hlstd{ScientificName)} \hlopt{%in%} \hlstd{B1]}
 \end{alltt}
 \begin{verbatim}
 # [1] "genus"
 \end{verbatim}
 \begin{alltt}
-\hlstd{A_clas[[}\hlnum{1}\hlstd{]]}\hlopt{$}\hlstd{Rank[}\hlkwd{tolower}\hlstd{(A_clas[[}\hlnum{1}\hlstd{]]}\hlopt{$}\hlstd{ScientificName)} \hlopt{%in%} \hlstd{B2]}
+\hlstd{R> A_clas[[}\hlnum{1}\hlstd{]]}\hlopt{$}\hlstd{Rank[}\hlkwd{tolower}\hlstd{(A_clas[[}\hlnum{1}\hlstd{]]}\hlopt{$}\hlstd{ScientificName)} \hlopt{%in%} \hlstd{B2]}
 \end{alltt}
 \begin{verbatim}
 # [1] "family"
@@ -627,14 +627,14 @@ In this example, one can take the data for three species and aggregate them to f
 Again one can specify whether they want to use data from ITIS or NCBI. 
 The rows in the \emph{data.frame} are different communities.
 
-\begin{knitrout}\small
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{knitrout}
+\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{data}\hlstd{(dune,} \hlkwc{package} \hlstd{=} \hlstr{'vegan'}\hlstd{)}
-\hlstd{df} \hlkwb{<-} \hlstd{dune[ ,} \hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{,}\hlnum{3}\hlopt{:}\hlnum{4}\hlstd{)]}
-\hlkwd{colnames}\hlstd{(df)} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"Bellis perennis"}\hlstd{,} \hlstr{"Juncus bufonius"}\hlstd{,}
+\hlstd{R> data}\hlstd{(dune,} \hlkwc{package} \hlstd{=} \hlstr{'vegan'}\hlstd{)}
+\hlstd{R> df} \hlkwb{<-} \hlstd{dune[ ,} \hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{,}\hlnum{3}\hlopt{:}\hlnum{4}\hlstd{)]}
+\hlstd{R> colnames}\hlstd{(df)} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"Bellis perennis"}\hlstd{,} \hlstr{"Juncus bufonius"}\hlstd{,}
                   \hlstr{"Juncus articulatus"}\hlstd{)}
-\hlkwd{head}\hlstd{(df)}
+\hlstd{R> head}\hlstd{(df)}
 \end{alltt}
 \begin{verbatim}
 #    Bellis perennis Juncus bufonius Juncus articulatus
@@ -649,11 +649,11 @@ The rows in the \emph{data.frame} are different communities.
 \end{knitrout}
 
 
-\begin{knitrout}footnotesize
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{knitrout}
+\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{agg} \hlkwb{<-} \hlkwd{tax_agg}\hlstd{(df,} \hlkwc{rank} \hlstd{=} \hlstr{'family'}\hlstd{,} \hlkwc{db} \hlstd{=} \hlstr{'ncbi'}\hlstd{)}
-\hlstd{agg}
+\hlstd{R> agg} \hlkwb{<-} \hlkwd{tax_agg}\hlstd{(df,} \hlkwc{rank} \hlstd{=} \hlstr{'family'}\hlstd{,} \hlkwc{db} \hlstd{=} \hlstr{'ncbi'}\hlstd{)}
+\hlstd{R> agg}
 \end{alltt}
 \begin{verbatim}
 # 
@@ -668,10 +668,11 @@ The rows in the \emph{data.frame} are different communities.
 \end{knitrout}
 
 
-\begin{knitrout}\small
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\newpage
+\begin{knitrout}
+\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{head}\hlstd{(agg}\hlopt{$}\hlstd{x)}
+\hlstd{R> }\hlkwd{head}\hlstd{(agg}\hlopt{$}\hlstd{x)}
 \end{alltt}
 \begin{verbatim}
 #    Asteraceae Juncaceae
