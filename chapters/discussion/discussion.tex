@@ -3,17 +3,49 @@
 \label{sec:discussion} 
  
 \section{Statistical Ecotoxicology}
+% NOEC bad
+The simulation study performed in chapter~\ref{sec:usetheglm} clearly showed that common experimental designs exhibit unacceptably low statistical power \citep{szocs_statistical_2016, van_der_hoeven_power_1998}.
+This underpins the criticism accumulated over the last 30 years towards the usage of NOEC as endpoint \citep{fox_comment_2016}. 
+Nevertheless, the NOEC is still one of the standard endpoint for mesocosm experiments in higher tier risk assessment \citep{efsa_guidance_2013}.
 
+% MDD
+Recently, \emph{a posteriori} calculations of statistical power have been proposed to counteract these limitations and aid the interpretation treatment-related effects in model ecosystems \citep{brock_minimum_2015}.
+The "minimum detectable difference" (MDD) estimates the difference between to means that must exist in order to produce a statistically significant result (p \textless 0.05 \citep{gelman_difference_2006}) and could be used to ínterpret NOEC.
+However, \emph{a posteriori} calculations have been shown to have logical flaws when used for interpretation of non-significant results \citep{hoenig_abuse_2001, nakagawa_case_2004}. 
+However, conducting and report of \emph{a priori} power calculations, as performed in chapter~\ref{sec:usetheglm}, might provide researchers important information to optimize their study designs, ensuring that their experimental designs have appropriate power \citep{johnson_power_2015}.
+
+% regression design instead of anova designs
+Moreover, similar simulations can not only be used to analyse data of factorial designs, but also from regression designs.
+Indeed, simulations could be used to determine optimal designs for dose-response models and $EC_x$ determination, balancing precision and resources. 
+Regression designs are generally more powerful and provide more information than factorial designs  \citep{cottingham_knowing_2005}. 
+Regression designs in mesocosm experiments, assigning the replicates to more tested concentrations, might also provide more insights.
+However, currently statistical tools to analyse a community dose-reponse relations, providing a $EC_{x, community}$ are not well explored.
+Separate dose-response models could be fit to each species \citep{ritz_toward_2010}, leading to a $EC_x$ for each species in a mesocosm study.
+Subsequently, this $EC_x$ values could be combined and summarised using Species Sensitivity Distributions \citep{posthuma_species_2002}, providing a 
+hazardous concentration ($HC_{x, community}$) for x \% of species affected \citep{maltby_insecticide_2005}. 
+Another possibility would be to use a logistic type of ordination \citep{van_den_brink_multivariate_2003}. 
+Reduced-Rank vector generalized linear models (RR-VGLM) could be used to fit such type of models \citep{yee_reduced-rank_2003, yee_vector_2015} but they have not been applied in ecotoxicology yet.
+
+% vgl mit warton, ives und maindonald
+In a similar vein, community ecology is currently experiencing a shift towards new class of multivariate methods, incorporating statistical models for abundances across many taxa simultaneously \citep{warton_model-based_2015, warton_distance-based_2012, warton_so_2015, ter_braak_topics_2014}.
+However, this methods have not been applied frequently and their applicability to ecotoxicological data is currently unclear \citep{szocs_analysing_2015}. 
+All this models have in common, that the choice of statistical model is primarily based ...
+
+
+% censored data
 
 % discuss also non-detects, for examples (ritz groundwater, bienen,...)
-% NOEC problem seit Jahren.
-
+% model based ecology
+% UPDATE OECD GUIDELINE
+% Warton three things to consider, Maindonald, personal communication.
 
 \section{Leveraging monitoring data for ecological risk assessment}
-
+% Auf verenas paper eingehen
+% monitoring anpassen...,
 
 
 \section{Challenges to utilize 'Big Data' in ecological risk assessment}
+% open science -> Letter to the editor of schäfer
 
 
 

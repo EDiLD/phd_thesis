@@ -256,6 +256,7 @@
     giveninits=true,      % render all first and middle names as initials.  
     uniquename=init,
     uniquelist=false,     %
+    useprefix=true,       % consider the name prefix (von, van, of, da, de, della, etc.) is considered when printing the last name in citations.
     sorting=nyt,          % year, name title (for text citations), changed to
                           % sorting=nyt within each chapter for bibliography.
     sortcites             % 
@@ -310,7 +311,7 @@
 % \addbibresource[label=smallstreams]{chapters/smallstreams/references.bib}
 \addbibresource[label=taxize]{chapters/taxize/refs_taxize.bib}
 \addbibresource[label=webchem]{chapters/webchem/references.bib}
-% \addbibresource[label=discussion]{chapters/discussion/references.bib}
+\addbibresource[label=discussion]{chapters/discussion/Discussion.bib}
 
 % dummy counter for correct TOC etc
 \newcounter{dummy}
