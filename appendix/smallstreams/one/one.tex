@@ -1,0 +1,170 @@
+% -*- root: ../../../thesis.tex -*-
+
+
+
+
+
+%% -------------------------------------------------------------------------
+\section{Data Cleaning}
+Before combining into a common database, more than 30 datasets have been cleaned and homogenised separately.
+Cleaning steps comprised the following steps (Figure~\ref{fig:data_cleaning} gives a graphical overview):
+
+\begin{enumerate}
+	\item Structure: Datasets have been adjusted to the database structure.
+	\item Coordinates: Coordinates have been transformed to a common Coordinate Reference System (DHDN / 3-Grad Gauss-Krüger Zone 3 (EPSG:31467)) and duplicates merged.
+	\item Chemicals: Chemical names and identifiers have been unified using the webchem package (https://github.com/ropensci/webchem).
+	\item  Identifiers: Unique identifiers have been assigned.
+	\item Units: All concentrations have been converted to $\mu g/L$. Values below limit of quantification were set to zero (and can be used to identify non-detects).
+	\item Other meta-data: meta-data has been standardised.
+	\item Temporal resolution: The temporal resolution of the database is 1 day. Samplings below this resolution have been aggregated by the maximum daily value.
+	\item Validity Checks: Simple rules for validity checks have been implemented.
+\end{enumerate}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width = \textwidth]{appendix/smallstreams/one/data_cleaning}
+	\caption[Overview on data cleaning steps.]{Overview on data cleaning steps. After cleaning, data have been stored in a relational spatial PostgreSQL database.}
+	\label{fig:data_cleaning}
+\end{figure}
+
+
+
+%% -------------------------------------------------------------------------
+\FloatBarrier
+
+\clearpage
+\section{Overview on compiled data}
+% Overview samples
+% table generated in do_overview.R
+\input{appendix/smallstreams/one/phchoverview}
+
+
+\clearpage
+
+
+\begin{landscape}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width = \textheight]{appendix/smallstreams/one/temporal}
+	\caption{Number of sampling occasions per year and month.}
+	\label{fig:temporal}
+\end{figure}
+\end{landscape}
+
+\clearpage
+
+
+\begin{figure}[h]
+	\centering
+	\vspace{-1.5cm}
+	\includegraphics[width = 0.6\textwidth]{appendix/smallstreams/one/varclus}
+	\vspace{-1cm}
+	\caption[Complete Linkage Cluster Dendrogram of Jaccard Similarity of analysed compound spectra between federal states.]{Complete Linkage Cluster Dendrogram of Jaccard Similarity of analysed compound spectra between federal states. Abbreviations of state names according to ISO 3166-2:DE.}
+	\label{fig:varclus}
+\end{figure}
+
+
+
+\begin{figure}[h]
+	\centering
+	\vspace{-1.5cm} 
+	\includegraphics[width = 0.5\textwidth]{appendix/smallstreams/one/silhouette}
+	\caption[Average silhouette width for different cluster sizes.]{Average silhouette width for different cluster sizes of complete linkage clustering of jaccard similarity of analysed compound spectra between federal states. Two clusters showed the maximum silhouette width.}
+	\label{fig:silhouette}
+\end{figure}
+
+% Overview variables
+% table generated in do_overview.R
+\clearpage
+\footnotesize
+\input{appendix/smallstreams/one/phchvar}
+
+
+
+
+%% -------------------------------------------------------------------------
+\clearpage
+\section[Thresholds for agricultural land use and catchment size]{\texorpdfstring{Thresholds for agricultural land use and \\ catchment size}{Thresholds for agricultural land use and catchment size}}
+\begin{figure}[h]
+	\includegraphics[width = \textwidth]{appendix/smallstreams/one/ezgagrirac}
+	\caption[Raw data used for the model in equation 2 and Figure 3 of the main article.]{Raw data used for the model in equation 2 and Figure 3 of the main article. Color codes the number of RAC exceedances (on a log-scale). Grey points denote sites without any exceedance.}
+	\label{fig:ezgagrirac}
+\end{figure}
+
+
+
+%% -------------------------------------------------------------------------
+\clearpage
+\section{Effect of precipitation and season on RQ}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width = 0.8\textwidth]{appendix/smallstreams/one/precip}
+	\caption[Distribution of precipitation at sampling occasions.]{Distribution of precipitation at sampling occasions. top: at sampling date. bottom: at the day before sampling.}
+	\label{fig:precip}
+\end{figure}
+
+%%% from do_precip.R
+% 
+\clearpage
+\input{appendix/smallstreams/one/keeptab}
+\clearpage
+\input{appendix/smallstreams/one/keeptab2}
+
+\begin{figure}
+	\centering
+	\includegraphics[width = 0.95\textwidth]{appendix/smallstreams/one/coefs}
+	\caption[Graphical representation of coefficients from table \ref{tab:var_model_coef}.]{Graphical representation of coefficients from table \ref{tab:var_model_coef}. Top row: Effect of precipitation at the day before sampling and at day of sampling. Bottom row: estimates for the four Quarters. Each dot represents one compound (in the order described in table \ref{tab:var_model}). Coefficients where the CI encompasses zero are shown in gray colour. Coefficients are shown on the link scale (log for $\mu$ and logit for $\nu$).}
+	\label{fig:coefs}
+\end{figure}
+% 
+
+
+%% -------------------------------------------------------------------------
+\clearpage
+\section{Pesticides in small streams}
+%% from do_pollution.R
+\input{appendix/smallstreams/one/racdat}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width = 0.8\textwidth]{appendix/smallstreams/one/prac_ex}
+	\caption[Cumulative distribution of the number sites exceeding RAC.]{Cumulative distribution of sites exceeding RAC. Dotted lines indicate fraction of sites exceeding a RQ of 1 and 0.1. 23\% of the sites showed no detection of compounds with available RAC values and are not shown due to logarithmic x-axis.}
+	\label{fig:prac_ex}
+\end{figure}
+
+
+\begin{landscape}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width = 0.8\textheight]{appendix/smallstreams/one/pdetects}
+	\caption[Proportion of samples with detects in small streams.]{Proportion of samples with detects in small streams. Only Compounds with more than 100 samples and 15\% of detects are shown.}
+	\label{fig:pdetects}
+\end{figure}
+\end{landscape}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width = 0.9\textwidth]{appendix/smallstreams/one/pmix}
+	\caption{Distribution of the number of quantified compounds in the samples.}
+	\label{fig:pmix}
+\end{figure}
+
+
+\clearpage
+\section{Catchment size - stream width relationships}
+We studied the relationship between catchment size based on three datasets containing this informations:
+Data delivered by the federal state Thuringia, \citet{vos_organic_2015} and \citet{fernandez_effects_2015} (both from Rhineland-Palatinate).
+We fitted to each dataset separately and to the combined dataset a power-function.
+The resulting models are shown in Figure \ref{fig:size_width}. 
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width = 0.9\textwidth]{appendix/smallstreams/one/width_size}
+		\caption[Relationship between catchment size and stream width.]{Relationship between catchment size and stream width. A power function has been fitted to each dataset separately and the combined dataset (black line and equation). The gray rectangle marks the estimated with for a catchment size of 25km\textsuperscript{2}.}
+	\label{fig:size_width}
+\end{figure}
+
+\clearpage
+\section{References}
+\printbibliography[heading=none]

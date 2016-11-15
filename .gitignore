@@ -18,6 +18,8 @@
 # tikz
 *.dpth
 *.md5
+*.run.xml
+tikz/*
 
 # Sublime
 *.sublime-project

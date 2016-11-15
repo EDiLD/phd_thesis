@@ -209,7 +209,7 @@ A total of 18 mesocosms have been sampled from 6 treatments (Control (n = 4), 0.
 
 \begin{figure}
   \centering
-  \includegraphics[width = 0.7\textwidth]{chapters/usetheglm/example.pdf}
+  \includegraphics[width = 0.8\textwidth]{chapters/usetheglm/example.pdf}
   \caption[Example data from Brock et al. (2015).]{Data from \citet{brock_minimum_2015} (dots). 
   Predicted values (triangles) and 95\% Wald Z or t confidence intervals from the fitted models (vertical lines) are given beside.
   Horizontal bars above indicate treatments statistically significant different from the control group (Dunnett contrasts).
@@ -278,27 +278,31 @@ For detecting a treatment effect,$GLM_{qp}$ had the highest power, followed by $
 For our simulation design (reduction in abundance by 50\%) a sample size per treatment of n = 9 was needed to achieve a power greater than 80\%.
 At small sample sizes (n = {3, 6}) and low abundances ($\mu_C$ = {2, 4}) many of the negative binomial models ($GLM_{nb}$ and $GLM_{npb}$) did not converge to a solution (convergence rate \textless 85\% of the simulations, Supplement  \ref{ap:usetheglm:tables}). 
 
-\begin{figure}
-  \centering
-  \includegraphics[width = \textwidth]{chapters/usetheglm/p_glob_c.pdf}
-  \caption[Count data simulations: Type I error and Power for the test of a treatment effect.]{Count data simulations: Type I error (top) and Power (bottom) for the test of a treatment effect.
-  Type I errors are displayed on a logarithmic scale.
-  Power levels for models with inflated Type I errors ($GLM_P$ and $GLM_{qp}$) are shown for completeness.
-  For n = \{3, 6\} and $\mu_C$ = \{2, 4\} less than 85\% of $GLM_{nb}$ and $GLM_{npb}$ models did converge.
-  Dashed horizontal line denotes the nominal I error rate at $\alpha = 0.05$.
-  }
-  \label{fig:usetheglm:p_glob_c}
-\end{figure}
-
 For LOEC determination $GLM_{nb}$ and $GLM_{p}$ showed an increased Type I error and all other methods were slightly conservative.
 The inferences on LOEC generally showed less power.
 $LM$ showed a mean reduction of 20.7\% and $GLM_{qp}$ of 24.3 \%.
 Power to detect the LOEC was highest for $GLM_{qp}$. 
 $LM$ and $WT$ showed less power, with $WT$ having no power to detect the LOEC at low sample sizes (Figure \ref{fig:usetheglm:p_loec_c}).
 
+\begin{landscape}
 \begin{figure}
   \centering
-  \includegraphics[width = \textwidth]{chapters/usetheglm/p_loec_c.pdf}
+  \includegraphics[width = 1.05\textwidth]{chapters/usetheglm/p_glob_c.pdf}
+  \caption[Count data simulations: Type I error and Power for the test of a treatment effect.]{Count data simulations: Type I error (top) and Power (bottom) for the test of a treatment effect.
+  Type I errors are displayed on a logarithmic scale.
+  Power levels for models with inflated Type I errors ($GLM_P$ and $GLM_{qp}$) are shown for completeness. 
+  For n = \{3, 6\} and $\mu_C$ = \{2, 4\} less than 85\% of $GLM_{nb}$ and $GLM_{npb}$ models did converge.
+  Dashed horizontal line denotes the nominal I error rate at $\alpha = 0.05$.
+  }
+  \label{fig:usetheglm:p_glob_c}
+\end{figure}
+\end{landscape}
+
+
+\begin{landscape}
+\begin{figure}
+  \centering
+  \includegraphics[width = 1.05\textwidth]{chapters/usetheglm/p_loec_c.pdf}
   \caption[Count data simulations: Type I error and Power for determination of LOEC.]{Count data simulations: Type I error (top) and Power (bottom) for determination of LOEC.
   Type I errors are displayed one a logarithmic scale.
   Power levels for models with inflated Type I error are shown for completeness.
@@ -307,6 +311,7 @@ $LM$ and $WT$ showed less power, with $WT$ having no power to detect the LOEC at
   }
   \label{fig:usetheglm:p_loec_c}
 \end{figure}
+\end{landscape}
 
 
 \subsubsection{Binomial data}
@@ -316,9 +321,17 @@ In addition, $GLM_{bin}$ exhibited the greatest power for testing the treatment 
 This was especially apparent at low sample sizes (n = 3), with up to 27\% higher power compared to LM.
 However, the differences between methods quickly vanished with increasing samples sizes (Figure \ref{fig:usetheglm:p_glob_p}).
 
+For inference on LOEC we found that all methods were slightly conservative.
+$WT$ was generally more conservative and $GLM_{bin}$ especially at low effect sizes ($p_E > 0.7$).
+Inference on LOEC was not as powerful as inference on the general treatment effect.
+Contrary to the general treatment effect, $LM$ showed the higher power than $GLM_{bin}$ at small sample sizes (n = {3, 6}).
+$WT$ had no power for n = 3 and showed less power in the other simulation runs (Figure \ref{fig:usetheglm:p_loec_p}).
+
+
+\begin{landscape}
 \begin{figure}
   \centering
-  \includegraphics[width = \textwidth]{chapters/usetheglm/p_glob_p.pdf}
+  \includegraphics[width = 1.05\textwidth]{chapters/usetheglm/p_glob_p.pdf}
   \caption[Binomial data simulations: 
   Type I error and  power for the test of a treatment effect.]{
   Binomial data simulations: Type I error (top) and  power (bottom) for the test of a treatment effect. 
@@ -326,16 +339,12 @@ However, the differences between methods quickly vanished with increasing sample
   }
   \label{fig:usetheglm:p_glob_p}
 \end{figure}
+\end{landscape}
 
-For inference on LOEC we found that all methods were slightly conservative.
-$WT$ was generally more conservative and $GLM_{bin}$ especially at low effect sizes ($p_E > 0.7$).
-Inference on LOEC was not as powerful as inference on the general treatment effect.
-Contrary to the general treatment effect, $LM$ showed the higher power than $GLM_{bin}$ at small sample sizes (n = {3, 6}).
-$WT$ had no power for n = 3 and showed less power in the other simulation runs (Figure \ref{fig:usetheglm:p_loec_p}).
-
+\begin{landscape}
 \begin{figure}
   \centering
-  \includegraphics[width = \textwidth]{chapters/usetheglm/p_loec_p.pdf}
+  \includegraphics[width = 1.05\textwidth]{chapters/usetheglm/p_loec_p.pdf}
   \caption[Binomial data simulations: 
   Type I error and power for the test for determination of LOEC.]{
   Binomial data simulations: 
@@ -344,6 +353,8 @@ $WT$ had no power for n = 3 and showed less power in the other simulation runs (
   }
   \label{fig:usetheglm:p_loec_p}
 \end{figure}
+\end{landscape}
+
 
 
 %% ----------------------------------------------------------------------------
