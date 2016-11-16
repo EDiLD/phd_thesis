@@ -2,71 +2,136 @@
 \chapter{General Discussion and outlook}
 \label{sec:discussion} 
  
-\section{Statistical Ecotoxicology}
+\section{Topics in Statistical Ecotoxicology}
 % NOEC bad
 The simulation study performed in chapter~\ref{sec:usetheglm} clearly showed that common experimental designs exhibit unacceptably low statistical power \citep{szocs_statistical_2016, van_der_hoeven_power_1998}.
-This underpins the criticism accumulated over the last 30 years towards the usage of NOEC as endpoint \citep{fox_comment_2016}. 
-Nevertheless, the NOEC is still one of the standard endpoint for mesocosm experiments in higher tier risk assessment \citep{efsa_guidance_2013}.
+This underpins the criticism accumulated over the last 30 years towards the usage of NOEC as an endpoint for ERA \citep{fox_comment_2016}. 
+Nevertheless, the NOEC is still one of the standard endpoints of mesocosm experiments in higher tier risk assessment \citep{efsa_guidance_2013}.
 
 % MDD
 Recently, \emph{a posteriori} calculations of statistical power have been proposed to counteract these limitations and aid the interpretation treatment-related effects in model ecosystems \citep{brock_minimum_2015}.
-The "minimum detectable difference" (MDD) estimates the difference between to means that must exist in order to produce a statistically significant result (p \textless 0.05 \citep{gelman_difference_2006}) and could be used to ínterpret NOEC.
+The "minimum detectable difference" (MDD) estimates the difference between two means that must exist in order to produce a statistically significant result (p \textless 0.05 \citep{gelman_difference_2006}) and could be used to ínterpret NOEC.
 However, \emph{a posteriori} calculations have been shown to have logical flaws when used for interpretation of non-significant results \citep{hoenig_abuse_2001, nakagawa_case_2004}. 
-However, conducting and report of \emph{a priori} power calculations, as performed in chapter~\ref{sec:usetheglm}, might provide researchers important information to optimize their study designs, ensuring that their experimental designs have appropriate power \citep{johnson_power_2015}.
+However, conducting and reporting of \emph{a priori} power calculations, as performed in chapter~\ref{sec:usetheglm}, might provide researchers important information to optimise their study designs, ensuring that their experimental designs have appropriate power and can lead to interpretable results \citep{johnson_power_2015}.
 
 % regression design instead of anova designs
-Moreover, similar simulations can not only be used to analyse data of factorial designs, but also from regression designs.
-Indeed, simulations could be used to determine optimal designs for dose-response models and $EC_x$ determination, balancing precision and resources. 
+Moreover, similar simulations could not only be used to study factorial designs but also regression designs.
+Indeed, simulations could be used to determine the optimal design for dose-response models and $EC_x$ determination, balancing precision and usage of resources. 
 Regression designs are generally more powerful and provide more information than factorial designs  \citep{cottingham_knowing_2005}. 
-Regression designs in mesocosm experiments, assigning the replicates to more tested concentrations, might also provide more insights.
-However, currently statistical tools to analyse a community dose-reponse relations, providing a $EC_{x, community}$ are not well explored.
+Regression designs in mesocosm experiments, assigning the replicates to more tested concentrations, might also provide additional insights.
+Currently, statistical tools to analyse a community dose-response relations, providing a $EC_{x, mesocosm}$ are not well explored.
 Separate dose-response models could be fit to each species \citep{ritz_toward_2010}, leading to a $EC_x$ for each species in a mesocosm study.
-Subsequently, this $EC_x$ values could be combined and summarised using Species Sensitivity Distributions \citep{posthuma_species_2002}, providing a 
-hazardous concentration ($HC_{x, community}$) for x \% of species affected \citep{maltby_insecticide_2005}. 
+Subsequently, these $EC_x$ values could be combined and summarised using Species Sensitivity Distributions \citep{posthuma_species_2002}, providing a 
+hazardous concentration ($HC_{x, mesocosm}$) for x \% of species affected in mesocosms \citep{maltby_insecticide_2005}. 
 Another possibility would be to use a logistic type of ordination \citep{van_den_brink_multivariate_2003}. 
-Reduced-Rank vector generalized linear models (RR-VGLM) could be used to fit such type of models \citep{yee_reduced-rank_2003, yee_vector_2015} but they have not been applied in ecotoxicology yet.
+Reduced-Rank vector generalised linear models (RR-VGLM) could be used to fit such type of models \citep{yee_reduced-rank_2003, yee_vector_2015}, but they have not been applied in ecotoxicology yet.
 
 % vgl mit warton, ives und maindonald
-In a similar vein, community ecology is currently experiencing a shift towards new class of multivariate methods, incorporating statistical models for abundances across many taxa simultaneously \citep{warton_model-based_2015, warton_distance-based_2012, warton_so_2015, ter_braak_topics_2014}.
-However, this methods have not been applied frequently and their applicability to ecotoxicological data is currently unclear \citep{szocs_analysing_2015}. 
-All this models have in common, that the choice of statistical model is primarily based ...
+In a similar vein, community ecology is currently experiencing a shift towards a new class of multivariate methods, incorporating statistical models for abundances across many taxa simultaneously \citep{warton_model-based_2015, warton_distance-based_2012, warton_so_2015, ter_braak_topics_2014}.
+However, these methods have not been applied frequently and their applicability to ecotoxicological data is currently unclear \citep{szocs_analysing_2015}. 
+All these models have in common, that the choice of statistical model is primarily based on the grounds of data properties. 
+
+In chapter~\ref{sec:usetheglm} we showed, that using statistical models that fit the type of data analysed, can provide higher statistical power.
+Simultaneously, \citet{ives_for_2015} published a study reaching contradictory conclusions (\emph{"For testing the significance of regression coefficients, go ahead and log-transform count data"}). 
+It must be noted, that the simulation designs differed significantly between both studies: We used a low-replicated factorials design, whereas \citet{ives_for_2015} simulated well-replicated regression designs with two predictors.
+We both found that the negative-binomial GLMs were surprisingly prone to Type I errors, although the assumptions of this model closely matched the data.
+However, as we show in chapter~\ref{sec:usetheglm}, the parametric bootstrap might provide a solution to this problem, but is computationally intensive and not widely used.
+The parametric bootstrap is akin to Bayesian methods \citep{gelman_bayesian_2014}, which might also provide an alternative.
+The main point, leading \citet{ives_for_2015} to his conclusions, was that GLM showed undesirable Type I errors in case of correlated predictors, a case not commonly encountered in ecotoxicology and not studied by us.
+Recently, the current state-of-the-art was discussed by \citet{warton_three_2016}: i) choose the statistical model based on the grounds of data properties; ii) fix Type I errors using parametric bootstrap or resampling; iii) take mean-variance relationship into account.
+However, there are still open questions regarding the use of GLMs for count data (see e.g. raised by Prof. John Maindonald, \url{http://uni-ko-ld.de/fb}).
+To diagnose issues such as overdispersion and excess of zeros in count data models new tools like the recently developed \emph{"Rootograms"} \citep{kleiber_visualizing_2016} provide useful additions.
+
+In chapter~\ref{sec:smallstreams} we applied new statistical modelling techniques that explicitly consider the limit of quantification.
+The currently most often used methods to deal with such censored data is to omit or substitute non-detects. 
+Censoring is very common when dealing with chemical and ecological datasets, but rarely taken into account \citep{fox_ecological_2015}. 
+Recent examples from ecotoxicology and environmental chemistry show, that omission \citep{hansen_re-evaluation_2015}, randomization \citep{goulson_neonicotinoids_2015} or substitution by a fixed value \citep{helsel_much_2010, helsel_fabricating_2006} can lead to biased results.
+\citet{hansen_re-evaluation_2015} used a Tobit regression \citep{tobin_estimation_1958} that takes the amount of censored data into account, assuming a (log-) normal distribution of concentrations.
+In chapter~\ref{sec:smallstreams} we used a slightly different approach, using a zero adjusted gamma model (ZAGA).
+We modelled measured concentrations as two separate processes, generating i) zero values and ii) non-zero values assuming a gamma distribution of concentrations.
+In ecological statistics this type models is also known as \emph{hurdle} models \citep{martin_zero_2005}. 
+The log-normal Tobit model has not probability mass at zero, whereas ZAGA model has a probability at zero. 
+Generally, the difference between Tobit and two-part models are small \citep{min_modeling_2002}. 
+The same holds for differences between the lognormal and Gamma distribution. 
+Indeed, a tobit-like model could be also fitted assuming a Gamma distribution \citep{sigrist_using_2010}.
+
+Given the inherent variability of chemical measurements in streams \citep{wittmer_significance_2010} and the associated uncertainty of the absolute value of concentration, we still can learn from the process generating values above LOQ, even if the measurement misses the peak concentrations. 
+This is also highlighted by the results of chapter~\ref{sec:smallstreams}, with estimated coefficients for the absolute concentration showing much larger uncertainty than coefficients for the probability of exceeding LOQ (Figure~\ref{fig:ss:fig5}). 
+Currently, models explicitly taking the censored nature of chemical monitoring data are not well explored and seldom applied.
+Further research on those might provide useful information for analysing monitoring data, assessing the chemical status and trends thereof.
 
 
-% censored data
 
-% discuss also non-detects, for examples (ritz groundwater, bienen,...)
-% model based ecology
-% UPDATE OECD GUIDELINE
-% Warton three things to consider, Maindonald, personal communication.
+
+
+
 
 \section{Leveraging monitoring data for ecological risk assessment}
 % Auf verenas paper eingehen
 % monitoring anpassen...,
 
+% Neonics
+% Mal bei stehle schauen...
+
 % auf biologische daten eingehen
 % monitoring anpassen / synchronisieren
 
+% check van den brink 2016
 
-\section{Challenges to utilize 'Big Data' in ecological risk assessment}
-% open science -> Letter to the editor of schäfer
+% monitoring essential for priorisation => brack 2017
+
+% Auf die belastungssituation eingehen.
 
 
+\section{Challenges to utilise 'Big Data' in ecological risk assessment}
+
+Effect assessment and environmental monitoring produce huge amounts of data. 
+However, the profoundness of ecological risk assessment often determined by the available data \citep{van_den_brink_new_2016}.
+Useful data for ERA is currently spread over several largely unconnected databases. 
+E.g. ecotoxicity data is spread over database maintained by the U.S. EPA (ECOTOX, \citet{u.s._epa_ecotox_2016}), the University of Hertfordshire (PPDB, \citet{lewis_international_2016}), the German Environment Agency (ETOX, \citet{umweltbundesamt_etox:_2016}) and others. 
+Chemical information is similarly spread over several databases, like PubChem \citep{kim_pubchem_2016} or Chemspider \citep{pence_chemspider:_2010}.
+Additional complications arise because these databases use different identifiers for chemical substances. 
+The U.S. EPA \citep{u.s._epa_ecotox_2016} uses solely the CAS-Number for identification, whereas other databases uses SMILES \citep{weininger_smiles._1990} or InChI \citep{heller_inchi_2015}. 
+Integrating these databases is a current challenge in ERA.
+Projects like the NORMAN EMPODAT database \citep{brack_norman_2012} or the STOFF-IDENT (\citeauthor{huckele_risk_2013} \cite*{huckele_risk_2013}, \url{http://uni-ko-ld.de/fc}) are first attempts for such an integration.
+
+The webchem package, presented in chapter~\ref{sec:webchem}, can foster such an integration. 
+However, to be efficient such data must be accessible. 
+Unfortunately, major parts of data produce for environmental risk assessment are not available \citep{schafer_letter_2013}. 
+Recently, it has been demonstrated that data from the European Registration, Evaluation, Authorisation, and Restriction of Chemicals (REACH) database can be used to improve the characterisation of ecotoxicity in life cycle assessment (LCA) \citep{muller_exploring_2016}.
+Although, this database hosts data used risk assessment it is not available in a convenient way.
+Indeed, a systematic data collection contravenes the legal usage of the REACH database (\url{http://uni-ko-ld.de/fd}).
+This may be also the reason, why the quality of chemical property data submitted this database is currently unknown \citep{stieger_assessing_2014, muller_exploring_2016}. 
+
+The software tools described in chapters~\ref{sec:webchem} and \ref{sec:taxize} assist researchers handling and cleaning their data. 
+Aggregating taxonomic data to a higher taxonomic level is a common task when analysing data from mesocosm experiments or from field sampling.
+Taxize facilitates the retrieval of taxonomic classification, which is the basis also for more sophisticated aggregation methods \citep{cuffney_ambiguous_2007}. 
+Today, taxize has been used in more than thirty scientific publications.
+Recent applications of the webchem package, have been demonstrated by \citet{munch_door_2016} and \citet{ranke_jranke/chents_2016}. 
+\citet{munch_door_2016} compiled a database for odorant responses of \textit{Drosophila melanogaster} and webchem \emph{"likely saved [him] hundreds of working hours"}. 
+\citet{ranke_jranke/chents_2016} is using webchem to compile and store chemical information for various usages. 
+For the data analyses performed in chapter~\ref{sec:smallstreams}, we needed to integrate monitoring, chemical and risk assessment data.
+
+These examples show that researchers have been missing such tools in the past.
+If they can reduce the time consumed for data retrieval and handling, they could focus more on the quintessence of their research. 
+Moreover, is an integration of different data sources crucial for an integrated ecological risk assessment.
 
 
+\clearpage
 \section{Conclusions}
+
+% UPDATE OECD GUIDELINE
 
 
 % data will get more important....
 % Dealing with censored data?
 
 % ue of reach as an example
-% use of censored data => e.g goulsen or ritz
-
-%% Obwohl diss spezieller auf ökotox ausgerichtet, auch nützlich für andere disziplinen (z.b. Münch, twitter,...)
-%% 
 
 
-%% randopm effect multivariate analysis is missing and needed!
+
+
 %% ----------------------------------------------------------------------------
+\clearpage
 \section{References}
 \printbibliography[heading=none]
