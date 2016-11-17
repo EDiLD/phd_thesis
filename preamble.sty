@@ -263,7 +263,7 @@
     maxbibnames=99,       % all names in biobilography
     maxcitenames=2,       % max 2 name in citation
     giveninits=true,      % render all first and middle names as initials.  
-    uniquename=init,
+    uniquename=false,     % deal ambiguous names, see http://tex.stackexchange.com/questions/67033/biblatex-doesnt-cite-bibliography-uniformly
     uniquelist=false,     %
     useprefix=true,       % consider the name prefix (von, van, of, da, de, della, etc.) is considered when printing the last name in citations.
     sorting=nyt,          % year, name title (for text citations), changed to
@@ -313,6 +313,9 @@
 %% force fullcite to use maxnames (used in publications.tex)
 \preto\fullcite{\AtNextCite{\defcounter{maxnames}{99}}}
 
+% \renewcommand\nametitledelim{\ifin{textcite}{\addspace}{\addspace}}
+
+
 %% add bib files
 \addbibresource[label=publications]{frontbackmatter/publications.bib}
 \addbibresource[label=introduction]{chapters/introduction/Introduction.bib}
@@ -321,6 +324,9 @@
 \addbibresource[label=taxize]{chapters/taxize/refs_taxize.bib}
 \addbibresource[label=webchem]{chapters/webchem/references.bib}
 \addbibresource[label=discussion]{chapters/discussion/Discussion.bib}
+
+
+
 
 % dummy counter for correct TOC etc
 \newcounter{dummy}
