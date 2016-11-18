@@ -1,4 +1,4 @@
-% -*- root: thesis.tex -*-
+% -*- root: ./thesis.tex -*-
 
 %----------------------------------------------------------------------------
 % document options
@@ -313,7 +313,13 @@
 %% force fullcite to use maxnames (used in publications.tex)
 \preto\fullcite{\AtNextCite{\defcounter{maxnames}{99}}}
 
-% \renewcommand\nametitledelim{\ifin{textcite}{\addspace}{\addspace}}
+%%% set german for Title case in citation in German language
+\DeclareCaseLangs{%     
+  american,british,canadian,english,australian,newzealand,USenglish,UKenglish,
+  german}
+% note that langid must be set in he .bib to german to identify the titles..
+
+
 
 
 %% add bib files

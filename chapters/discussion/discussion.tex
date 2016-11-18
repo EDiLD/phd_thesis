@@ -1,6 +1,8 @@
 % -*- root: ../../thesis.tex -*-
 \chapter{General Discussion and outlook}
 \label{sec:discussion} 
+%%! Generell mehr auf die Ergebnisse eingehen...
+%! brack 2017 einbauen
  
 \section{Topics in Statistical Ecotoxicology}
 % NOEC bad
@@ -54,7 +56,7 @@ The log-normal Tobit model has no probability mass at zero, whereas ZAGA model h
 Generally, the difference between Tobit and two-part models are small \citep{min_modeling_2002} and the same holds for differences between the log-normal and Gamma distribution. 
 Indeed, a Tobit-like model could be also fitted assuming a Gamma distribution \citep{sigrist_using_2010}.
 
-Grab sampling likely underestimates chemical concentrations \citep{xing_influences_2013} because of short term peak concentrations \citep{wittmer_significance_2010}.
+Grab sampling likely underestimates chemical concentrations because of short term peak concentrations \citep{xing_influences_2013, stehle_probabilistic_2013}.
 Although this leads to an increased variation in chemical measurements, we still can learn from the process generating values above LOQ, even if the absolute value is subject to error. 
 This is also highlighted by the results of chapter~\ref{sec:smallstreams}, with estimated coefficients for the absolute concentration showing much larger uncertainty than coefficients for the probability of exceeding LOQ (Figure~\ref{fig:ss:fig5}). 
 Currently, models explicitly taking the censored nature of chemical monitoring data are not well explored and seldom applied.
@@ -64,26 +66,69 @@ Further research on those is needed and might provide useful information for ana
 
 
 \section{Leveraging monitoring data for ecological risk assessment}
+%! das ist ein bisschen holperig hier...
+% Monitoring allgemein
+In chapter~\ref{sec:smallstreams} we compiled and analysed monitoring data  leading to the currently most extensive dataset available for Germany. 
+We demonstrated, that in the current monitoring scheme small streams below $10~km^2$are underrepresented (Figure~\ref{fig:ss:fig3}, top).
+Given their importance, we must admit that we currently do not have much knowledge about these and their threats \citep{biggs_importance_2016, lorenz_specifics_2016}. 
+To fill these gaps, monitoring networks need to be adapted to give a better representation of small streams. 
 
-In chapter~\ref{sec:smallstreams} we compiled and analysed 
+% lentic systems
+We analysed only data from small streams, however, data on lentic systems is even more scarce. 
+Although, more the 95\% of German standing waters are lentic small waterbodies a recent meta-analysis revealed that only 5\% of studies investigating pesticides in freshwaters were performed on lentic small water bodies \citet{lorenz_specifics_2016}.
+The data compiled in chapter~\ref{sec:smallstreams} comprised also lentic small water bodies.
+However, the query to the federal states revealed that there are currently no such monitoring data available \citep{brinke_umsetzung_2016}. 
+This highlights the urgent need to adapt monitoring schemes to also include small standing waters.
+
+% uniform
+Our results revealed that chemical monitoring schemes within Germany differed largely in terms of spatio-temporal coverage and compound spectra between federal states. 
+Similarly, \citet{malaj_organic_2014} showed big differences between European countries.
+Overall, a homogenisation and standardisation of chemical monitoring programs  would enhance the comparability and the possibility for a large-scale assessment.
+
+% pesticide dynamiken
+Our results revealed that the signal from agricultural pesticides can be detected down to a small percentage of agriculture within the catchment (Figure~\ref{fig:ss:fig4}).
+Thus, we can conclude that if there is agriculture with a catchment, it is very likely that pesticides will be applied, enter the streams and are detected.
+This has implications for selection of reference sites for environmental monitoring, that need to have no agricultural influence.
+We studied only the influence of agricultural non-point sources, however, point-sources like wastewater treatment plants can also contribute to pesticide pollution of streams \citep{bunzel_landscape_2014}.
+
+We were to detect a small, but distinct increase of risks after precipitation events. 
+This is in line with findings that pesticides mainly enter surface waters via edge-of-field runoff \citep{schulz_comparison_2001}.
+Our results suggest that absolute measured concentrations are subject to a high error due to the sampling process and adds evidence that current monitoring schemes, largely unconnected from precipitation events underestimate pesticide risks \citep{xing_influences_2013, stehle_probabilistic_2013}. 
+Automatic event-driven samplers in small streams could provide knowledge on pesticide risk dynamics that are currently unknown. 
 
 
-% Auf verenas paper eingehen
-% monitoring anpassen...,
+% Risiko / ERA
+Monitoring data can provide an opportunity to inform ERA after authorization and could possibly trigger a refinement of the assessment \citep{knauer_pesticides_2016}. 
+However, current monitoring mainly addresses streams bigger than considered in ERA.
+Our results indicated that small streams are frequently exposed to high risks from pesticides.
+However, to provide a suitable feedback for ERA small agricultural streams must be integrated into environmental monitoring schemes. 
+Moreover, because of the outlined shortcomings of chemical monitoring data, absolute values are not comparable. 
+As the measurements within the current monitoring schemes provide underestimations all exceedances of risk thresholds represent an unacceptable risk. 
 
-% Neonics
+Risk thresholds in chapter~\ref{sec:smallstreams} were particularly exceeded for the organophosphate Chlorpyrifos and neonicotinoid substances. 
+This adds to the existing evidence that this particular class of insecticides poses currently a high threat to freshwaters and stricter regulations are warranted \citep{morrissey_neonicotinoid_2015}. 
+The high number of exceedances shows that ERA for these substances was not accurate enough and lead to risks for the environment. 
+Recent studies investigating large-scale pesticide risks did not consider neonicotinoid insecticides \citep{malaj_organic_2014, stehle_pesticide_2015} and likely missed these risks. 
+However, this shows also that the analysed spectrum is an important driver of detected compounds \citep{schreiner_pesticide_2016, malaj_organic_2014}, that must be taken into account when evaluating monitoring data for risk assessment. 
+The WFD currently considers on a few (45), relatively well-known substances \citep{european_union_directive_2013} and a status assessment based on EQS likely missed the actual chemical pollution \citep{moschet_how_2014}. 
+Recently, neonicotinoid substances have been incorporated in the watch list of substances for Union-wide monitoring \citep{european_union_commission_2015}, so that more information on the environmental fate of compound group will be available. 
+Monitoring data provide also valuable information for the priorisation of emerging pollutants and future monitoring with the WFD \citep{brack_towards_2017}.
+
+% Biological Monitoring
+Additionally, monitoring under the WFD is also performed for biological components of freshwaters and a combination with pesticide exposure data might provide valuable insights into large-scale field effects of chemical substances \citep{schipper_deriving_2014}.
+Currently, chemical and biological monitoring are not synchronised.
+On a continental scale, \citet{malaj_organic_2014} was able to compile ecological status data only for 5\% of sites with chemical measurements.
+For the dataset presented in chapter~\ref{sec:smallstreams} we found a spatial match with biological monitoring for 60\% of sites \citep{brinke_umsetzung_2016}.
+However, as biological data in Germany is sampled at lower frequencies (often less than once per year) a spatio-temporal match would result in much less accordance. 
+Synchronising these samplings in a future monitoring would possibly enable to assess large-scale post-authorization field effects of chemical substances.
+
+
+
+
 % Mal bei stehle schauen...
-
-% auf biologische daten eingehen
-% monitoring anpassen / synchronisieren
-
 % check van den brink 2016
 
-% monitoring essential for priorisation => brack 2017
 
-% Auf die belastungssituation eingehen.
-
-% More than 29% of the 25,872 eshwater species assessed for the IUCN Red List of Threatened SpeciesTM (‘Red List’) are globally threatened with extinction (IUCN, 2015)
 
 
 \section{Challenges utilising 'Big Data' in ecological risk assessment}
@@ -94,10 +139,10 @@ Useful data for ERA is currently spread over several largely unconnected databas
 E.g. ecotoxicity data is spread over database maintained by the U.S. EPA (ECOTOX, \citet{u.s._epa_ecotox_2016}), the University of Hertfordshire (PPDB, \citet{lewis_international_2016}), the German Environment Agency (ETOX, \citet{umweltbundesamt_etox:_2016}) and others. 
 Chemical information is similarly spread over several databases, like PubChem \citep{kim_pubchem_2016} or Chemspider \citep{pence_chemspider:_2010}.
 Additional complications arise because these databases use different identifiers for chemical substances. 
-The U.S. EPA \citep{u.s._epa_ecotox_2016} uses solely the CAS-Number for identification, whereas other databases uses SMILES \citep{weininger_smiles._1990} or InChI and InChIKeys\citep{heller_inchi_2015}. 
+The U.S. EPA \citep{u.s._epa_ecotox_2016} uses solely the CAS-Number for identification, whereas other databases uses SMILES \citep{weininger_smiles._1990} or InChI and InChIKeys \citep{heller_inchi_2015}. 
 Integrating these databases is currently a challenge in ERA, which is complicated by ambiguous identifiers, e.g. should different salts be considered separately for aquatic risk assessment?
 Projects like the NORMAN EMPODAT database \citep{brack_norman_2012} or the STOFF-IDENT (\citeauthor{huckele_risk_2013} \cite*{huckele_risk_2013}, \url{http://uni-ko-ld.de/fc}) are first attempts for such an integration.
-Integration monitoring data and risk assessment data is a mandatory requirement for landscape level ecotoxicology and risk assessment \citep{cairns_developing_1996, focks_challenge:_2014} and needed for model validation \citep{knabel_regulatory_2012}. 
+Integration monitoring data and risk assessment data is a mandatory requirement for landscape level ecotoxicology and risk assessment \citep{cairns_developing_1996, focks_challenge:_2014} and needed for an improved model development and validation \citep{knabel_regulatory_2012, brock_aquatic_2006}. 
 Chapter~\ref{sec:smallstreams} is an example for such an integration, but represents only a preliminary assessment and spatial-temporal risk dynamics should be further investigated. 
 
 The webchem package, presented in chapter~\ref{sec:webchem}, can foster such an integration, however data must also be accessible. 
@@ -106,6 +151,8 @@ Recently, it has been demonstrated that data from the European Registration, Eva
 Although this database hosts data used risk assessment, it is not available in a convenient way.
 Indeed, a systematic data collection contravenes the legal usage of the REACH database (\url{http://uni-ko-ld.de/fd}).
 This may be also the reason, why the quality of chemical property data submitted this database is currently unknown \citep{stieger_assessing_2014, muller_exploring_2016}. 
+Webchem currently can retrieve data from 11 data sources. 
+However many other data sources are available and implementation of more than 15 other data sources is in the pipeline will be implemented if time permits.
 
 The software tools described in chapters~\ref{sec:webchem} and \ref{sec:taxize} assist researchers handling and cleaning their data. 
 Aggregating taxonomic data to a higher taxonomic level is a common task when analysing data from mesocosm experiments or from field sampling.
