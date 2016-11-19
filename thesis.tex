@@ -30,32 +30,33 @@
 \input{frontbackmatter/titlepage.tex}
 % \input{frontbackmatter/titlepage_accepted.tex}
 
-% % ----------------------------------------------------------------------------
-% % Acknowledgements
-% \cleardoublepage
-% \def\dir{frontbackmatter}
-% \input{\dir/acknowledgements.tex}
+% ----------------------------------------------------------------------------
+% Acknowledgements
+\cleardoublepage
+\def\dir{frontbackmatter}
+\input{\dir/acknowledgements.tex}
 
-% %----------------------------------------------------------------------------
-% % Abstract
-% \cleardoublepage
-% \def\dir{frontbackmatter}
-% \input{\dir/abstract.tex}
+%----------------------------------------------------------------------------
+% Abstract
+\cleardoublepage
+\def\dir{frontbackmatter}
+\input{\dir/abstract.tex}
 
-% %----------------------------------------------------------------------------
-% % Publications
-% \cleardoublepage
-% \def\dir{frontbackmatter}
-% \input{\dir/publications.tex}
+%----------------------------------------------------------------------------
+% Publications
+\cleardoublepage
+\def\dir{frontbackmatter}
+\input{\dir/publications.tex}
 
-% %----------------------------------------------------------------------------
-% % Contents
-% \cleardoublepage
-% \def\dir{frontbackmatter}
-% \input{\dir/contents.tex}
+%----------------------------------------------------------------------------
+% Contents
+\cleardoublepage
+\setstretch{1}
+\def\dir{frontbackmatter}
+\input{\dir/contents.tex}
 
 
-
+\setstretch{1.12}
 \mainmatter
 
 %----------------------------------------------------------------------------
@@ -64,11 +65,11 @@
 \def\dir{chapters/introduction}
 \input{\dir/introduction.tex}
 
-% %----------------------------------------------------------------------------
-% % Ecotoxicology is not normal
-% \cleardoublepage
-% \def\dir{chapters/usetheglm}
-% \input{\dir/usetheglm.tex}
+%----------------------------------------------------------------------------
+% Ecotoxicology is not normal
+\cleardoublepage
+\def\dir{chapters/usetheglm}
+\input{\dir/usetheglm.tex}
 
 %---------------------------------------------n-------------------------------
 % Pesticides Small streams
@@ -76,16 +77,16 @@
 \def\dir{chapters/smallstreams}
 \input{\dir/smallstreams.tex}
 
-% % ---------------------------------------------------------------------------
-% % webchem: An R Package to Retrieve Chemical Information from the Web
-% \def\dir{chapters/webchem}
-% \input{\dir/webchem.tex}
+% ---------------------------------------------------------------------------
+% webchem: An R Package to Retrieve Chemical Information from the Web
+\def\dir{chapters/webchem}
+\input{\dir/webchem.tex}
 
-% % ---------------------------------------------------------------------------
-% % taxize: taxonomic search and retrieval in R
-% \cleardoublepage
-% \def\dir{chapters/taxize}
-% \input{\dir/taxize.tex}
+% ---------------------------------------------------------------------------
+% taxize: taxonomic search and retrieval in R
+\cleardoublepage
+\def\dir{chapters/taxize}
+\input{\dir/taxize.tex}
 
 %----------------------------------------------------------------------------
 % Discussion
@@ -95,52 +96,52 @@
 
 
 
-% \appendix
-% %----------------------------------------------------------------------------
-% % usetheglm
-% \cleardoublepage
-% \part*{Supplemental Materials}
-% \def\dir{appendix/usetheglm}
-% \input{\dir/ap_usetheglm.tex}
+\appendix
+%----------------------------------------------------------------------------
+% usetheglm
+\cleardoublepage
+\part*{Supplemental Materials}
+\def\dir{appendix/usetheglm}
+\input{\dir/ap_usetheglm.tex}
 
-% %----------------------------------------------------------------------------
-% % small streams
-% \cleardoublepage
-% \def\dir{appendix/smallstreams}
-% \input{\dir/ap_smallstreams.tex}
+%----------------------------------------------------------------------------
+% small streams
+\cleardoublepage
+\def\dir{appendix/smallstreams}
+\input{\dir/ap_smallstreams.tex}
 
-% %----------------------------------------------------------------------------
-% % taxize
-% \cleardoublepage
-% \def\dir{appendix/taxize}
-% \input{\dir/ap_taxize.tex}
-
-
+%----------------------------------------------------------------------------
+% taxize
+\cleardoublepage
+\def\dir{appendix/taxize}
+\input{\dir/ap_taxize.tex}
 
 
-% %----------------------------------------------------------------------------
-% \backmatter
 
 
-% %----------------------------------------------------------------------------
-% % Authors contributions
-% \cleardoublepage
-% \def\dir{frontbackmatter}
-% \input{\dir/contributions.tex}
+%----------------------------------------------------------------------------
+\backmatter
 
 
-% %----------------------------------------------------------------------------
-% % Declaration
-% \cleardoublepage
-% \def\dir{frontbackmatter}
-% \input{\dir/declaration.tex}
+%----------------------------------------------------------------------------
+% Authors contributions
+\cleardoublepage
+\def\dir{frontbackmatter}
+\input{\dir/contributions.tex}
 
 
-% %----------------------------------------------------------------------------
-% % CV
-% \cleardoublepage
-% \def\dir{frontbackmatter}
-% \input{\dir/cv.tex}
+%----------------------------------------------------------------------------
+% Declaration
+\cleardoublepage
+\def\dir{frontbackmatter}
+\input{\dir/declaration.tex}
+
+
+%----------------------------------------------------------------------------
+% CV
+\cleardoublepage
+\def\dir{frontbackmatter}
+\input{\dir/cv.tex}
 
 
 

@@ -2,19 +2,49 @@
 
 \pdfbookmark[1]{Abstract}{Summary}
 
-\newgeometry{top = 0mm}
-\thispagestyle{empty}
+% \newgeometry{
+%   includefoot,
+%   right=20mm,
+%   left=20mm,
+%   bottom=15mm, % space from bottomn to footer (space from text to bottom = footskip + bottom)
+%   top=5mm,   }
 
+
+\thispagestyle{empty}
 \begingroup
 \let\clearpage\relax
 \let\cleardoublepage\relax
 \let\cleardoublepage\relax
-
-
-
 \chapter*{Summary}
 \thispagestyle{empty}
+% \setstretch{1}
+% \vspace{-5mm}
+
+%Intro
+Freshwaters are of immense importance for human livelihood and well-being.
+Nevertheless, they are currently facing unprecedented levels of threat from habitat loss and degradation, overexploitation, invasive species and
+pollution. To prevent risks from agricultural pesticides to the aquatic ecosystem, environmental risk assessment (ERA) is mandatory before using these substances. Large-scale environmental monitoring is used for surveillance of the chemical pollution of rivers. 
+This thesis examines statistical methods used in ERA, presents a national-scale compilation and risk assessment of chemical monitoring data and provides software tools to integrate different datasets use in ERA.
+
+The thesis starts with a brief introduction to ERA, environmental monitoring, and statistical ecotoxicology and gives an overview of the objectives of the performed research.
+% use the glm
+Chapter~\ref{sec:usetheglm} addresses experimental setups and their statistical analyses using simulations. We show that current designs show unacceptable low statistical power and that statistical methods fitting to the type of data provide higher power. 
+% small streams
+In chapter~\ref{sec:smallstreams} we compiled all available pesticide monitoring data from Germany.
+Hereby we focused on small streams as considered in ERA and used threshold concentrations derived during ERA for risk assessment.
+This compilation resulted in the biggest dataset on pesticide exposure currently available for Germany.
+Using new statistical techniques, that explicitly take the limits of quantification into account, we demonstrate that 25\% of small streams are exposed to risk from pesticides. 
+Especially neonicotinoid pesticides are responsible for this risk.
+We show that the risks are associated with agricultural uses and can be detected even at low levels of agricultural use. Moreover, our results indicated that current monitoring underestimates pesticide risks, because of sampling independent of precipitation events.
+% software
+Chapters \ref{sec:webchem} and \ref{sec:taxize} describe software solutions to simplify and accelerate the integration of different data sources 
+from ERA, environmental monitoring and ecotoxicology.
+
+% conclusion
+Overall, this thesis contributes to the emerging discipline of statistical ecotoxicology, shows that pesticides are a major threat to small streams, demonstrates that ERA and environmental monitoring need to be refined in order to protect freshwater ecosystems and provides software solutions to integrate data for this purpose.
+
+
 
 \endgroup 
  
-\restoregeometry
+% \restoregeometry
