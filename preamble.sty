@@ -30,14 +30,15 @@
 
 
 %----------------------------------------------------------------------------
-% custom date format (for titlepage)
-\usepackage[nodayofweek]{datetime}
-%dd. monthname YYYY
-\newdateformat{mydate}{%
-    \THEDAY.\ \monthname[\THEMONTH] \THEYEAR%
-    }
-\newcommand{\myTime}{\mydate{\today}}
+% % custom date format (for titlepage)
+% \usepackage[nodayofweek]{datetime}
+% %dd. monthname YYYY
+% \newdateformat{mydate}{%
+%     \THEDAY.\ \monthname[\THEMONTH] \THEYEAR%
+%     }
+% \newcommand{\myTime}{\mydate{\today}}
 %! change today to actual date! e.g. 5. December 2016
+\newcommand{\myTime}{5\textsuperscript{th} December 2016}
 
 
 %----------------------------------------------------------------------------
