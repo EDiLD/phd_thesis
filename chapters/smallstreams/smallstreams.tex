@@ -20,7 +20,7 @@
 Submitted to \emph{Environmental Science \& Technology} in 2016
 
 \end{sloppypar}
-\newpage
+\cleardoublepage
 
 
 %% ----------------------------------------------------------------------------
@@ -79,7 +79,6 @@ We identified precipitation at sampling sites by a spatio-temporal intersection 
 This data spatially interpolates daily precipitation values from local weather stations \citep{rauthe_central_2013}. 
 We performed the intersection for the actual sampling date and the day before and extracted precipitation during and up to 48 hours before sampling. 
 
-
 \subsection{Characterization of catchments}
 We compiled a total of 2,369 sampling sites in small streams with pesticide measurements. %see do_overview.R
 Alongside, we also queried catchment sizes and agricultural land use within the catchment for the sampling sites from the federal states. %see do_overview.R
@@ -92,7 +91,6 @@ For each derived catchment (either from DEM or drainage basins) we calculated th
 Thus, agricultural land use information was available for 98\% of all sites (24\% from authorities, 52\% from DEM and 22\% from drainage basins). 
 68 sites (3\%) that lacked catchment size or land use information were omitted from the analysis, resulting in 2301 sites used in the analyses outlined below.
 %see do_overview.R 
-
 
 
 \subsection{Characterization of pesticide pollution}
@@ -197,6 +195,11 @@ However, it has to be noted that both states surveyed these distinct spectra in 
 Although there was high variability within the remaining cluster, this could not be further split (Figure~\ref{fig:ss:fig2}, also Supplemental Figures~S3 and S4).
 4\% (=71,113) of all measurements were concentrations above LOQ.
 
+The distribution of sampling sites across catchment sizes indicated a disproportionally low number of sites with catchments below $10~km^2$, with
+most sampling sites having catchment sizes between 10 and 25~$km^2$ (Figure~\ref{fig:ss:fig3}). 
+
+\clearpage
+
 \begin{landscape}
 \begin{figure}[ht]
   \centering
@@ -209,10 +212,6 @@ Although there was high variability within the remaining cluster, this could not
 \end{landscape}
 
 
-The distribution of sampling sites across catchment sizes indicated a disproportionally low number of sites with catchments below $10~km^2$, with
-most sampling sites having catchment sizes between 10 and 25~$km^2$ (Figure~\ref{fig:ss:fig3}). 
-
-
 \begin{figure}[ht]
   \includegraphics[width=\textwidth]{chapters/smallstreams/figure3.pdf}
   \caption[Distribution of catchment area and agriculture within the catchment area across the sampling sites.]{Distribution of catchment area and agriculture within the catchment area across the sampling sites.
@@ -221,6 +220,7 @@ most sampling sites having catchment sizes between 10 and 25~$km^2$ (Figure~\ref
 \end{figure}
 
 
+\clearpage
 \subsection{Influence of agricultural land use and catchment size}
 The number of RAC exceedances increased strongly and statistically significant up to 28\% agriculture within the catchment.
 The mean number of RAC exceedances per site increased 3.7-fold from 0.10 (no agriculture) to 0.39 (28\% agriculture within the catchment). 
@@ -237,6 +237,7 @@ We also could not detect a statistically significant interaction between catchme
 \end{figure}
 
 
+\clearpage
 \subsection{Effect of precipitation on pesticide risk}
 The spatio-temporal intersection revealed that most samples were taken during periods of low precipitation.
 For example, only 5\% of the samples were taken at or after days with rainfall events greater than 10mm / day that may lead to run-off (Supplemental Figure~S6). 
@@ -265,7 +266,7 @@ Individual compounds showed different temporal patterns (see Supplemental Table~
 \end{figure}
 
 
-
+\clearpage
 \subsection{Pesticide risk in small streams}
 We found RAC exceedances in 25.5\% of sampling sites and RQ > 0.1 in 54\% of sites. 
 In 23\% of sites none of the chemicals, for which RACs were available, were detected (see also Supplemental Figure~S8).
@@ -291,6 +292,7 @@ In 45.9\% of samples more than one compound was quantified, with a maximum of 54
 
 
 %% -------------------------------------------------------------------------
+\clearpage
 \section{Discussion}
 \subsection{Overview on the compiled dataset}
 The compiled dataset of governmental monitoring data, with a particular focus on small streams, represents currently the most comprehensive available for Germany.
@@ -383,6 +385,6 @@ and therefore, pesticide regulation should account for landscape features.
 Moreover, the high exceedances of RACs indicate that greater efforts are needed to describe causal links, which may lead to further developments of the current authorisation procedure.
 
 %% ----------------------------------------------------------------------------
-\cleardoublepage
+\clearpage
 \section{References}
 \printbibliography[heading=none]
