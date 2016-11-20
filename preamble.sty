@@ -187,6 +187,13 @@
 %----------------------------------------------------------------------------
 \usepackage{float}  % for [H]
 
+% cleardoublepage for odd pages
+% http://tex.stackexchange.com/questions/11707/how-to-force-output-to-a-left-or-right-page
+\newcommand*\cleartoleftpage{%
+  \clearpage
+  \ifodd\value{page}\hbox{}\newpage\fi
+}
+
 
 % %----------------------------------------------------------------------------
 % % lists
