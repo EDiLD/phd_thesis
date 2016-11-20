@@ -12,8 +12,9 @@
 \tikzstyle{paper} = [circle, draw, fill=gray!85, fill opacity=0.4, text opacity=1,  font = \bf\Large, minimum width=2.5cm]
 \tikzstyle{textbf} = [text centered, font = \bf\Large]
 
-
 \begin{tikzpicture}[node distance = 2cm, auto]
+	\stopthumb
+	
 % clip figure
 \clip(-1.6,-10.7) rectangle (22.6,5);
 
@@ -99,3 +100,4 @@
 
 
 \end{tikzpicture}
+\continuethumb 

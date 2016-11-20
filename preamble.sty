@@ -243,6 +243,33 @@
 \tikzexternalize[optimize=false]
 \tikzsetexternalprefix{tikz/}
 
+%----------------------------------------------------------------------------
+% Chapter thumbs
+\usepackage[
+  % if not commented these are defaults
+  thumblink=rule, 
+  linefill=dots,
+  height=auto,              % default = auto
+  minheight={47pt}, 
+  width={15mm},               % default=auto
+  distance={3mm},          % default = 2mm
+  topthumbmargin={3cm},    % default = auto
+  bottomthumbmargin={auto},
+  eventxtindent={10pt},    % default = 5pt
+  oddtxtexdent={10pt},      % default = 5pt
+  evenmarkindent={0pt},      % use for pdf
+  % evenmarkindent={15.5mm},     % use for print; default = 0pt, 210mm(a4) - 176 (b5) / 2 = 17.5mm - 2mm for cutting
+  oddmarkexdent={0pt},       % use for pdf
+  % oddmarkexdent={15.5mm},      % use for print; default = 0pt
+  evenprintvoffset={0pt}, 
+  nophantomsection=false, 
+  ignorehoffset=true,
+  ignorevoffset=true,
+  final=true,
+  hidethumbs=false
+]{thumbs}
+
+
 
 %----------------------------------------------------------------------------
 % insert pdfs
