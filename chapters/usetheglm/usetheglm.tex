@@ -29,19 +29,17 @@ Ecotoxicologists often encounter count and proportion data that are rarely norma
 To meet the assumptions of the linear model such data are usually transformed or non-parametric methods are used if the transformed data still violate the assumptions.
 Generalised Linear Models (GLM) allow to directly model such data, without the need for transformation.
 Here, we compare the performance of  two parametric methods, i.e.,  (1) the linear model (assuming normality of transformed data), (2) GLMs (assuming a Poisson, negative binomial, or binomially distibuted response), and (3) non-parametric methods.
-
 We simulated typical data mimicking low replicated ecotoxicological experiments of two common data types (counts and proportions from counts). 
 We compared the performance of the different methods in terms of statistical power and Type I error for detecting a general treatment effect and determining the lowest observed effect concentration (LOEC).
 In addition, we outlined differences on a real world mesocosm data set.
-
 For count data, we found that the quasi-Poisson model yielded the highest power. The negative binomial GLM resulted in increased Type I errors, which could be fixed using the parametric bootstrap. 
 For proportions, binomial GLMs performed better than the linear model, except to determine LOEC at extremely low sample sizes.
 The compared non-parametric methods had generally lower power.
-
 We recommend that counts in one-factorial experiments should be analysed using quasi-Poisson models and proportions from counts by binomial GLMs.
 These methods should become standard in ecotoxicology.
 
 %% ----------------------------------------------------------------------------
+\vspace{-0.5em}
 \section{Introduction}
 \label{sec:usetheglm:Introduction}
 Ecotoxicologists perform various kinds of experiments yielding different types of data.
@@ -235,7 +233,6 @@ We generated 1000 data sets for each combination of N and $\mu_\text{\tiny C}$ a
 
 
 %% --------------------------------
-\clearpage
 \subsubsection{Binomial data}
 We simulated data from a commonly used design as described in \citet{weber_short-term_1989}, with 5 treated (T1 - T5) and one control group (C). 
 Proportions were drawn from a Bin(10, $\pi$) distribution, with varying probability of survival ($\pi$ = \{0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90, 0.95\}) and varying number of replicates (N = \{3, 6, 9\}).
@@ -287,6 +284,20 @@ $LM$ showed a mean reduction of 20.7\% and $GLM_{qp}$ of 24.3 \%.
 Power to detect the LOEC was highest for $GLM_{qp}$. 
 $LM$ and $WT$ showed less power, with $WT$ having no power to detect the LOEC at low sample sizes (Figure \ref{fig:usetheglm:p_loec_c}).
 
+
+\subsubsection{Binomial data}
+$GLM_{bin}$ showed slightly increased Type I error rates at low sample sizes and small effect sizes.
+$KW$ was more conservative than $LM$ and $GLM_{bin}$.
+In addition, $GLM_{bin}$ exhibited the greatest power for testing the treatment effect. 
+This was especially apparent at low sample sizes (n = 3), with up to 27\% higher power compared to LM.
+However, the differences between methods quickly vanished with increasing samples sizes (Figure \ref{fig:usetheglm:p_glob_p}).
+
+For inference on LOEC we found that all methods were slightly conservative.
+$WT$ was generally more conservative and $GLM_{bin}$ especially at low effect sizes ($p_E > 0.7$).
+Inference on LOEC was not as powerful as inference on the general treatment effect.
+Contrary to the general treatment effect, $LM$ showed the higher power than $GLM_{bin}$ at small sample sizes (n = {3, 6}).
+$WT$ had no power for n = 3 and showed less power in the other simulation runs (Figure \ref{fig:usetheglm:p_loec_p}).
+
 \begin{landscape}
 \begin{figure}
   \centering
@@ -315,20 +326,6 @@ $LM$ and $WT$ showed less power, with $WT$ having no power to detect the LOEC at
   \label{fig:usetheglm:p_loec_c}
 \end{figure}
 \end{landscape}
-
-
-\subsubsection{Binomial data}
-$GLM_{bin}$ showed slightly increased Type I error rates at low sample sizes and small effect sizes.
-$KW$ was more conservative than $LM$ and $GLM_{bin}$.
-In addition, $GLM_{bin}$ exhibited the greatest power for testing the treatment effect. 
-This was especially apparent at low sample sizes (n = 3), with up to 27\% higher power compared to LM.
-However, the differences between methods quickly vanished with increasing samples sizes (Figure \ref{fig:usetheglm:p_glob_p}).
-
-For inference on LOEC we found that all methods were slightly conservative.
-$WT$ was generally more conservative and $GLM_{bin}$ especially at low effect sizes ($p_E > 0.7$).
-Inference on LOEC was not as powerful as inference on the general treatment effect.
-Contrary to the general treatment effect, $LM$ showed the higher power than $GLM_{bin}$ at small sample sizes (n = {3, 6}).
-$WT$ had no power for n = 3 and showed less power in the other simulation runs (Figure \ref{fig:usetheglm:p_loec_p}).
 
 
 \begin{landscape}
@@ -419,7 +416,7 @@ Moreover, \citet{brock_minimum_2015} proposed that statistical power of mesocosm
 As we showed, using GLMs can enhance the power at no extra costs.
 
 %% --- Non-parametric
-\citet{wang_making_2011} advocated that in the typical case of small sample sizes (n \textless 20) and non-normal data, non-parametric tests perform better than parametric tests assuming normality.
+\citet{wang_making_2011} advocated that in the typical case of small sample sizes (n \textless20) and non-normal data, non-parametric tests perform better than parametric tests assuming normality.
 In contrast, our results showed that the often applied $KW$ and $WT$ have less power compared to $LM$.
 Moreover, $GLMs$ always performed better than non-parametric tests. 
 Though more powerful non-parametric tests may be available \citep{konietschke_rank-based_2012}, these are focused on hypothesis testing and do not provide estimation of effect sizes.
@@ -441,6 +438,7 @@ However, we showed that the parametric bootstrap LR test of $GLM_{nb}$ provides 
 Nevertheless, bootstrapping is computationally very intensive and we found no gains in power compared to $GLM_{qp}$ (Figure \ref{fig:usetheglm:p_glob_c}). 
 Given the higher power, appropriate Type I errors, stable convergence and reduced bias \citep{ohara_not_2010} we suggest that count data in one factorial experiments should be analysed using the quasi-Poisson model.
 
+
 %% --- binomial data
 Binomial data are often collected in lab trials, where increasing the sample size may be relatively easy to accomplish. 
 We found notable differences in power to detect a treatment effect for all simulated sample sizes.
@@ -451,6 +449,7 @@ At low effect sizes $GLM_{bin}$ became conservative with increasing $\pi_C$, alt
 This is because $\pi$ approaches its boundary and is also known as the \emph{Hauck-Donner effect} \citep{hauck_walds_1977}. A LR-Test or parametric bootstrap may provide an alternative in such situations \citep{bolker_generalized_2009}.
 This can also explain why $LM$ performed better for deriving LOECs at low sample sizes.
 
+\clearpage
 GLMs can be fitted with several statistical software packages and many textbooks are available to introduce ecotoxicologists to these models (e.g. \citealt{zuur_beginners_2013} or \citealt{quinn_experimental_2009}).
 We recommend that ecotoxicologists should change their models instead of their data.
 GLMs should become a standard method in ecotoxicology and incorporated into respective guidelines.

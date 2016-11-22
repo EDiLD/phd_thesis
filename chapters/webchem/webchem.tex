@@ -91,6 +91,8 @@ The backbone of webchem are data sources providing their data and functionality 
 Currently, data can be retrieved from 11 sources.
 These cover a broad spectrum of available data, like identifiers, experimental and predicted properties and regulatory information (Figure~\ref{fig:fig1}, a detailed overview of all sources is included as supplement):
 
+\clearpage
+
 \begin{description}
   \item[NIH Chemical Identifier Resolver (CIR)]{A web service that converts \\from and to various chemical identifiers \citep{cir}.}
   \item[Chemical Translation Service (CTS)]{A web service that converts from and to various chemical identifiers \citep{wohlgemuth_haldiya_willighagen_kind_fiehn_2010}.}
@@ -117,7 +119,7 @@ However, we provide a brief overview in the Supporting Information.
   \label{fig:fig1}
 \end{figure}
 
-\newpage
+
 \section[Use cases]{Use cases}
 \subsection[Install webchem]{Installation}
 webchem can be easily installed and loaded from CRAN:
@@ -319,7 +321,6 @@ Name & CAS & SMILES & CID & InChIKey & CSID \\
 \end{table}
 
 
-
 \subsection[Toxicity of different pesticide groups]{Toxicity of different pesticide groups}
 Another question we might ask is \emph{How does toxicity vary between insecticide groups?}
 Answering this question would require tedious lookup of insecticide groups for each of the 124 CAS numbers in the lc50 data set.
@@ -387,7 +388,7 @@ The database contains predicted and experimental values.
 Extracting \\ $\mathrm{log}~P_{oct/wat}$ from the data object is slightly more complicated,  
 because i) for some compounds no data could be found and ii) the data-object has a more complex structure (a data frame within a list).
 
-\newpage
+
 \begin{knitrout}
 \color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -423,7 +424,6 @@ The line indicates the regression model ($\mathrm{log~LC}_{50} = 2.88\ensuremath
 \end{figure}
 
 
-\newpage
 \subsection[Regulatory information]{Regulatory information}
 Regulatory information is of particular interest if concentrations exceed national thresholds.
 In the European Union (EU) the Water Framework Directive (WFD, \citet{european_union_directive_2000}) defines Environmental Quality Standards (EQS).
@@ -434,7 +434,7 @@ In this example we search for the minimum EQS for the EU for the compounds in th
 
 We re-use the above queried ETOX-IDs to obtain further information from ETOX, namely the MAC-EQS:
 
-\newpage
+
 \begin{knitrout}
 \color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -536,7 +536,8 @@ or web resources like ChemSpider
 \end{kframe}
 \end{knitrout}
 
-\newpage
+
+\clearpage
 \section[Discussion]{Discussion}
 \subsection[Related software]{Related software}
 Within the R ecosystem, there are only a few similar projects:

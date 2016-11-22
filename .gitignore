@@ -25,6 +25,7 @@ tikz/*
 # Sublime
 *.sublime-project
 *.sublime-workspace
+*.todo
 
  
 .directory
