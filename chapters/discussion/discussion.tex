@@ -25,7 +25,7 @@ Indeed, simulations could be used to determine the optimal experimental design f
 Regression designs are generally more powerful and provide more information than factorial designs  \citep{cottingham_knowing_2005}. 
 In mesocosm experiments, such designs, assigning the replicates to more tested concentrations, might also provide additional insights.
 Currently, statistical tools to analyse a community dose-response relationship are not well explored and no equivalent $EC_{x, mesocosm}$ can be derived.
-On possibility could be to fit separate dose-response models to each species, leading to a $EC_x$ for each species in a mesocosm study.
+One possibility could be to fit separate dose-response models to each species, leading to a $EC_x$ for each species in a mesocosm study.
 Subsequently, these $EC_x$ values could be combined and summarised using Species Sensitivity Distributions \citep{posthuma_species_2002}, providing a single measure for the community response, e.g. a hazardous concentration ($HC_{x, mesocosm}$) for x \% of species affected in mesocosms \citep{maltby_insecticide_2005}. 
 Another possibility would be to use a logistic type of ordination \citep{van_den_brink_multivariate_2003}. 
 Reduced-Rank vector generalised linear models (RR-VGLM) could be used to fit such type of models \citep{yee_reduced-rank_2003, yee_vector_2015}, but they have not been applied in ecotoxicology yet.
@@ -67,7 +67,6 @@ Further research on those is needed and might provide useful information for ana
 
 
 \section{Leveraging monitoring data for environmental risk assessment}
-%! das ist ein bisschen holperig hier...
 % Monitoring allgemein
 In chapter~\ref{sec:smallstreams} we compiled and analysed monitoring data  leading to the currently most extensive dataset on pesticide exposure available for Germany. 
 We demonstrated, that within the current monitoring scheme small streams below $10~km^2$ are underrepresented (Figure~\ref{fig:ss:fig3}, top).
@@ -75,10 +74,10 @@ Given their importance, we must admit that we currently do not have much knowled
 To fill these gaps, monitoring networks need to be adapted to give a better representation of small streams. 
 
 % lentic systems
-We analysed only data from small streams, however, data on lentic systems is even more scarce. 
-Although, more the 95\% of German standing waters are lentic small waterbodies a recent meta-analysis revealed that only 5\% of studies investigating pesticides in freshwaters were performed on lentic small water bodies \citet{lorenz_specifics_2016}.
-The data compiled in chapter~\ref{sec:smallstreams} comprised also lentic small water bodies.
-However, the query to the federal states revealed that there are currently no such monitoring data available \citep{brinke_umsetzung_2016}. 
+We provide results in chapter~\ref{sec:smallstreams} only for small streams, however, data on lentic systems is even more scarce. 
+Although, more the 95\% of German standing waters are lentic small waterbodies a recent meta-analysis revealed that only 5\% of studies investigating pesticides in freshwaters were performed on lentic small water bodies \citep{lorenz_specifics_2016}.
+The query to the federal states in chapter~\ref{sec:smallstreams} included also lotic systems.
+However, the returned data revealed that there are currently no such monitoring data available \citep{brinke_umsetzung_2016}. 
 This highlights the urgent need to adapt monitoring schemes to also include small standing waters.
 
 % uniform
@@ -127,7 +126,7 @@ Synchronising these samplings in a future monitoring would possibly enable to as
 \section{Challenges utilising 'Big Data' in environmental risk assessment}
 
 Effect assessment and environmental monitoring produce huge amounts of data. 
-However, the profoundness of environmental risk assessment often determined by the available data \citep{van_den_brink_new_2016}.
+However, the profoundness of environmental risk assessment is often determined by the available data \citep{van_den_brink_new_2016}.
 Useful data for ERA is currently spread over several largely unconnected databases. 
 E.g. ecotoxicity data is spread over database maintained by the U.S. EPA (ECOTOX, \citet{u.s._epa_ecotox_2016}), the University of Hertfordshire (PPDB, \citet{lewis_international_2016}), the German Environment Agency (ETOX, \citet{umweltbundesamt_etox:_2016}) and others. 
 Chemical information is similarly spread over several databases, like PubChem \citep{kim_pubchem_2016} or Chemspider \citep{pence_chemspider:_2010}.
@@ -140,9 +139,9 @@ Chapter~\ref{sec:smallstreams} is an example for such an integration, but repres
 
 The webchem package, presented in chapter~\ref{sec:webchem}, can foster such an integration.
 However, data must also be accessible in order to be retrievable by webchem. 
-Unfortunately, major parts of data produce for environmental risk assessment are not available \citep{schafer_letter_2013, dafforn_big_2015}. 
+Unfortunately, major parts of data produced for environmental risk assessment are not available \citep{schafer_letter_2013, dafforn_big_2015}. 
 Recently, it has been demonstrated that data from the European Registration, Evaluation, Authorisation, and Restriction of Chemicals (REACH) database can be used to improve the characterisation of ecotoxicity in life cycle assessment (LCA) \citep{muller_exploring_2016}.
-Although this database hosts humongous amounts of data used risk assessment, it is currently not available in a convenient way.
+Although this database hosts humongous amounts of data used for risk assessment, it is currently not available in a convenient way.
 Indeed, a systematic data collection contravenes the legal usage of the REACH database (\url{http://uni-ko-ld.de/fd}).
 This may be also the reason, why the quality of chemical property data submitted this database is currently unknown \citep{stieger_assessing_2014, muller_exploring_2016}. 
 Webchem currently can retrieve data from 11 data sources. 
@@ -155,7 +154,7 @@ Today, taxize has been used in more than thirty scientific publications.
 Recent applications of the webchem package, have been demonstrated by \citet{munch_door_2016} and \citet{ranke_chents_2016}: 
 \citet{munch_door_2016} compiled a database for odorant responses of \textit{Drosophila melanogaster} and webchem \emph{"likely saved [him] hundreds of working hours"}. 
 \citet{ranke_chents_2016} is using webchem to compile and store chemical information for further analyses. 
-The analyses performed in chapter~\ref{sec:smallstreams} needed to integrate monitoring, chemical and risk assessment data which would not have been difficult without the webchem package. 
+The analyses performed in chapter~\ref{sec:smallstreams} needed to integrate monitoring, chemical and risk assessment data which would have been difficult without the webchem package. 
 These examples show that researchers have been missing such tools in the past.
 If they can reduce their time spend on data retrieval and handling, they could focus more on the quintessence of their research. 
 
@@ -164,21 +163,22 @@ If they can reduce their time spend on data retrieval and handling, they could f
 % statistical ecotoxicology
 In the near future, big amounts of data will be available for environmental risk assessment. 
 Integration and analysis of these data are forthcoming challenges in  ecotoxicology \citep{dafforn_big_2015, van_den_brink_new_2016}. 
-This thesis provides insights into statistical analyses and experimental designs for a future effect assessment. Statistical ecotoxicology is just at the beginning and many problems are pending to be solved.
+This thesis provides insights into statistical analyses and experimental designs for a future effect assessment. Statistical ecotoxicology is just at the beginning and many problems are pending to be solved. 
 
 % Environmental monitoring and ERA
 Environmental monitoring data can provide an important feedback to improve environmental risk assessment. 
 The integration of both in this thesis showed that in Germany highly toxic insecticides pose a major threat to freshwaters.
-We demonstrated current problems integrating these and further improvements of those are needed to safeguard freshwaters from chemicals.
-It needs to be re-evaluated if the current use of neonicotinoid insecticides is within the safe operating space to provide long-term health of ecosystems upon which humanity depends \citep{rockstrom_safe_2009}.
+Jowever, we also demonstrated current problems and further improvements of those are needed to safeguard freshwaters from chemicals.
+It needs to be re-evaluated if the current use of neonicotinoid insecticides is within the safe operating space to provide long-term health of ecosystems upon which humanity depends \citep{rockstrom_safe_2009}. 
 
 % Software solutions
 Big data and modern statistical tools are a means of improving the accuracy and reducing the uncertainty of environmental risk assessment \citep{van_den_brink_new_2016}. 
-The software described in this thesis contribute its part to these improvements.
-Nevertheless, science and politics need to develop a culture of openness to promote the safety of our environment.
+The software described in this thesis contributes its part to these improvements.
+Nevertheless, science and politics need to develop a culture of openness to promote the safety of our environment. 
 
 
 %%% => biology / ecology
+%%% Rico 2016 STOTEN habitat more influetial than pesticides in danube (big river)
 
 %% ----------------------------------------------------------------------------
 \clearpage
