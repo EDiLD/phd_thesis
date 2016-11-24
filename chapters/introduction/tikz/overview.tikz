@@ -1,3 +1,5 @@
+% -*- root: ../../../thesis.tex -*-
+
 % \tikzsetnextfilename{overview}
 \usetikzlibrary{shapes, arrows, positioning, calc, arrows.meta}
 
@@ -16,9 +18,9 @@
 	\stopthumb
 	
 % clip figure
-\clip(-1.6,-10.7) rectangle (22.6,5);
+\clip(-1.5,-10.5) rectangle (21.6,5);
 
-% % % grid for coordinates for clip
+% % % % grid for coordinates for clip
 % \draw[help lines,xstep=1,ystep=1] (-2,-13) grid (30,6.5);
 % \foreach \x in {-2,-1,...,30} { \node [anchor=north] at (\x,0) {\x}; }
 % \foreach \y in {-13,-12,...,6} { \node [anchor=east] at (0,\y) {\y}; }
@@ -29,23 +31,23 @@
 	\node [name = exp, block, minimum width=2cm] {Experiment} ;
 	\node [name = stat, block, minimum width=2cm, right=1cm of exp] {Data / Statistics} ;
     \node [name = eff, block, 
-		minimum width=6.4cm, 
-		minimum height=3.5cm, 
+		minimum width=57mm, 
+		minimum height=25mm, 
 	below left=5mm of exp.west, anchor = west] {} ;
-	\node[textbf, below right=10mm and 5mm of exp, anchor = south]{Effects};
+	\node[textbf, below right=8mm and 5mm of exp, anchor = south]{Effects};
 
 	%% Exposure
-  	\node [name = prop, block, minimum width=2cm, below=4cm of exp] {Data / Properties} ;
+  	\node [name = prop, block, minimum width=2cm, below=38mm of exp] {Data / Properties} ;
 	\node [name = model, block, minimum width=2cm, right=1cm of prop] {Models} ;
 	\node [name = expo, block, 
-		minimum width=6.4cm, 
-		minimum height=3.5cm, 
-		below = 15mm of eff] {} ;
+		minimum width=57mm, 
+		minimum height=25mm, 
+		below = 20mm of eff] {} ;
 	\node[textbf, above=-2mm of expo, anchor = north]{Exposure};
 
 	%% Risk Assessment
 	\node [name = risk, block, below right=0.75cm and 1cm of stat,
-       minimum width=55mm, 
+       minimum width=45mm, 
 		minimum height=2.5cm, 
 		font = \bf\large,
 		align = center,
@@ -58,7 +60,7 @@
 		minimum height=20mm, 
 		font = \bf\large,
 		align = center,
-       text width = 3cm] {Monitoring};
+       text width = 3cm] {Environmental\\ Monitoring};
 
 	%% biological data
 	\node [name = bio, block, 
