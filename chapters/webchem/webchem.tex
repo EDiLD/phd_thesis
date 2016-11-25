@@ -104,7 +104,7 @@ These cover a broad spectrum of available data, like identifiers, experimental a
   We use an interface to the PUG-REST web service \citep{Kim_Thiessen_Bolton_Bryant_2015}.}
   \item[Wikidata]{Wikipedia contains information for over 15,000 chemicals \citep{Ertl_Patiny_Sander_Rufener_Zasso_2015, wiki}. Currently webchem can only query chemical identifiers.}
   \item[Compendium of Pesticide Common Names]{The compendium provides information on pesticide common names, identifiers and classification \citep{wood}.}
-  \item[ChemID\emph{plus}] {is a large web-based database provided by the National Library of Medicine (NLM). It provides identifiers, synonyms, toxicological data and chemical properties \citep{tomasulo2002}.}
+  \item[ChemID\emph{plus}] {is a large web-based database provided by the National Library of Medi\-cine (NLM). It provides identifiers, synonyms, toxicological data and chemical properties \citep{tomasulo2002}.}
   \item[ChemSpider]{is a free chemical structure database providing access to over 40 million structures. It provides identifiers, properties and can also be used to convert identifiers \citep{pence_chemspider:_2010}.}
   \item[OPSIN]{The Open Parser for Systematic IUPAC nomenclature is a chemical name interpreter and provides InChI and SMILES identifiers \citep{lowe_corbett_murray-rust_glen_2011}.}
 \end{description}
@@ -264,33 +264,24 @@ In the same manner, we can now query other identifiers from another source using
 
 
 \begin{knitrout}
-\color{fgcolor}\begin{kframe}
+\begin{kframe}
 \begin{alltt}
-\hlstd{R> cids} \hlkwb{<-} \hlkwd{get_cid}\hlstd{(etox_cas)}
-\hlstd{R> pc_data} \hlkwb{<-} \hlkwd{pc_prop}\hlstd{(cids,} \hlkwc{properties} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{'CanonicalSMILES'}\hlstd{))}
-\hlstd{R> pc_smiles} \hlkwb{<-} \hlkwd{smiles}\hlstd{(pc_data)}
-\end{alltt}
-\end{kframe}
-\end{knitrout}
-
-or ChemSpider
-\begin{knitrout}
-\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlstd{R> csids} \hlkwb{<-} \hlkwd{get_csid}\hlstd{(etox_cas,} \hlkwc{token} \hlstd{= token)}
-\hlstd{R> cs_data} \hlkwb{<-} \hlkwd{cs_compinfo}\hlstd{(csids,} \hlkwc{token} \hlstd{= token)}
-\hlstd{R> cs_inchikey} \hlkwb{<-} \hlkwd{inchikey}\hlstd{(cs_data)}
+\hlstd{cids} \hlkwb{<-} \hlkwd{get_cid}\hlstd{(etox_cas)}
+\hlstd{pc_data} \hlkwb{<-} \hlkwd{pc_prop}\hlstd{(cids,} \hlkwc{properties} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{'CanonicalSMILES'}\hlstd{,} \hlstr{'InChIKey'}\hlstd{))}
+\hlstd{pc_smiles} \hlkwb{<-} \hlkwd{smiles}\hlstd{(pc_data)}
+\hlstd{pc_inchikey} \hlkwb{<-} \hlkwd{inchikey}\hlstd{(pc_data)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
 
 Finally, we combine the queried data into one data.frame
+
 \begin{knitrout}
-\color{fgcolor}\begin{kframe}
+\begin{kframe}
 \begin{alltt}
-\hlstd{R> res} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{name} \hlstd{= subs,} \hlkwc{cas} \hlstd{= etox_cas,} \hlkwc{smiles} \hlstd{= pc_smiles,}
-  \hlkwc{cid} \hlstd{= pc_data}\hlopt{$}\hlstd{CID,} \hlkwc{inchikey} \hlstd{= cs_inchikey,} \hlkwc{csid} \hlstd{= cs_data}\hlopt{$}\hlstd{csid,}
-  \hlkwc{stringsAsFactors} \hlstd{=} \hlnum{FALSE}\hlstd{)}
+\hlstd{res} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{name} \hlstd{= subs,} \hlkwc{cas} \hlstd{= etox_cas,} \hlkwc{smiles} \hlstd{= pc_smiles,}
+            \hlkwc{cid} \hlstd{= pc_data}\hlopt{$}\hlstd{CID,} \hlkwc{inchikey} \hlstd{= pc_inchikey,}
+            \hlkwc{stringsAsFactors} \hlstd{=} \hlnum{FALSE}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -298,21 +289,20 @@ Finally, we combine the queried data into one data.frame
 Note that in order to use the ChemSpider functions, a personal authentication key (token) is needed, which can be retrieved from the ChemSpider web page. 
 Finally, we obtain a compound table containing many different identifiers (Table~\ref{tab:comptable}), allowing easy identification and merging with other data sets, e.g.\ the lc50 data set based on CAS.
 
-\begin{table}[ht]
-\centering
-\small
-% latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Mon Oct 24 17:58:49 2016
-\begin{tabular}{R{3.2cm}lllll}
+  \begin{table}[ht]
+  \centering
+% latex table generated in R 3.3.2 by xtable 1.8-2 package
+% Fri Nov 25 18:33:30 2016
+\begin{tabular}{lllll}
   \toprule
-Name & CAS & SMILES & CID & InChIKey & CSID \\ 
+Name & CAS & SMILES & CID & InChIKey \\ 
   \midrule
-2,4-Dimethylphenol & 105-67-9 & CC1=CC(... & 7771 & KUFFULV... & 13839123 \\ 
-  4-Chlor-2-methylphenol & 1570-64-5 & CC1=C(C... & 14855 & RHPUJHQ... & 14165 \\ 
-  4-para-nonylphenol & - & - & - & - & - \\ 
-  Atrazin & 1912-24-9 & CCNC1=N... & 2256 & MXWJVTO... & 2169 \\ 
-  Benzol & 71-43-2 & C1=CC=C... & 241 & UHOVQNZ... & 236 \\ 
-  Desethylatrazin & 6190-65-4 & CC(C)NC... & 22563 & DFWFIQK... & 21157 \\ 
+2,4-Dimethylphenol & 105-67-9 & CC1=CC(... & 7771 & KUFFULV... \\ 
+  4-Chlor-2-methylphenol & 1570-64-5 & CC1=C(C... & 14855 & RHPUJHQ... \\ 
+  4-para-nonylphenol & - & - & - & - \\ 
+  Atrazin & 1912-24-9 & CCNC1=N... & 2256 & MXWJVTO... \\ 
+  Benzol & 71-43-2 & C1=CC=C... & 241 & UHOVQNZ... \\ 
+  Desethylatrazin & 6190-65-4 & CC(C)NC... & 22563 & DFWFIQK... \\ 
    \bottomrule
 \end{tabular}
 
@@ -327,7 +317,7 @@ Answering this question would require tedious lookup of insecticide groups for e
 The Compendium of Pesticide Common Names \citep{wood} contains such information and can be easily queried using CAS numbers with webchem: 
 
 \begin{knitrout}
-\color{fgcolor}\begin{kframe}
+\begin{kframe}
 \begin{alltt}
 \hlstd{R> aw_data} \hlkwb{<-} \hlkwd{aw_query}\hlstd{(lc50}\hlopt{$}\hlstd{cas,} \hlkwc{type} \hlstd{=} \hlstr{'cas'}\hlstd{)}
 \end{alltt}
@@ -337,10 +327,12 @@ The Compendium of Pesticide Common Names \citep{wood} contains such information 
 To extract the chemical group from the retrieved data set, we write a simple extractor function and apply this to the retrieved data:
 
 \begin{knitrout}
-\color{fgcolor}\begin{kframe}
+\begin{kframe}
 \begin{alltt}
-\hlstd{R> igroup} \hlkwb{<-} \hlkwd{sapply}\hlstd{(aw_data,} \hlkwa{function}\hlstd{(}\hlkwc{y}\hlstd{) y}\hlopt{$}\hlstd{subactivity[}\hlnum{1}\hlstd{])}
-\hlstd{R> igroup[}\hlnum{1}\hlopt{:}\hlnum{3}\hlstd{]}
+\hlstd{igroup} \hlkwb{<-} \hlkwd{sapply}\hlstd{(aw_data,} \hlkwa{function}\hlstd{(}\hlkwc{y}\hlstd{)} \hlkwd{ifelse}\hlstd{(}\hlstr{'subactivity'} \hlopt{%in%} \hlkwd{names}\hlstd{(y),}
+                        \hlstd{y[[}\hlstr{'subactivity'}\hlstd{]],}
+                        \hlnum{NA}\hlstd{))}
+\hlstd{igroup[}\hlnum{1}\hlopt{:}\hlnum{3}\hlstd{]}
 \end{alltt}
 \begin{verbatim}
 ##                                   50-29-3 
