@@ -18,7 +18,7 @@
 	\stopthumb
 	
 % clip figure
-\clip(-1.5,-10.5) rectangle (21.6,5);
+\clip(-1.5,-10.5) rectangle (22.2,5.2);
 
 % % % % grid for coordinates for clip
 % \draw[help lines,xstep=1,ystep=1] (-2,-13) grid (30,6.5);
@@ -47,7 +47,7 @@
 
 	%% Risk Assessment
 	\node [name = risk, block, below right=0.75cm and 1cm of stat,
-       minimum width=45mm, 
+        minimum width=45mm, 
 		minimum height=2.5cm, 
 		font = \bf\large,
 		align = center,
@@ -56,8 +56,8 @@
 	%% Monitoring data
 	\node [name = monit, block, 
 		right = 8cm of risk,
-        minimum width=35mm, 
-		minimum height=20mm, 
+        minimum width=45mm, 
+		minimum height=25mm, 
 		font = \bf\large,
 		align = center,
        text width = 3cm] {Environmental\\ Monitoring};
@@ -83,8 +83,8 @@
 		] (chap4) at ($(chem)!0.5!(expo)$) {Chap. 4};
 	\node[name = chap5, paper, anchor = south, yshift=25mm, xshift = 10mm,
 		] (chap5) at ($(bio)!0.5!(eff)$) {Chap. 5};
-   \node[name=rl1, above= 0mm of chap5]{Retrieve \& Link data};
-   \node[name=rl1, below= 0mm of chap4]{Retrieve \& Link data};
+   \node[name=rl1, above= 0mm of chap5]{Retrieve \& link data};
+   \node[name=rl1, below= 0mm of chap4]{Retrieve \& link data};
 
 % arrows
 	\path [line] (exp) -- (stat);
