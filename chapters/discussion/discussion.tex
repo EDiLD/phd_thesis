@@ -35,7 +35,7 @@ However, these methods have not been applied frequently and their applicability 
 All these models have in common that the choice of the statistical model is primarily based on data properties. 
 In chapter~\ref{sec:usetheglm} we showed that using statistical models that fit the type of data analysed can provide higher statistical power.
 Simultaneously to this study, \citet{ives_for_2015} published a study reaching contradictory conclusions (\emph{"For testing the significance of regression coefficients, go ahead and log-transform count data"}). 
-It must be noted that the simulation designs differed significantly between both studies: We used a low-replicated factorials design, whereas \citet{ives_for_2015} simulated a well-replicated regression designs with two predictors.
+It must be noted that the simulation designs differed significantly between both studies: We used a low-replicated factorial design, whereas \citet{ives_for_2015} simulated a well-replicated regression design with two predictors.
 We both found that the negative-binomial GLMs were surprisingly prone to Type I errors, although the assumptions of this model closely matched the data.
 Nevertheless, as we show in chapter~\ref{sec:usetheglm}, the parametric bootstrap might provide a solution to this problem but is computationally intensive and not widely used.
 The parametric bootstrap is akin to Bayesian methods \citep{gelman_bayesian_2014}, which might provide an alternative method for inference.
@@ -48,18 +48,18 @@ In chapter~\ref{sec:smallstreams} we applied new statistical modelling technique
 The most often used methods to deal with such censored data is either to omit or to substitute non-detects. 
 Censoring is very common when dealing with chemical and ecological datasets but is rarely taken into account \citep{fox_ecological_2015}. 
 Indeed, recent examples from ecotoxicology and environmental chemistry show that the omission \citep{hansen_re-evaluation_2015}, randomization \citep{goulson_neonicotinoids_2015} or substitution by a fixed value \citep{helsel_much_2010, helsel_fabricating_2006} can lead to biased results.
-\citet{hansen_re-evaluation_2015} used a Tobit regression \citep{tobin_estimation_1958} that takes the amount of censored data into account assuming a (log-) normal distribution of concentrations.
+\citet{hansen_re-evaluation_2015} used a Tobit regression \citep{tobin_estimation_1958} that takes the amount of censored data into account, assuming a (log-) normal distribution of concentrations.
 Chapter~\ref{sec:smallstreams} describes a slightly different approach using a zero adjusted gamma distribution (ZAGA).
 We modelled measured concentrations as two separate processes, generating i) zero values and ii) non-zero values assuming a gamma distribution of concentrations.
-In ecological statistics this type of models are also known as \emph{hurdle} models \citep{martin_zero_2005}. 
+In ecological statistics this type of models is also known as \emph{hurdle} models \citep{martin_zero_2005}. 
 Generally, the difference between Tobit and two-part models are small \citep{min_modeling_2002} and the same holds true for differences between the log-normal and Gamma distribution. 
 Indeed, a Tobit-like model could be also fitted assuming a Gamma distribution \citep{sigrist_using_2010}.
 However, the log-normal Tobit model has no probability mass at zero, whereas ZAGA model has a probability at zero. 
 
-It is known, that grab sampling most likely underestimates chemical concentrations because of short-term peak concentrations \citep{xing_influences_2013, stehle_probabilistic_2013} and may lead to an increased variation in chemical measurements.
-However, even if the absolute value is subject to high error we still can learn from the process generating values above LOQ.
+It is known that grab sampling most likely underestimates chemical concentrations because of short-term peak concentrations \citep{xing_influences_2013, stehle_probabilistic_2013} and may lead to an increased variation in chemical measurements.
+However, even if the absolute value is subject to a high error we still can learn from the process generating values above LOQ.
 This is also highlighted by the results of chapter~\ref{sec:smallstreams}, with estimated coefficients for the absolute concentration showing much larger uncertainty than coefficients for the probability of exceeding LOQ (Figure~\ref{fig:ss:fig5}). 
-Currently, models explicitly taking the censored nature of chemical monitoring data into account are not well explored and seldomly applied.
+Currently, models explicitly taking the censored nature of chemical monitoring data into account are not well explored and rarely applied.
 Further research on those is needed and might provide useful information for analysing monitoring data, assessing the chemical status and trends in chemical pollution.
 
 
@@ -107,10 +107,14 @@ Moreover, this might give insights for model improvements and increase the confi
 Especially for the organophosphate Chlorpyrifos and neonicotinoid insecticides risk thresholds were regularly exceeded.
 This adds to the existing evidence that this particular class of insecticides poses a serious threat to freshwaters and stricter regulations are warranted \citep{morrissey_neonicotinoid_2015, goulson_overview_2013}. 
 The high number of exceedances shows that ERA for these substances was not accurate and protective enough and lead to risks for the environment. 
-Recent studies investigating large-scale pesticide risks did not consider neonicotinoid insecticides \citep{malaj_organic_2014, stehle_pesticide_2015} and therefore likely underestimated the risks to freshwaters. 
+Recent studies investigating large-scale pesticide risks had only little  \citep{stehle_pesticide_2015} or no data on neonicotinoid insecticides \citep{malaj_organic_2014} and therefore likely underestimated the risks to freshwaters. 
 However, this also shows that the ana\-lysed spectrum is an important driver of detecting compounds in water samples \citep{schreiner_pesticide_2016, malaj_organic_2014} and must be taken into account when evaluating monitoring data for risk assessment. 
 The WFD currently considers only a few relatively well-known substances \citep{european_union_directive_2013} and a status assessment based on EQS likely misses the actual chemical pollution \citep{moschet_how_2014}. 
-Compared to the data presented in chapter~\ref{sec:smallstreams}, only 4\% of the pesticides (19 out of 478 pesticides measure in Germany) are covered by the WFD.
+Compared to the data presented in chapter~\ref{sec:smallstreams}, only 4\% of the pesticides (19 out of 478 pesticides measure in Germany) are covered by the EU-wide EQS for chemical status assessment \citep{european_union_directive_2013}. 
+Additionally, EU member states must also derive EQS for river basin specific pollutants (RBSP) as part of the ecological status assessment on a national level. 
+In Germany 162 RBSP have been specified (of which 54 are used as pesticides, \citet{arle_monitoring_2016, umweltbundesamt_water_2013}). 
+Nevertheless, the RBSP approach has been criticised recently because of the decoupling from chemical status assessment and differences of several orders of
+magnitude between member states \citep{brack_towards_2017}.
 Recently, neonicotinoids have been incorporated in the watch list of substances for an EU-wide monitoring \citep{european_union_commission_2015}, so that more information on the environmental dynamics of those compounds will be available in the future. 
 Monitoring data provide also valuable information for the prioritisation of emerging pollutants and for a future monitoring within the WFD \citep{brack_towards_2017}.
 Indeed, the data we compiled could be a valuable input for such a prioritisation. 
@@ -121,7 +125,7 @@ Currently, chemical and biological monitoring are not synchronised.
 On a continental scale, \citet{malaj_organic_2014} were able to compile ecological status data for only 5\% of sites with chemical measurements.
 For the dataset presented in chapter~\ref{sec:smallstreams} we found a spatial match with biological monitoring for 60\% of sites \citep{brinke_umsetzung_2016}.
 However, as biological data in Germany is sampled at lower frequencies (often less than once per year) a spatio-temporal match would result in much less accordance. 
-Synchronising these samplings in a future monitoring would would facilitate the assessment of large-scale post-authorization field effects of chemical substances. 
+Synchronising these samplings in a future monitoring would facilitate the assessment of large-scale post-authorization field effects of chemical substances. 
 
 
 
@@ -129,17 +133,17 @@ Synchronising these samplings in a future monitoring would would facilitate the 
 \section{Challenges utilising 'Big Data' in environmental risk assessment}
 
 Effect assessment and environmental monitoring produce huge amounts of data. 
-However, the profoundness of environmental risk assessment is often determined by the available data \citep{van_den_brink_new_2016}.
+However, the accuracy of environmental risk assessment is often determined by the available data \citep{van_den_brink_new_2016}.
 Useful data for ERA is currently spread over several largely unconnected databases. 
 E.g. ecotoxicity data is spread over databases maintained by the U.S. EPA (ECOTOX, \citet{u.s._epa_ecotox_2016}), the University of Hertfordshire (PPDB, \citet{lewis_international_2016}), the German Environment Agency (ETOX, \citet{umweltbundesamt_etox:_2016}) and others. 
 Chemical information is similarly spread over several databases, like PubChem \citep{kim_pubchem_2016} or Chemspider \citep{pence_chemspider:_2010}.
 Additional complications arise because these databases use different identifiers for chemical substances. 
-The U.S. EPA \citep{u.s._epa_ecotox_2016} uses solely the CAS-Number for identification, whereas other databases uses SMILES \citep{weininger_smiles._1990} or InChI and InChIKeys \citep{heller_inchi_2015}. 
+The U.S. EPA \citep{u.s._epa_ecotox_2016} uses solely the CAS-Number for identification, whereas other databases use SMILES \citep{weininger_smiles._1990} or InChI and InChIKeys \citep{heller_inchi_2015}. 
 Integrating these databases is currently a challenge in ERA, which is complicated by ambiguous identifiers (e.g.  different salts of the same parent compound).
 Projects like the NORMAN EMPODAT database \citep{brack_norman_2012} or the STOFF-IDENT database (\citeauthor{huckele_risk_2013} \cite*{huckele_risk_2013}, \url{http://uni-ko-ld.de/fc}) are first attempts of such an integration.
 Moreover, integration of monitoring and risk assessment data is a mandatory requirement for landscape level ecotoxicology and risk assessment \citep{focks_challenge:_2014} and needed for an improved model development and validation \citep{knabel_regulatory_2012, brock_aquatic_2006}. 
 Chapter~\ref{sec:smallstreams} is an example of such an integration but represents only a preliminary assessment.
-Little is known on spatio-temporal risk dynamics and these need to be further investigated. 
+Little is known about spatio-temporal risk dynamics and these need to be further investigated. 
 
 The webchem package, presented in chapter~\ref{sec:webchem}, can foster such an integration.
 However, data must also be accessible in order to be retrievable by webchem. 
@@ -150,7 +154,7 @@ Indeed, a systematic data collection contravenes the legal usage of the REACH da
 This may be also the reason why the quality of chemical property data submitted to this database is currently unknown \citep{stieger_assessing_2014, muller_exploring_2016}. 
 \emph{"Good data is the key to good assessments"} (Prof. Anthony Hardy, Chair ESFA Scientific Committee, \url{http://uni-ko-ld.de/fl}) and recent initiatives of the EFSA towards open science and assessments are highly appreciated. 
 Currently, webchem can retrieve data from 11 data sources. 
-However, many other data sources are available and implementation of more than 15 other data sources will be implemented in the future (\url{http://uni-ko-ld.de/fi}).
+However, many other data sources are available and more than 15 other data sources will be implemented in the future (\url{http://uni-ko-ld.de/fi}).
 
 The software tools described in chapters~\ref{sec:webchem} and \ref{sec:taxize} assist researchers in handling and cleaning their data. 
 For example, aggregating taxonomic data to a higher taxonomic level is a common task when analysing data from mesocosm experiments or from field sampling.
@@ -161,7 +165,7 @@ Recent applications of the webchem package, have been demonstrated by \citet{mun
 \citet{ranke_chents_2016} is using webchem to compile and store chemical information for further analyses. 
 The analyses performed in chapter~\ref{sec:smallstreams} needed to integrate monitoring, chemical and risk assessment data which would have been difficult without the webchem package. 
 These examples show that researchers have been missing such tools in the past.
-If they can reduce their time spend on data retrieval and handling, they could focus more on the quintessence of their research. 
+If they can reduce their time spend on data retrieval and handling, they focus more on the quintessence of their research. 
 
 
 %%% ---------------------------------------------------------------------------
@@ -175,7 +179,8 @@ This thesis provides insights into statistical analyses and experimental designs
 % Environmental monitoring and ERA
 Environmental monitoring data can provide an important feedback to improve environmental risk assessment. 
 The integration of environmental risk assessment and environmental monitoring in this thesis showed that in Germany highly toxic insecticides pose a major threat to freshwaters.
-However, we also demonstrated current problems and further improvements of those are needed to safeguard freshwaters from chemicals.
+We also highlighted current problems within ERA and environmental monitoring. 
+Further improvements of both are needed to safeguard freshwaters from chemicals.
 It needs to be re-evaluated if the current use of neonicotinoid insecticides is within the safe operating space to provide long-term health of ecosystems upon which humanity depends \citep{rockstrom_safe_2009}. 
 
 % Software solutions
