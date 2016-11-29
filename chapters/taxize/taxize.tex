@@ -7,12 +7,12 @@
 \begin{sloppypar}
 
 \bigskip
-Scott A. Chamberlain\textsuperscript{a} \& \underline{Eduard Szöcs\textsuperscript{b}}
+Scott A. Chamberlain\textsuperscript{a} \& \underline{Eduard Szöcs}\textsuperscript{b}
 
 \bigskip
 \small
 \noindent 
-\textsuperscript{a}Biology Department, Simon Fraser University, Burnaby, BC, Canada,\\
+\textsuperscript{a}Biology Department, Simon Fraser University, Burnaby, Canada,\\
 \textsuperscript{b}Institute for Environmental Sciences, University Koblenz-Landau, Landau, Germany 
 
 \bigskip 
@@ -87,6 +87,8 @@ The interface to each function is usually a simple list of species names, just a
 Therefore, we hope that moving from a web to an R interface for taxonomic names will be relatively seamless (if one is already nominally familiar with R). 
 
 Here, we justify the need for programmatic taxonomic resolution tools like taxize, discuss our data sources, and run through a suite of use cases to demonstrate the variety of ways that users can use taxize.
+
+\clearpage
 
 {\small
 \begin{longtable}{P{3cm}P{4cm}P{5cm}}
@@ -231,7 +233,8 @@ In this example is a list of species names, some of which are misspelled, and th
              \hlstr{"Poa anua"}\hlstd{,} \hlstr{"Abis magnifica"}\hlstd{,} \hlstr{"Rosa california"}\hlstd{,}
              \hlstr{"Festuca arundinace"}\hlstd{,} \hlstr{"Sorbus occidentalos"}\hlstd{,}
              \hlstr{"Madia sateva"}\hlstd{)}
-\hlkwd{tnrs}\hlstd{(}\hlkwc{query} \hlstd{= mynames)[ ,} \hlopt{-}\hlkwd{c}\hlstd{(}\hlnum{5}\hlopt{:}\hlnum{7}\hlstd{)]}
+\hlstd{R> }\hlkwd{tnrs}\hlstd{(}\hlkwc{query} \hlstd{= mynames)[ ,} \hlopt{-}\hlkwd{c}\hlstd{(}\hlnum{5}\hlopt{:}\hlnum{7}\hlstd{)]}
+
 \end{alltt}
 \begin{verbatim}
 #          submittedName        acceptedName    sourceId score
@@ -577,7 +580,7 @@ Then one can ask if 'RAG1' exists in any of the gene names.
 \end{kframe}
 \end{knitrout}
 
-
+\clearpage
 It turns out that there are 430 different unique records found. 
 However, this doesn't mean that there are 430 different genes found as the API does not provide metadata to classify genes. 
 You can use regular expressions (e.g., \emph{grep}) to search for the gene of interest.

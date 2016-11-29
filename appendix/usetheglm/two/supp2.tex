@@ -108,7 +108,7 @@ It looks like the transformation does a good job in equalizing the variances:
 
 
 \subsubsection{Model fitting}
-The model from eqn. 2 can be easily fitted using the \texttt{lm()} function:
+The model from eqn. 2.2 can be easily fitted using the \texttt{lm()} function:
 
 \begin{knitrout}
 \color{fgcolor}\small\begin{kframe}
@@ -330,7 +330,7 @@ Note, this multiple contrast test is different from the original Williams test \
 \subsubsection{Assuming a Poisson distribution of abundances}
 \subsubsection{Model fitting}
 We are dealing with count data, so a Poisson GLM might be a good choice.
-GLMs can be fitted using the \texttt{glm()} function and here we fit the model from eqn. 3:
+GLMs can be fitted using the \texttt{glm()} function and here we fit the model from eqn. 2.3:
 \begin{knitrout}
 \color{fgcolor}\small\begin{kframe}
 \begin{alltt}
@@ -454,7 +454,7 @@ If the ratio of residual deviance to degrees of freedom is \textgreater 1 the da
 The plot above suggests that the variance may increasing stronger than the mean and a quasi-Poisson or negative binomial model might be more appropriate for this data.
 
 \subsubsection{Model fitting}
-Fitting a quasi-Poisson model (eqn. 4) is straight forward:
+Fitting a quasi-Poisson model (eqn. 2.4) is straight forward:
 \begin{knitrout}
 \color{fgcolor}\small\begin{kframe}
 \begin{alltt}
@@ -563,7 +563,7 @@ The LOEC can be determined with \texttt{multcomp}:
 
 \subsubsection{Assuming a negative binomial distribution of abundances}
 \subsubsection{Model fitting}
-To fit a negative binomial GLM (eqn. 5) we could use \texttt{glm.nb()} from the MASS package \citep{venables_modern_2002}:
+To fit a negative binomial GLM (eqn. 2.5) we could use \texttt{glm.nb()} from the MASS package \citep{venables_modern_2002}:
 \begin{knitrout}
 \color{fgcolor}\small\begin{kframe}
 \begin{alltt}
@@ -943,7 +943,7 @@ This plot indicates a strong effect at the highest concentration.
 
 
 \subsubsection{Assuming a normal distribution of transformed proportions}
-First, we arcsine transform (eqn. 6) the proportions:
+First, we arcsine transform (eqn. 2.6) the proportions:
 \begin{knitrout}
 \color{fgcolor}\small\begin{kframe}
 \begin{alltt}
@@ -1071,7 +1071,7 @@ And the LOEC is at the highest concentration:
 
 
 \subsubsection{Assuming a binomial distribution}
-The binomial model with a logit link (eqn. 7) between predictors and response can be fitted using the \texttt{glm()} function:
+The binomial model with a logit link (eqn. 2.7) between predictors and response can be fitted using the \texttt{glm()} function:
 \begin{knitrout}
 \color{fgcolor}\small\begin{kframe}
 \begin{alltt}
@@ -1081,7 +1081,7 @@ The binomial model with a logit link (eqn. 7) between predictors and response ca
 \end{kframe}
 \end{knitrout}
 
-Here the weights arguments, indicates how many fish where exposed in each treatment (N=10, eqn .7).
+Here the weights arguments, indicates how many fish where exposed in each treatment (N=10, eqn 2.7).
 
 The summary gives the estimated coefficients:
 \begin{knitrout}

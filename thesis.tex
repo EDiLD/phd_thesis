@@ -51,12 +51,6 @@
 \input{\dir/abstract.tex}
 
 %----------------------------------------------------------------------------
-% Publications
-\cleardoublepage
-\def\dir{frontbackmatter}
-\input{\dir/publications.tex}
-
-%----------------------------------------------------------------------------
 % Contents
 \cleardoublepage
 \def\dir{frontbackmatter}
@@ -106,8 +100,10 @@
 
 %----------------------------------------------------------------------------
 % usetheglm
+\stopthumb
 \cleardoublepage
 \part*{Supplemental Materials}
+\continuethumb   
 \def\dir{appendix/usetheglm}
 \input{\dir/ap_usetheglm.tex}
 
@@ -128,6 +124,12 @@
 %----------------------------------------------------------------------------
 \stopthumb
 \backmatter
+
+%----------------------------------------------------------------------------
+% Publications
+\cleardoublepage
+\def\dir{frontbackmatter}
+\input{\dir/publications.tex}
 
 %----------------------------------------------------------------------------
 % Authors contributions
