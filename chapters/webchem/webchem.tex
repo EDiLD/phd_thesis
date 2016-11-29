@@ -280,8 +280,8 @@ Finally, we combine the queried data into one data.frame
 \begin{kframe}
 \begin{alltt}
 \hlstd{res} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{name} \hlstd{= subs,} \hlkwc{cas} \hlstd{= etox_cas,} \hlkwc{smiles} \hlstd{= pc_smiles,}
-            \hlkwc{cid} \hlstd{= pc_data}\hlopt{$}\hlstd{CID,} \hlkwc{inchikey} \hlstd{= pc_inchikey,}
-            \hlkwc{stringsAsFactors} \hlstd{=} \hlnum{FALSE}\hlstd{)}
+                  \hlkwc{cid} \hlstd{= pc_data}\hlopt{$}\hlstd{CID,} \hlkwc{inchikey} \hlstd{= pc_inchikey,}
+                  \hlkwc{stringsAsFactors} \hlstd{=} \hlnum{FALSE}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -330,8 +330,8 @@ To extract the chemical group from the retrieved data set, we write a simple ext
 \begin{kframe}
 \begin{alltt}
 \hlstd{igroup} \hlkwb{<-} \hlkwd{sapply}\hlstd{(aw_data,} \hlkwa{function}\hlstd{(}\hlkwc{y}\hlstd{)} \hlkwd{ifelse}\hlstd{(}\hlstr{'subactivity'} \hlopt{%in%} \hlkwd{names}\hlstd{(y),}
-                        \hlstd{y[[}\hlstr{'subactivity'}\hlstd{]],}
-                        \hlnum{NA}\hlstd{))}
+                                             \hlstd{y[[}\hlstr{'subactivity'}\hlstd{]],}
+                                             \hlnum{NA}\hlstd{))}
 \hlstd{igroup[}\hlnum{1}\hlopt{:}\hlnum{3}\hlstd{]}
 \end{alltt}
 \begin{verbatim}
@@ -380,9 +380,9 @@ because i) for some compounds no data could be found and ii) the data-object has
 \color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{R> lc50}\hlopt{$}\hlstd{logp} \hlkwb{<-} \hlkwd{sapply}\hlstd{(pp_data,} \hlkwa{function}\hlstd{(}\hlkwc{y}\hlstd{) \{}
-  \hlkwa{if} \hlstd{(}\hlkwd{length}\hlstd{(y)} \hlopt{==} \hlnum{1} \hlopt{&&} \hlkwd{is.na}\hlstd{(y))}
-    \hlkwd{return}\hlstd{(}\hlnum{NA}\hlstd{)}
-  \hlstd{y}\hlopt{$}\hlstd{prop}\hlopt{$}\hlstd{value[y}\hlopt{$}\hlstd{prop}\hlopt{$}\hlstd{variable} \hlopt{==} \hlstr{'Log P (octanol-water)'}\hlstd{]}
+                  \hlkwa{if} \hlstd{(}\hlkwd{length}\hlstd{(y)} \hlopt{==} \hlnum{1} \hlopt{&&} \hlkwd{is.na}\hlstd{(y))}
+                    \hlkwd{return}\hlstd{(}\hlnum{NA}\hlstd{)}
+                  \hlstd{y}\hlopt{$}\hlstd{prop}\hlopt{$}\hlstd{value[y}\hlopt{$}\hlstd{prop}\hlopt{$}\hlstd{variable} \hlopt{==} \hlstr{'Log P (octanol-water)'}\hlstd{]}
 \hlstd{\})}
 \end{alltt}
 \end{kframe}
@@ -427,12 +427,12 @@ We re-use the above queried ETOX-IDs to obtain further information from ETOX, na
 \begin{alltt}
 \hlstd{R> eqs} \hlkwb{<-} \hlkwd{etox_targets}\hlstd{(ids}\hlopt{$}\hlstd{etoxid)}
 \hlstd{R> ids}\hlopt{$}\hlstd{mac} \hlkwb{<-} \hlkwd{sapply}\hlstd{(eqs,} \hlkwa{function}\hlstd{(}\hlkwc{y}\hlstd{)\{}
-  \hlkwa{if} \hlstd{(}\hlkwd{length}\hlstd{(y)} \hlopt{==} \hlnum{1} \hlopt{&&} \hlkwd{is.na}\hlstd{(y)) \{}
-    \hlkwd{return}\hlstd{(}\hlnum{NA}\hlstd{)}
-  \hlstd{\}} \hlkwa{else} \hlstd{\{}
-    \hlstd{res} \hlkwb{<-} \hlstd{y}\hlopt{$}\hlstd{res}
-    \hlkwd{min}\hlstd{(res[res}\hlopt{$}\hlstd{Country_or_Region} \hlopt{==} \hlstr{'EEC / EU'} \hlopt{&}
-              \hlstd{res}\hlopt{$}\hlstd{Designation} \hlopt{==} \hlstr{'MAC-EQS'}\hlstd{,} \hlstr{'Value_Target_LR'}\hlstd{])}
+          \hlkwa{if} \hlstd{(}\hlkwd{length}\hlstd{(y)} \hlopt{==} \hlnum{1} \hlopt{&&} \hlkwd{is.na}\hlstd{(y)) \{}
+            \hlkwd{return}\hlstd{(}\hlnum{NA}\hlstd{)}
+          \hlstd{\}} \hlkwa{else} \hlstd{\{}
+            \hlstd{res} \hlkwb{<-} \hlstd{y}\hlopt{$}\hlstd{res}
+          \hlkwd{min}\hlstd{(res[res}\hlopt{$}\hlstd{Country_or_Region} \hlopt{==} \hlstr{'EEC / EU'} \hlopt{&}
+                      \hlstd{res}\hlopt{$}\hlstd{Designation} \hlopt{==} \hlstr{'MAC-EQS'}\hlstd{,} \hlstr{'Value_Target_LR'}\hlstd{])}
   \hlstd{\}}
 \hlstd{\})}
 \end{alltt}
@@ -447,7 +447,7 @@ Unfortunately, we only found MAC-EQS values for 5 substances:
 \color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{R> (mac} \hlkwb{<-} \hlkwd{with}\hlstd{(ids, ids[}\hlopt{!}\hlkwd{is.na}\hlstd{(mac)} \hlopt{&} \hlkwd{is.finite}\hlstd{(mac),}
-                      \hlkwd{c}\hlstd{(}\hlstr{'etoxid'}\hlstd{,} \hlstr{'query'}\hlstd{,} \hlstr{'mac'}\hlstd{)]))}
+                              \hlkwd{c}\hlstd{(}\hlstr{'etoxid'}\hlstd{,} \hlstr{'query'}\hlstd{,} \hlstr{'mac'}\hlstd{)]))}
 \end{alltt}
 \begin{verbatim}
 ##    etoxid       query    mac
