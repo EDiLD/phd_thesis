@@ -143,45 +143,45 @@
 % space between text and footer
 \setlength{\footskip}{8mm}
 
-% % b5 pdf
-% \usepackage[twoside]{geometry}
-% \geometry{
-%   includehead,
-%   includefoot,
-%   right=20mm,
-%   left=20mm,
-%   bottom=10mm, % space from bottomn to footer (space from text to bottom = footskip + bottom)
-%   top=10mm,    % space from top to text
-%   }
-% \geometry{
-%   paper=b5paper
-% }
-
-
-
-% % b5 on a4 page with crop marks
-\usepackage[twoside,a4paper,layout=b5paper]{geometry}
+% b5 pdf
+\usepackage[twoside]{geometry}
 \geometry{
   includehead,
   includefoot,
   right=20mm,
   left=20mm,
-  bottom=10mm,
-  top=10mm,
+  bottom=10mm, % space from bottomn to footer (space from text to bottom = footskip + bottom)
+  top=10mm,    % space from top to text
   }
- % fix twoside, to match in center.
- % see http://tex.stackexchange.com/questions/45283/how-can-i-use-the-layout-and-twoside-options-of-the-geometry-package
-\makeatletter
-\newlength\hcorr
-\setlength\hcorr{\paperwidth}
-\addtolength\hcorr{-\Gm@layoutwidth}
-\makeatother
 \geometry{
-  layouthoffset=.5\hcorr,  
-  bindingoffset=5mm,
-  showcrop,
-  % showframe,
+  paper=b5paper
 }
+
+
+
+% % % b5 on a4 page with crop marks
+% \usepackage[twoside,a4paper,layout=b5paper]{geometry}
+% \geometry{
+%   includehead,
+%   includefoot,
+%   right=20mm,
+%   left=20mm,
+%   bottom=10mm,
+%   top=10mm,
+%   }
+%  % fix twoside, to match in center.
+%  % see http://tex.stackexchange.com/questions/45283/how-can-i-use-the-layout-and-twoside-options-of-the-geometry-package
+% \makeatletter
+% \newlength\hcorr
+% \setlength\hcorr{\paperwidth}
+% \addtolength\hcorr{-\Gm@layoutwidth}
+% \makeatother
+% \geometry{
+%   layouthoffset=.5\hcorr,  
+%   bindingoffset=5mm,
+%   showcrop,
+%   % showframe,
+% }
 
 
 %----------------------------------------------------------------------------
@@ -262,10 +262,10 @@
   bottomthumbmargin={auto},
   eventxtindent={10pt},    % default = 5pt
   oddtxtexdent={10pt},      % default = 5pt
-  % evenmarkindent={0pt},      % use for pdf
-  evenmarkindent={15.5mm},     % use for print; default = 0pt, 210mm(a4) - 176 (b5) / 2 = 17.5mm - 2mm for cutting = 15.5mm for B5
-  % oddmarkexdent={0pt},       % use for pdf
-  oddmarkexdent={15.5mm},      % use for print; default = 0pt
+  evenmarkindent={0pt},      % use for pdf
+  % evenmarkindent={15.5mm},     % use for print; default = 0pt, 210mm(a4) - 176 (b5) / 2 = 17.5mm - 2mm for cutting = 15.5mm for B5
+  oddmarkexdent={0pt},       % use for pdf
+  % oddmarkexdent={15.5mm},      % use for print; default = 0pt
   evenprintvoffset={0pt}, 
   nophantomsection=false, 
   ignorehoffset=true,
@@ -400,13 +400,13 @@
 % hyperref
 \usepackage{hyperref}
 \hypersetup{%
-    draft=true,    % = no hyperlinking at all (useful in b/w printouts)
+    % draft=true,    % = no hyperlinking at all (useful in b/w printouts)
     colorlinks=true, 
     linktocpage=true, 
     pdfstartpage=1, 
     pdfstartview=FitV,%
     % uncomment the following line if you want to have black links (e.g., for printing)
-    colorlinks=false, linktocpage=false, pdfborder={0 0 0}, pdfstartpage=1, pdfstartview=FitV,% 
+    % colorlinks=false, linktocpage=false, pdfborder={0 0 0}, pdfstartpage=1, pdfstartview=FitV,% 
     breaklinks=true, 
     pdfpagemode=UseNone, 
     pageanchor=true, 
@@ -422,8 +422,7 @@
     linkcolor=RoyalBlue, 
     citecolor=webgreen, 
     % uncomment the following line if you want to have black
-    pagecolor=RoyalBlue,%
-    urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
+    % pagecolor=RoyalBlue, urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
     pdftitle={\myTitle},%
     pdfauthor={\myName, \myUni},%
     pdfsubject={},%
