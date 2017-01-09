@@ -18,6 +18,13 @@
 % use ragged bottom (=no vertical stretch of paragraphs (=\flushbottom))
 \raggedbottom
 
+% switch between print and read versions
+\usepackage{atveryend}
+\usepackage{etoolbox}
+\newtoggle{print}
+% for prin version set print to true
+% \toggletrue{print}
+\togglefalse{print}
 
 %----------------------------------------------------------------------------
 % character encoding and languages
@@ -143,45 +150,53 @@
 % space between text and footer
 \setlength{\footskip}{8mm}
 
-% b5 pdf
-\usepackage[twoside]{geometry}
-\geometry{
-  includehead,
-  includefoot,
-  right=20mm,
-  left=20mm,
-  bottom=10mm, % space from bottomn to footer (space from text to bottom = footskip + bottom)
-  top=10mm,    % space from top to text
+
+ % fix twoside, to match in center.
+ % see http://tex.stackexchange.com/questions/45283/how-can-i-use-the-layout-and-twoside-options-of-the-geometry-package
+\usepackage{geometry}
+\iftoggle{print}{%
+% % b5 on a4 page with crop marks
+  \geometry{
+    twoside,
+    paper=a4paper,
+    layout=b5paper,
+    includehead,
+    includefoot,
+    right=20mm,
+    left=20mm,
+    bottom=10mm,
+    top=10mm,
+    }
+}{
+  % b5 pdf
+  \geometry{
+    twoside,
+    includehead,
+    includefoot,
+    right=20mm,
+    left=20mm,
+    bottom=10mm, % space from bottomn to footer (space from text to bottom = footskip + bottom)
+    top=10mm,    % space from top to text
+    }
+  \geometry{
+    paper=b5paper
   }
-\geometry{
-  paper=b5paper
 }
 
+\makeatletter
+\newlength\hcorr
+\setlength\hcorr{\paperwidth}
+\addtolength\hcorr{-\Gm@layoutwidth}
+\makeatother
 
-
-% % % b5 on a4 page with crop marks
-% \usepackage[twoside,a4paper,layout=b5paper]{geometry}
-% \geometry{
-%   includehead,
-%   includefoot,
-%   right=20mm,
-%   left=20mm,
-%   bottom=10mm,
-%   top=10mm,
-%   }
-%  % fix twoside, to match in center.
-%  % see http://tex.stackexchange.com/questions/45283/how-can-i-use-the-layout-and-twoside-options-of-the-geometry-package
-% \makeatletter
-% \newlength\hcorr
-% \setlength\hcorr{\paperwidth}
-% \addtolength\hcorr{-\Gm@layoutwidth}
-% \makeatother
-% \geometry{
-%   layouthoffset=.5\hcorr,  
-%   bindingoffset=5mm,
-%   showcrop,
-%   % showframe,
-% }
+\iftoggle{print}{%
+  \geometry{
+    layouthoffset=.5\hcorr,  
+    bindingoffset=5mm,
+    showcrop,
+    % showframe,
+  }
+}{}
 
 
 %----------------------------------------------------------------------------
@@ -399,35 +414,70 @@
 %----------------------------------------------------------------------------
 % hyperref
 \usepackage{hyperref}
-\hypersetup{%
-    % draft=true,    % = no hyperlinking at all (useful in b/w printouts)
-    colorlinks=true, 
-    linktocpage=true, 
-    pdfstartpage=1, 
-    pdfstartview=FitV,%
-    % uncomment the following line if you want to have black links (e.g., for printing)
-    % colorlinks=false, linktocpage=false, pdfborder={0 0 0}, pdfstartpage=1, pdfstartview=FitV,% 
-    breaklinks=true, 
-    pdfpagemode=UseNone, 
-    pageanchor=true, 
-    pdfpagemode=UseOutlines,%
-    plainpages=false, 
-    % bookmarks=true,
-    bookmarksnumbered, 
-    bookmarksopen=true, 
-    bookmarksopenlevel=1,%
-    hypertexnames=true, 
-    pdfhighlight=/O,
-    urlcolor=webbrown, 
-    linkcolor=RoyalBlue, 
-    citecolor=webgreen, 
-    % uncomment the following line if you want to have black
-    % pagecolor=RoyalBlue, urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
-    pdftitle={\myTitle},%
-    pdfauthor={\myName, \myUni},%
-    pdfsubject={},%
-    pdfkeywords={},%
-}   
+\iftoggle{print}{%
+  \hypersetup{%
+        draft=true,    % = no hyperlinking at all (useful in b/w printouts)
+        colorlinks=true, 
+        linktocpage=true, 
+        pdfstartpage=1, 
+        pdfstartview=FitV,%
+        % uncomment the following line if you want to have black links (e.g., for printing)
+        % colorlinks=false, linktocpage=false, pdfborder={0 0 0}, pdfstartpage=1, pdfstartview=FitV,% 
+        breaklinks=true, 
+        pdfpagemode=UseNone, 
+        pageanchor=true, 
+        pdfpagemode=UseOutlines,%
+        plainpages=false, 
+        % bookmarks=true,
+        bookmarksnumbered, 
+        bookmarksopen=true, 
+        bookmarksopenlevel=1,%
+        hypertexnames=true, 
+        pdfhighlight=/O,
+        urlcolor=webbrown, 
+        linkcolor=RoyalBlue, 
+        citecolor=webgreen, 
+        % uncomment the following line if you want to have black
+        % pagecolor=RoyalBlue, urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
+        pdftitle={\myTitle},%
+        pdfauthor={\myName, \myUni},%
+        pdfsubject={},%
+        pdfkeywords={},%
+    }   
+}{ 
+  \hypersetup{%
+      % draft=true,    % = no hyperlinking at all (useful in b/w printouts)
+      colorlinks=true, 
+      linktocpage=true, 
+      pdfstartpage=1, 
+      pdfstartview=FitV,%
+      % uncomment the following line if you want to have black links (e.g., for printing)
+      % colorlinks=false, linktocpage=false, pdfborder={0 0 0}, pdfstartpage=1, pdfstartview=FitV,% 
+      breaklinks=true, 
+      pdfpagemode=UseNone, 
+      pageanchor=true, 
+      pdfpagemode=UseOutlines,%
+      plainpages=false, 
+      % bookmarks=true,
+      bookmarksnumbered, 
+      bookmarksopen=true, 
+      bookmarksopenlevel=1,%
+      hypertexnames=true, 
+      pdfhighlight=/O,
+      urlcolor=webbrown, 
+      linkcolor=RoyalBlue, 
+      citecolor=webgreen, 
+      % uncomment the following line if you want to have black
+      % pagecolor=RoyalBlue, urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
+      pdftitle={\myTitle},%
+      pdfauthor={\myName, \myUni},%
+      pdfsubject={},%
+      pdfkeywords={},%
+  }   
+}
+
+
+
 \usepackage{bookmark}
 
 \renewcommand{\subsectionautorefname}{Subsection}

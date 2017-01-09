@@ -4,7 +4,17 @@
 
 \addcontentsline{toc}{chapter}{\textsc{curriculum vitae}}
 
-\includepdf[pages=-, scale=.95]{frontbackmatter/cv/escv.pdf}
+% adapt included pdf to layout size
+% http://tex.stackexchange.com/questions/46888/pdfpages-package-and-layoutsize-geometry-package
+\iftoggle{print}{%
+	\includepdf[pages=-, scale=.95,
+    offset=0mm 25mm
+		]{frontbackmatter/cv/escv.pdf}
+}{
+	\includepdf[pages=-, scale=.95
+		]{frontbackmatter/cv/escv.pdf}
+}
+
 
 
 \restoregeometry
